@@ -1,153 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setup Wizard | Moto Performance</title>
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --surface-color: #1e293b;
-            --primary-color: #22c55e;
-            --primary-dark: #15803d;
-            --text-color: #ffffff;
-            --text-dim: #94a3b8;
-        }
+    <title>Apex Wizard | Pro Motorcycle Suspension & Logbook</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+    <!-- SEO Optimization -->
+    <meta name="description"
+        content="Stop guessing in the pits. Apex Wizard is your professional motorcycle suspension logbook and setup troubleshooter designed for peak track and street performance.">
+    <meta name="keywords"
+        content="motorcycle suspension, track day, sag calculator, damping setup, apex wizard, track logbook">
+    <meta name="author" content="Adrian Dokoza">
 
-        header {
-            background-color: var(--surface-color);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-        }
+    <!-- Premium Styles -->
+    <link rel="stylesheet" href="index.css">
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .contact-section {
-            background-color: var(--surface-color);
-            padding: 3rem;
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-dim);
-            border-top: 1px solid var(--surface-color);
-            margin-top: 2rem;
-        }
-
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-    </style>
+    <!-- SVG Store Icons (Inlined for speed, or external) -->
 </head>
+
 <body>
+    <!-- Ambient Background Animations -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
 
     <header>
-        <h1>Setup Wizard</h1>
-        <p class="tagline">Your Pro Suspension & Track Log. Stop guessing in the pits and become faster, safer, and more consistent.</p>
+        <div class="hero-glow"></div>
+        <h1>Apex Wizard</h1>
+        <p class="hero-subtitle">Stop guessing in the pits. The ultimate pro suspension logbook and setup troubleshooter
+            designed to make you faster, safer, and more consistent.</p>
+
+        <div class="download-badges">
+            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" rel="noopener noreferrer"
+                class="store-badge">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1716336000"
+                    alt="Download on the App Store">
+            </a>
+            <!-- Placeholder for Android Release -->
+            <div class="badge-placeholder">
+                Google Play Coming Soon
+            </div>
+        </div>
+
+        <div class="hero-device-container">
+            <div class="mockup-frame">
+                <div class="mockup-screen">
+                    <img src="assets/hero-app.png" alt="Apex Wizard Application Screenshot">
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        
-        <div class="features">
-            <div class="card">
-                <h3>🛠 Expert Troubleshooter</h3>
-                <p>Having trouble with corner entry or chattering? Our wizard analyzes your issues over the four phases of a corner and gives precise clicker recommendations tailored to your bike's actual capabilities.</p>
-            </div>
-            
-            <div class="card">
-                <h3>🏍 Digital Garage</h3>
-                <p>Manage your entire collection of motorcycles. Define available adjustments (Compression, Rebound, Preload) and save unlimited setups for different tracks in organized folders.</p>
+    <main class="features-container">
+        <h2 class="section-title">Built for the <span>Pits</span>. Engineered for the <span>Track</span>.</h2>
+
+        <div class="bento-grid">
+            <div class="bento-card card-large">
+                <div class="icon-wrapper">🛠️</div>
+                <h3>Expert Troubleshooter</h3>
+                <p>Having trouble with corner entry or chattering on exit? Our interactive wizard analyzes your specific
+                    feedback across the four phases of a corner. It calculates precise clicker and preload
+                    recommendations tailored directly to your bike's exact suspension capabilities.</p>
             </div>
 
-            <div class="card">
-                <h3>⏱ Track Day Logbook</h3>
-                <p>Log every session, lap time, and tire pressure (Cold & Hot). Our pro-grade charts show you exactly which tire pressure delivers the best grip and which setup broke your personal best.</p>
+            <div class="bento-card card-tall">
+                <div class="icon-wrapper">🏍️</div>
+                <h3>Digital Garage</h3>
+                <p>Manage your entire stable of motorcycles. Define specific available adjustment ranges (Compression,
+                    Rebound, Preload) for your forks and shocks. Save unlimited setups categorized into intelligent
+                    Street and Track folders.</p>
+                <img src="assets/garage-feature.png" alt="Digital Garage interface" class="bento-image">
             </div>
 
-            <div class="card">
-                <h3>⚙️ Service Hub</h3>
-                <p>Never miss a service again. Keep track of oil changes, brake pads, and major intervals with dynamic health bars based on your odometer readings.</p>
+            <div class="bento-card">
+                <div class="icon-wrapper">⏱️</div>
+                <h3>Track Day Log & Analytics</h3>
+                <p>Log every session, lap time, and tire pressures (Cold & Hot). Our pro-grade analytics instantly map
+                    out which setup variations shattered your personal lap records.</p>
+            </div>
+
+            <div class="bento-card">
+                <div class="icon-wrapper">⚙️</div>
+                <h3>Service & Maintenance Hub</h3>
+                <p>Track critical maintenance using dynamic health bars. From fork oil weights to brake pad life, ensure
+                    your machine is technically perfect before every green flag.</p>
             </div>
         </div>
+    </main>
 
-        <div class="contact-section">
-            <h2>Support & Contact</h2>
-            <p>Need help, have a suggestion, or want to report a bug? We'd love to hear from you.</p>
-            <a href="mailto:adrian.dokoza@icloud.com" class="btn">Email Support Team</a>
+    <section class="cta-section">
+        <h2 class="cta-title cta-animate">Ready to find your Apex?</h2>
+        <div class="download-badges cta-animate" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" class="store-badge">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1716336000"
+                    alt="Download on the App Store">
+            </a>
+            <div class="badge-placeholder">
+                Google Play Coming Soon
+            </div>
         </div>
-
-    </div>
+        <p class="cta-animate" style="margin-bottom: 2rem; color: var(--text-dim);">Questions? Feedback? Feature
+            Request?
+        </p>
+        <a href="mailto:adrian.dokoza@icloud.com" class="support-btn cta-animate">Contact Support Team</a>
+    </section>
 
     <footer>
         <p>&copy; 2026 Adrian Dokoza. All rights reserved.</p>
         <p><a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
+    <!-- GSAP & Lenis Smooth Scroll Core -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Cinematic Animations Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 1. Initialize Lenis Smooth Scroll
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical',
+                gestureDirection: 'vertical',
+                smooth: true,
+                mouseMultiplier: 1,
+                smoothTouch: false,
+                touchMultiplier: 2,
+                infinite: false,
+            });
+
+            // Keep GSAP in sync with Lenis
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0, 0);
+
+            // 2. Hero Section Parallax & Reveal
+            const tlHero = gsap.timeline({
+                defaults: { ease: "power3.out" }
+            });
+
+            // Initial Hero Reveal
+            tlHero.from("h1", { y: 50, opacity: 0, duration: 1, delay: 0.2 })
+                .from(".hero-subtitle", { y: 30, opacity: 0, duration: 1 }, "-=0.7")
+                .from(".download-badges", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
+                .from(".hero-device-container", { y: 100, opacity: 0, duration: 1.2 }, "-=0.8");
+
+            // Hero Scrub Animation (Scroll down -> Phone scales slightly and shifts)
+            gsap.to(".hero-device-container", {
+                scrollTrigger: {
+                    trigger: "header",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1
+                },
+                y: 150,
+                scale: 1.05,
+                opacity: 0.5,
+                ease: "none"
+            });
+
+            // 3. Bento Box Staggered Reveal
+            const bentoCards = gsap.utils.toArray(".bento-card");
+
+            // Hide them initially for ScrollTrigger
+            gsap.set(bentoCards, { y: 50, opacity: 0 });
+
+            ScrollTrigger.batch(bentoCards, {
+                onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" }),
+                start: "top 85%",
+                once: true
+            });
+
+            // 4. Section Title Reveal
+            gsap.from(".section-title", {
+                scrollTrigger: {
+                    trigger: ".features-container",
+                    start: "top 80%",
+                },
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
+
+            // 5. CTA Section Reveal
+            gsap.from(".cta-animate", {
+                scrollTrigger: {
+                    trigger: ".cta-section",
+                    start: "top 90%"
+                },
+                y: 30,
+                opacity: 0,
+                stagger: 0.15,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+    </script>
 </body>
+
 </html>
