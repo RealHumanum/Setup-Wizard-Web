@@ -55,9 +55,9 @@
     <main class="features-container">
         <h2 class="section-title">Built for the <span>Pits</span>. Engineered for the <span>Track</span>.</h2>
 
-        <div class="bento-grid">
-            <div class="bento-card card-large">
-                <div class="feature-content">
+        <div class="floating-features">
+            <section class="floating-feature feature-left">
+                <div class="feature-text">
                     <div class="icon-wrapper">🛠️</div>
                     <h3>Expert Troubleshooter</h3>
                     <p>Having trouble with corner entry or chattering on exit? Our interactive wizard analyzes your
@@ -65,33 +65,50 @@
                         feedback across the four phases of a corner. It calculates precise clicker and preload
                         recommendations tailored directly to your bike's exact suspension capabilities.</p>
                 </div>
-                <img src="assets/2.png" alt="Expert Troubleshooter interface" class="bento-image">
-            </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/2.png" alt="Expert Troubleshooter interface" class="floating-app-img parallax-img">
+                </div>
+            </section>
 
-            <div class="bento-card card-tall">
-                <div class="icon-wrapper">🏍️</div>
-                <h3>Digital Garage</h3>
-                <p>Manage your entire stable of motorcycles. Define specific available adjustment ranges (Compression,
-                    Rebound, Preload) for your forks and shocks. Save unlimited setups categorized into intelligent
-                    Street and Track folders.</p>
-                <img src="assets/3.png" alt="Digital Garage interface" class="bento-image">
-            </div>
+            <section class="floating-feature feature-right">
+                <div class="feature-text">
+                    <div class="icon-wrapper">🏍️</div>
+                    <h3>Digital Garage</h3>
+                    <p>Manage your entire stable of motorcycles. Define specific available adjustment ranges
+                        (Compression,
+                        Rebound, Preload) for your forks and shocks. Save unlimited setups categorized into intelligent
+                        Street and Track folders.</p>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/3.png" alt="Digital Garage interface" class="floating-app-img parallax-img">
+                </div>
+            </section>
 
-            <div class="bento-card">
-                <div class="icon-wrapper">⏱️</div>
-                <h3>Track Day Log & Analytics</h3>
-                <p>Log every session, lap time, and tire pressures (Cold & Hot). Our pro-grade analytics instantly map
-                    out which setup variations shattered your personal lap records.</p>
-                <img src="assets/4.png" alt="Track Day Log interface" class="bento-image">
-            </div>
+            <section class="floating-feature feature-left">
+                <div class="feature-text">
+                    <div class="icon-wrapper">⏱️</div>
+                    <h3>Track Day Log & Analytics</h3>
+                    <p>Log every session, lap time, and tire pressures (Cold & Hot). Our pro-grade analytics instantly
+                        map
+                        out which setup variations shattered your personal lap records.</p>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/4.png" alt="Track Day Log interface" class="floating-app-img parallax-img">
+                </div>
+            </section>
 
-            <div class="bento-card">
-                <div class="icon-wrapper">⚙️</div>
-                <h3>Service & Maintenance Hub</h3>
-                <p>Track critical maintenance using dynamic health bars. From fork oil weights to brake pad life, ensure
-                    your machine is technically perfect before every green flag.</p>
-                <img src="assets/5.png" alt="Service Hub interface" class="bento-image">
-            </div>
+            <section class="floating-feature feature-right">
+                <div class="feature-text">
+                    <div class="icon-wrapper">⚙️</div>
+                    <h3>Service & Maintenance Hub</h3>
+                    <p>Track critical maintenance using dynamic health bars. From fork oil weights to brake pad life,
+                        ensure
+                        your machine is technically perfect before every green flag.</p>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/5.png" alt="Service Hub interface" class="floating-app-img parallax-img">
+                </div>
+            </section>
         </div>
     </main>
 
@@ -172,16 +189,41 @@
                 ease: "none"
             });
 
-            // 3. Bento Box Staggered Reveal
-            const bentoCards = gsap.utils.toArray(".bento-card");
+            // 3. Floating Features Parallax
+            const floatingFeatures = gsap.utils.toArray(".floating-feature");
 
-            // Hide them initially for ScrollTrigger
-            gsap.set(bentoCards, { y: 50, opacity: 0 });
+            floatingFeatures.forEach((feature, i) => {
+                const text = feature.querySelector(".feature-text");
+                const img = feature.querySelector(".parallax-img");
 
-            ScrollTrigger.batch(bentoCards, {
-                onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" }),
-                start: "top 85%",
-                once: true
+                // Text fade up when entering
+                gsap.from(text, {
+                    scrollTrigger: {
+                        trigger: feature,
+                        start: "top 75%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 100,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power3.out"
+                });
+
+                // Image Parallax Scrubbing (Scroll down -> Image parallax moves opposite)
+                gsap.fromTo(img,
+                    { y: 150, scale: 0.95 },
+                    {
+                        scrollTrigger: {
+                            trigger: feature,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: 1
+                        },
+                        y: -150,
+                        scale: 1.1,
+                        ease: "none"
+                    }
+                );
             });
 
             // 4. Section Title Reveal
