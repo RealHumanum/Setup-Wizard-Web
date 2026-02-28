@@ -31,7 +31,7 @@
         <p class="hero-subtitle">Stop guessing in the pits. The ultimate pro suspension logbook and setup troubleshooter
             designed to make you faster, safer, and more consistent.</p>
 
-        <div class="download-badges">
+        <div class="download-badges hero-animate">
             <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" rel="noopener noreferrer"
                 class="store-badge">
                 <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1716336000"
@@ -149,7 +149,7 @@
             // Initial Hero Reveal
             tlHero.from("h1", { y: 50, opacity: 0, duration: 1, delay: 0.2 })
                 .from(".hero-subtitle", { y: 30, opacity: 0, duration: 1 }, "-=0.7")
-                .from(".download-badges", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
+                .from(".hero-animate", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
                 .from(".hero-device-container", { y: 100, opacity: 0, duration: 1.2 }, "-=0.8");
 
             // Hero Scrub Animation (Scroll down -> Phone scales slightly and shifts)
@@ -194,7 +194,7 @@
             gsap.from(".cta-animate", {
                 scrollTrigger: {
                     trigger: ".cta-section",
-                    start: "top 90%"
+                    start: "top bottom"
                 },
                 y: 30,
                 opacity: 0,
