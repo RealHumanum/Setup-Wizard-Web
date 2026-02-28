@@ -260,6 +260,8 @@ h1 {
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .bento-card::before {
@@ -289,6 +291,31 @@ h1 {
 .card-large {
     grid-column: span 2;
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.card-large .bento-image {
+    width: 280px;
+    margin-top: 0;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+@media (max-width: 900px) {
+    .card-large {
+        flex-direction: column;
+    }
+
+    .card-large .bento-image {
+        width: 100%;
+        margin-top: 2rem;
+    }
 }
 
 .card-tall {
@@ -303,9 +330,13 @@ h1 {
     border-radius: 12px;
     margin-top: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    flex-grow: 1;
     object-fit: cover;
     object-position: top;
+    transition: var(--transition-smooth);
+}
+
+.bento-card:hover .bento-image {
+    transform: scale(1.02);
 }
 
 .icon-wrapper {
