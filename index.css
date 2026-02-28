@@ -369,6 +369,10 @@ h1 {
     border: 1px solid var(--border-glass);
     transition: var(--transition-smooth);
     margin-bottom: 2rem;
+    opacity: 1;
+    /* Explicitly visible for GSAP .from() */
+    position: relative;
+    z-index: 10;
 }
 
 .support-btn:hover {

@@ -194,14 +194,28 @@
             gsap.from(".cta-animate", {
                 scrollTrigger: {
                     trigger: ".cta-section",
-                    start: "top bottom"
+                    start: "top 95%", // Trigger when 5% of the section is visible
+                    toggleActions: "play none none none"
                 },
                 y: 30,
                 opacity: 0,
                 stagger: 0.15,
                 duration: 0.8,
-                ease: "power2.out"
+                ease: "power2.out",
+                onComplete: () => {
+                    // Ensure opacity is exactly 1 after animation
+                    gsap.set(".cta-animate", { opacity: 1, clearProps: "y" });
+                }
             });
+
+            // 6. Refresh ScrollTrigger after everything is loaded
+            window.addEventListener('load', () => {
+                ScrollTrigger.refresh();
+            });
+            // Also refresh after a short delay for Lenis to settle
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, 500);
         });
     </script>
 </body>
