@@ -4,282 +4,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Wizard | Pro Motorcycle Suspension & Logbook</title>
+    <title>Apex Wizard | Pro Motorcycle Suspension & Setup Logbook</title>
 
-    <!-- SEO Optimization -->
+    <!-- SEO -->
     <meta name="description"
-        content="Stop guessing in the pits. Apex Wizard is your professional motorcycle suspension logbook and setup troubleshooter designed for peak track and street performance.">
+        content="Stop guessing in the pits. Apex Wizard is the ultimate motorcycle suspension logbook and setup troubleshooter for track and street riders.">
     <meta name="keywords"
-        content="motorcycle suspension, track day, sag calculator, damping setup, apex wizard, track logbook">
+        content="motorcycle suspension, track day app, sag calculator, damping setup, apex wizard, motorcycle logbook, suspension troubleshooter">
     <meta name="author" content="Adrian Dokoza">
 
-    <!-- Premium Styles -->
-    <link rel="stylesheet" href="index.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-    <!-- SVG Store Icons (Inlined for speed, or external) -->
+    <!-- Styles -->
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <!-- Ambient Background Animations -->
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-    <div class="bg-orb orb-3"></div>
+    <!-- Ambient Glow Effects -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
 
-    <header>
-        <div class="hero-glow"></div>
-        <h1>Apex Wizard</h1>
-        <p class="hero-subtitle">Stop guessing in the pits. The ultimate pro suspension logbook and setup troubleshooter
-            designed to make you faster, safer, and more consistent.</p>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Apex Wizard</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" class="nav-cta">Download
+                Free</a>
+        </div>
+    </nav>
 
-        <div class="download-badges hero-animate">
-            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" rel="noopener noreferrer"
-                class="store-badge">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1716336000"
-                    alt="Download on the App Store">
-            </a>
-            <!-- Placeholder for Android Release -->
-            <div class="badge-placeholder">
-                Google Play Coming Soon
+    <!-- HERO -->
+    <header id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🏍️ Built for riders, by riders</div>
+            <h1>
+                <span class="hero-line">Stop Guessing</span>
+                <span class="hero-line">in the <span class="text-gradient">Pits.</span></span>
+            </h1>
+            <p class="hero-sub">The all-in-one motorcycle suspension logbook, setup troubleshooter, and track day
+                companion. Dial in your ride with surgical precision.</p>
+
+            <div class="hero-buttons">
+                <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" class="btn-primary">
+                    <svg width="20" height="24" viewBox="0 0 20 24" fill="currentColor">
+                        <path
+                            d="M15.77 12.55c-.03-2.94 2.4-4.36 2.51-4.43-1.37-2-3.5-2.27-4.26-2.31-1.81-.18-3.53 1.07-4.45 1.07-.92 0-2.34-1.04-3.85-1.01-1.98.03-3.8 1.15-4.82 2.93-2.06 3.56-.53 8.84 1.48 11.73.98 1.42 2.14 3.01 3.67 2.95 1.47-.06 2.03-.95 3.81-.95 1.78 0 2.29.95 3.85.92 1.59-.03 2.58-1.45 3.55-2.87 1.12-1.63 1.58-3.21 1.61-3.3-.04-.01-3.09-1.18-3.1-4.73z" />
+                        <path
+                            d="M12.84 3.95c.81-.99 1.36-2.36 1.21-3.73-1.17.05-2.59.78-3.43 1.76-.75.87-1.41 2.26-1.23 3.6 1.3.1 2.63-.67 3.45-1.63z" />
+                    </svg>
+                    Download for iOS
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.apexwizard.app" target="_blank"
+                    class="btn-secondary">
+                    <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
+                        <path
+                            d="M1 1.35L11.65 11 1 20.65V1.35zM13.77 13.12l-2.12-2.12 2.12-2.12 3.62 2.12-3.62 2.12zM1 21.5l10.5-6.12-2.13-2.13L1 21.5zM1 .5l8.37 8.25L11.5 6.62 1 .5z" />
+                    </svg>
+                    Download for Android
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="115">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Bikes in Database</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="7">0</span>
+                    <span class="stat-label">Smart Modules</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">100</span><span class="stat-plus">%</span>
+                    <span class="stat-label">Free Forever</span>
+                </div>
             </div>
         </div>
 
-        <div class="hero-device-container">
-            <div class="mockup-frame">
-                <div class="mockup-screen">
-                    <img src="assets/hero%202.png" alt="Apex Wizard Application Screenshot">
-                </div>
-            </div>
+        <div class="hero-phone">
+            <div class="phone-glow"></div>
+            <img src="assets/hero%202.png" alt="Apex Wizard Application Screenshot" class="hero-screenshot">
         </div>
     </header>
 
-    <main class="features-container">
-        <h2 class="section-title">Built for the <span>Pits</span>. Engineered for the <span>Track</span>.</h2>
-
-        <div class="floating-features">
-            <section class="floating-feature feature-left">
-                <div class="feature-text">
-                    <div class="icon-wrapper">🛠️</div>
-                    <h3>Expert Troubleshooter</h3>
-                    <p>Having trouble with corner entry or chattering on exit? Our interactive wizard analyzes your
-                        specific
-                        feedback across the four phases of a corner. It calculates precise clicker and preload
-                        recommendations tailored directly to your bike's exact suspension capabilities.</p>
-                </div>
-                <div class="feature-image-wrapper">
-                    <img src="assets/fix.png" alt="Expert Troubleshooter interface"
-                        class="floating-app-img parallax-img">
-                </div>
-            </section>
-
-            <section class="floating-feature feature-right">
-                <div class="feature-text">
-                    <div class="icon-wrapper">🏍️</div>
-                    <h3>Digital Garage</h3>
-                    <p>Manage your entire stable of motorcycles. Define specific available adjustment ranges
-                        (Compression,
-                        Rebound, Preload) for your forks and shocks. Save unlimited setups categorized into intelligent
-                        Street and Track folders.</p>
-                </div>
-                <div class="feature-image-wrapper">
-                    <img src="assets/home%20screen.png" alt="Digital Garage interface"
-                        class="floating-app-img parallax-img">
-                </div>
-            </section>
-
-            <section class="floating-feature feature-left">
-                <div class="feature-text">
-                    <div class="icon-wrapper">⏱️</div>
-                    <h3>Track Day Log</h3>
-                    <p>Log every session, lap time, and tire pressures (Cold & Hot). Never forget a setting or condition
-                        when you roll out onto the grid.</p>
-                </div>
-                <div class="feature-image-wrapper">
-                    <img src="assets/track%20log.png" alt="Track Day Log interface"
-                        class="floating-app-img parallax-img">
-                </div>
-            </section>
-
-            <section class="floating-feature feature-right">
-                <div class="feature-text">
-                    <div class="icon-wrapper">📈</div>
-                    <h3>Performance Analysis</h3>
-                    <p>Our pro-grade analytics instantly dissect your data to map out exactly which setup variations
-                        shattered your personal lap records.</p>
-                </div>
-                <div class="feature-image-wrapper">
-                    <img src="assets/track%20stats.png" alt="Track Analytics interface"
-                        class="floating-app-img parallax-img">
-                </div>
-            </section>
-
-            <section class="floating-feature feature-left">
-                <div class="feature-text">
-                    <div class="icon-wrapper">⚙️</div>
-                    <h3>Service & Maintenance Hub</h3>
-                    <p>Track critical maintenance using dynamic health bars. From fork oil weights to brake pad life,
-                        ensure
-                        your machine is technically perfect before every green flag.</p>
-                </div>
-                <div class="feature-image-wrapper">
-                    <img src="assets/stats%20bike.png" alt="Service Hub interface"
-                        class="floating-app-img parallax-img">
-                </div>
-            </section>
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof">
+        <div class="proof-inner">
+            <div class="proof-item">⭐ Featured suspension logbook for sportbike riders</div>
+            <div class="proof-divider">•</div>
+            <div class="proof-item">🏁 Used at tracks across Europe & North America</div>
+            <div class="proof-divider">•</div>
+            <div class="proof-item">📱 Available on iOS & Android</div>
         </div>
-    </main>
-
-    <section class="cta-section">
-        <h2 class="cta-title cta-animate">Ready to find your Apex?</h2>
-        <div class="download-badges cta-animate" style="margin-top: 2rem; margin-bottom: 2rem;">
-            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" class="store-badge">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1716336000"
-                    alt="Download on the App Store">
-            </a>
-            <div class="badge-placeholder">
-                Google Play Coming Soon
-            </div>
-        </div>
-        <p class="cta-animate" style="margin-bottom: 2rem; color: var(--text-dim);">Questions? Feedback? Feature
-            Request?
-        </p>
-        <a href="mailto:adrian.dokoza@icloud.com" class="support-btn cta-animate">Contact Support Team</a>
     </section>
 
+    <!-- FEATURES -->
+    <section id="features">
+        <div class="section-header">
+            <span class="section-tag">Features</span>
+            <h2>Everything You Need.<br><span class="text-gradient">Nothing You Don't.</span></h2>
+            <p class="section-sub">Seven precision-engineered modules designed to make you faster, safer, and more
+                consistent on track.</p>
+        </div>
+
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card feature-large" data-aos="fade-up">
+                <div class="feature-content">
+                    <span class="feature-icon">🛠️</span>
+                    <h3>Setup Troubleshooter</h3>
+                    <p>Having issues on track? Select the corner phase where the problem occurs. Our AI-powered wizard
+                        calculates precise clicker adjustments tailored to your bike's exact suspension capabilities.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Braking / Entry</span>
+                        <span class="tag">Turn In</span>
+                        <span class="tag">Mid Corner</span>
+                        <span class="tag">Exit / Drive</span>
+                    </div>
+                </div>
+                <div class="feature-img-wrap">
+                    <img src="assets/fix.png" alt="Setup Troubleshooter" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-content">
+                    <span class="feature-icon">🏍️</span>
+                    <h3>Digital Garage</h3>
+                    <p>Manage your entire stable. Define compression, rebound, and preload ranges for forks & shocks.
+                        Save unlimited setups organized into Street and Track folders.</p>
+                </div>
+                <div class="feature-img-wrap">
+                    <img src="assets/home%20screen.png" alt="Digital Garage" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-content">
+                    <span class="feature-icon">⏱️</span>
+                    <h3>Track Day Logger</h3>
+                    <p>Log every session, lap time, and tire pressure (cold & hot). Build a complete history of every
+                        track outing so you can replay your fastest days.</p>
+                </div>
+                <div class="feature-img-wrap">
+                    <img src="assets/track%20log.png" alt="Track Day Logger" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card" data-aos="fade-up">
+                <div class="feature-content">
+                    <span class="feature-icon">📈</span>
+                    <h3>Performance Analytics</h3>
+                    <p>Pro-grade analytics dissect your data to show exactly which setup changes shattered your personal
+                        lap records. Lap time progression charts and setup face-offs included.</p>
+                </div>
+                <div class="feature-img-wrap">
+                    <img src="assets/track%20stats.png" alt="Performance Analytics" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-content">
+                    <span class="feature-icon">📊</span>
+                    <h3>Bike Dynamics Scores</h3>
+                    <p>Stability, agility, brake stability, wheelie risk — see exactly how your geometry and weight
+                        distribution affect handling with dynamic scoring bars.</p>
+                </div>
+                <div class="feature-img-wrap">
+                    <img src="assets/stats%20bike.png" alt="Bike Dynamics" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-card feature-wide" data-aos="fade-up">
+                <div class="feature-content">
+                    <span class="feature-icon">⚙️</span>
+                    <h3>Service & Maintenance Hub</h3>
+                    <p>Track fork oil, brake pads, chain life, and more with dynamic health bars. Know exactly when
+                        parts need servicing before every green flag.</p>
+                </div>
+                <div class="feature-extra">
+                    <div class="maintenance-bar">
+                        <span>Fork Oil</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 72%"></div>
+                        </div>
+                        <span class="bar-pct">72%</span>
+                    </div>
+                    <div class="maintenance-bar">
+                        <span>Brake Pads</span>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-warn" style="width: 35%"></div>
+                        </div>
+                        <span class="bar-pct">35%</span>
+                    </div>
+                    <div class="maintenance-bar">
+                        <span>Chain Life</span>
+                        <div class="bar-track">
+                            <div class="bar-fill bar-good" style="width: 88%"></div>
+                        </div>
+                        <span class="bar-pct">88%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works">
+        <div class="section-header">
+            <span class="section-tag">How It Works</span>
+            <h2>Three Steps to <span class="text-gradient">Your Fastest Lap.</span></h2>
+        </div>
+
+        <div class="steps">
+            <div class="step" data-aos="fade-up">
+                <div class="step-number">01</div>
+                <h3>Add Your Bike</h3>
+                <p>Pick from 115+ factory sportbikes or build a custom profile. Define every adjustment range your
+                    suspension offers.</p>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-aos="fade-up" data-aos-delay="150">
+                <div class="step-number">02</div>
+                <h3>Log Your Setup</h3>
+                <p>Record every clicker position, preload setting, sag measurement, and tire pressure before you roll
+                    onto track.</p>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-number">03</div>
+                <h3>Diagnose & Improve</h3>
+                <p>Use the Troubleshooter or compare sessions with analytics. Know exactly what to change and why.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIKE DATABASE BANNER -->
+    <section class="bike-banner">
+        <div class="bike-banner-inner" data-aos="fade-up">
+            <div class="bike-banner-text">
+                <h2><span class="text-gradient">115+</span> Factory Sportbikes</h2>
+                <p>From the 2003 Yamaha R6 to the 2025 Ducati Panigale V4 — two decades of sportbike evolution at your
+                    fingertips. Every fork, every shock, every adjustment range pre-loaded and ready to go.</p>
+            </div>
+            <div class="bike-logos">
+                <span>Yamaha</span>
+                <span>Ducati</span>
+                <span>Aprilia</span>
+                <span>Kawasaki</span>
+                <span>BMW</span>
+                <span>Honda</span>
+                <span>Suzuki</span>
+                <span>KTM</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+        <div class="cta-glow"></div>
+        <div class="cta-content" data-aos="fade-up">
+            <h2>Ready to Find Your <span class="text-gradient">Apex?</span></h2>
+            <p>Join riders worldwide who are using Apex Wizard to dial in their suspension and dominate the track.</p>
+
+            <div class="cta-buttons">
+                <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" class="btn-primary">
+                    <svg width="20" height="24" viewBox="0 0 20 24" fill="currentColor">
+                        <path
+                            d="M15.77 12.55c-.03-2.94 2.4-4.36 2.51-4.43-1.37-2-3.5-2.27-4.26-2.31-1.81-.18-3.53 1.07-4.45 1.07-.92 0-2.34-1.04-3.85-1.01-1.98.03-3.8 1.15-4.82 2.93-2.06 3.56-.53 8.84 1.48 11.73.98 1.42 2.14 3.01 3.67 2.95 1.47-.06 2.03-.95 3.81-.95 1.78 0 2.29.95 3.85.92 1.59-.03 2.58-1.45 3.55-2.87 1.12-1.63 1.58-3.21 1.61-3.3-.04-.01-3.09-1.18-3.1-4.73z" />
+                        <path
+                            d="M12.84 3.95c.81-.99 1.36-2.36 1.21-3.73-1.17.05-2.59.78-3.43 1.76-.75.87-1.41 2.26-1.23 3.6 1.3.1 2.63-.67 3.45-1.63z" />
+                    </svg>
+                    Download for iOS
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.apexwizard.app" target="_blank"
+                    class="btn-secondary">
+                    <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
+                        <path
+                            d="M1 1.35L11.65 11 1 20.65V1.35zM13.77 13.12l-2.12-2.12 2.12-2.12 3.62 2.12-3.62 2.12zM1 21.5l10.5-6.12-2.13-2.13L1 21.5zM1 .5l8.37 8.25L11.5 6.62 1 .5z" />
+                    </svg>
+                    Download for Android
+                </a>
+            </div>
+
+            <a href="mailto:adrian.dokoza@icloud.com" class="support-link">Questions? Contact Support →</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Adrian Dokoza. All rights reserved.</p>
-        <p><a href="privacy.html">Privacy Policy</a></p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-icon">⚡</span>
+                <span>Apex Wizard</span>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="mailto:adrian.dokoza@icloud.com">Support</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Adrian Dokoza. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- GSAP & Lenis Smooth Scroll Core -->
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- Cinematic Animations Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
-            // 1. Initialize Lenis Smooth Scroll
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                smooth: true,
-                mouseMultiplier: 1,
-                smoothTouch: false,
-                touchMultiplier: 2,
-                infinite: false,
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
             });
 
-            // Keep GSAP in sync with Lenis
-            lenis.on('scroll', ScrollTrigger.update);
-            gsap.ticker.add((time) => {
-                lenis.raf(time * 1000);
-            });
-            gsap.ticker.lagSmoothing(0, 0);
+            // Hero entrance
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+            tl.from('.hero-badge', { y: 30, opacity: 0, duration: 0.8, delay: 0.2 })
+                .from('.hero-line', { y: 60, opacity: 0, duration: 1, stagger: 0.15 }, '-=0.5')
+                .from('.hero-sub', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
+                .from('.hero-buttons', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
+                .from('.hero-stats', { y: 20, opacity: 0, duration: 0.8 }, '-=0.4')
+                .from('.hero-phone', { y: 100, opacity: 0, duration: 1.2, ease: 'power2.out' }, '-=1');
 
-            // 2. Hero Section Parallax & Reveal
-            const tlHero = gsap.timeline({
-                defaults: { ease: "power3.out" }
-            });
-
-            // Initial Hero Reveal
-            tlHero.from("h1", { y: 50, opacity: 0, duration: 1, delay: 0.2 })
-                .from(".hero-subtitle", { y: 30, opacity: 0, duration: 1 }, "-=0.7")
-                .from(".hero-animate", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
-                .from(".hero-device-container", { y: 100, opacity: 0, duration: 1.2 }, "-=0.8");
-
-            // Hero Scrub Animation (Scroll down -> Phone scales slightly and shifts)
-            gsap.to(".hero-device-container", {
-                scrollTrigger: {
-                    trigger: "header",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1
-                },
-                y: 150,
-                scale: 1.05,
-                opacity: 0.5,
-                ease: "none"
-            });
-
-            // 3. Floating Features Parallax
-            const floatingFeatures = gsap.utils.toArray(".floating-feature");
-
-            floatingFeatures.forEach((feature, i) => {
-                const text = feature.querySelector(".feature-text");
-                const img = feature.querySelector(".parallax-img");
-
-                // Text fade up when entering
-                gsap.from(text, {
-                    scrollTrigger: {
-                        trigger: feature,
-                        start: "top 75%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 100,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: "power3.out"
+            // Stat counter animation
+            document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+                const target = parseInt(el.dataset.target);
+                gsap.to(el, {
+                    innerText: target,
+                    duration: 2,
+                    delay: 1,
+                    snap: { innerText: 1 },
+                    ease: 'power2.out'
                 });
-
-                // Image Parallax Scrubbing (Scroll down -> Image parallax moves opposite)
-                gsap.fromTo(img,
-                    { y: 150, scale: 0.95 },
-                    {
-                        scrollTrigger: {
-                            trigger: feature,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: 1
-                        },
-                        y: -150,
-                        scale: 1.1,
-                        ease: "none"
-                    }
-                );
             });
 
-            // 4. Section Title Reveal
-            gsap.from(".section-title", {
-                scrollTrigger: {
-                    trigger: ".features-container",
-                    start: "top 80%",
-                },
-                y: 30,
-                opacity: 0,
-                duration: 1,
-                ease: "power2.out"
+            // Hero phone parallax
+            gsap.to('.hero-phone', {
+                scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 },
+                y: 150, scale: 0.95, ease: 'none'
             });
 
-            // 5. CTA Section Reveal
-            gsap.from(".cta-animate", {
-                scrollTrigger: {
-                    trigger: ".cta-section",
-                    start: "top 95%", // Trigger when 5% of the section is visible
-                    toggleActions: "play none none none"
-                },
-                y: 30,
-                opacity: 0,
-                stagger: 0.15,
-                duration: 0.8,
-                ease: "power2.out",
-                onComplete: () => {
-                    // Ensure opacity is exactly 1 after animation
-                    gsap.set(".cta-animate", { opacity: 1, clearProps: "y" });
-                }
+            // Social proof
+            gsap.from('.social-proof', {
+                scrollTrigger: { trigger: '.social-proof', start: 'top 90%' },
+                y: 30, opacity: 0, duration: 0.8
             });
 
-            // 6. Refresh ScrollTrigger after everything is loaded
-            window.addEventListener('load', () => {
-                ScrollTrigger.refresh();
+            // Section headers
+            gsap.utils.toArray('.section-header').forEach(header => {
+                gsap.from(header, {
+                    scrollTrigger: { trigger: header, start: 'top 85%' },
+                    y: 50, opacity: 0, duration: 1
+                });
             });
-            // Also refresh after a short delay for Lenis to settle
-            setTimeout(() => {
-                ScrollTrigger.refresh();
-            }, 500);
+
+            // Feature cards
+            gsap.utils.toArray('.feature-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 85%' },
+                    y: 60, opacity: 0, duration: 0.8, delay: i * 0.05
+                });
+            });
+
+            // Steps
+            gsap.utils.toArray('.step').forEach((step, i) => {
+                gsap.from(step, {
+                    scrollTrigger: { trigger: step, start: 'top 85%' },
+                    y: 40, opacity: 0, duration: 0.8, delay: i * 0.1
+                });
+            });
+
+            // Bike banner
+            gsap.from('.bike-banner-inner', {
+                scrollTrigger: { trigger: '.bike-banner', start: 'top 85%' },
+                y: 50, opacity: 0, duration: 1
+            });
+
+            // CTA
+            gsap.from('.cta-content', {
+                scrollTrigger: { trigger: '#cta', start: 'top 85%' },
+                y: 50, opacity: 0, duration: 1
+            });
+
+            // Maintenance bars animation
+            gsap.utils.toArray('.bar-fill').forEach(bar => {
+                const w = bar.style.width;
+                bar.style.width = '0%';
+                gsap.to(bar, {
+                    scrollTrigger: { trigger: bar, start: 'top 90%' },
+                    width: w, duration: 1.2, ease: 'power2.out'
+                });
+            });
+
+            // Refresh
+            window.addEventListener('load', () => ScrollTrigger.refresh());
         });
     </script>
 </body>
