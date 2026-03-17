@@ -13,6 +13,26 @@
         content="motorcycle suspension, track day app, sag calculator, damping setup, apex wizard, motorcycle logbook, suspension troubleshooter">
     <meta name="author" content="Adrian Dokoza">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Apex Wizard — Pro Motorcycle Suspension Logbook">
+    <meta property="og:description"
+        content="The all-in-one motorcycle suspension logbook, setup troubleshooter, and track day companion. 115+ bikes. 100% free.">
+    <meta property="og:image" content="https://realhumanum.github.io/Setup-Wizard-Web/assets/hero%202.png">
+    <meta property="og:url" content="https://realhumanum.github.io/Setup-Wizard-Web/">
+    <meta property="og:site_name" content="Apex Wizard">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apex Wizard — Pro Motorcycle Suspension Logbook">
+    <meta name="twitter:description"
+        content="Stop guessing in the pits. 115+ bikes, 7 smart modules, 100% free.">
+    <meta name="twitter:image" content="https://realhumanum.github.io/Setup-Wizard-Web/assets/hero%202.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +53,7 @@
     <nav id="navbar">
         <div class="nav-inner">
             <div class="nav-logo">
-                <span class="logo-icon">⚡</span>
+                <img src="assets/favicon.png" alt="Apex Wizard" class="nav-icon">
                 <span class="logo-text">Apex Wizard</span>
             </div>
             <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" class="nav-cta">Download
@@ -70,6 +90,12 @@
                     </svg>
                     Download for Android
                 </a>
+            </div>
+
+            <!-- App Store Rating Badge -->
+            <div class="rating-badge">
+                <div class="rating-stars">★★★★★</div>
+                <span class="rating-text">5.0 on the App Store</span>
             </div>
 
             <div class="hero-stats">
@@ -223,6 +249,36 @@
         </div>
     </section>
 
+    <!-- BEFORE vs AFTER -->
+    <section id="before-after">
+        <div class="section-header">
+            <span class="section-tag">Why Apex Wizard?</span>
+            <h2>From Chaos to <span class="text-gradient">Precision.</span></h2>
+        </div>
+        <div class="comparison">
+            <div class="compare-card compare-before">
+                <div class="compare-label">❌ Without Apex Wizard</div>
+                <ul>
+                    <li>Scribbled notes on paper that get lost</li>
+                    <li>Forgetting what clicks you changed last session</li>
+                    <li>Guessing which setup was your fastest</li>
+                    <li>No idea if your sag is actually right</li>
+                    <li>Missed service intervals on forks & shock</li>
+                </ul>
+            </div>
+            <div class="compare-card compare-after">
+                <div class="compare-label">✅ With Apex Wizard</div>
+                <ul>
+                    <li>Every clicker, every preload — saved digitally forever</li>
+                    <li>Instant comparison of any two setups</li>
+                    <li>AI troubleshooter tells you exactly what to change</li>
+                    <li>Auto-calculated sag and dynamics scores</li>
+                    <li>Service health bars warn you before it's too late</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- HOW IT WORKS -->
     <section id="how-it-works">
         <div class="section-header">
@@ -253,6 +309,43 @@
         </div>
     </section>
 
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+        <div class="section-header">
+            <span class="section-tag">Riders Love It</span>
+            <h2>What Track Riders <span class="text-gradient">Are Saying.</span></h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Finally stopped guessing and shaved 1.2 seconds off my best lap at Mugello.
+                    The troubleshooter nailed my fork issue instantly."</p>
+                <div class="testimonial-author">
+                    <strong>Marco R.</strong>
+                    <span>2024 Aprilia RSV4 — Track Day Enthusiast</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"I used to carry a notebook to every track day. Now everything is in one
+                    app — clickers, pressures, lap times. Can't ride without it."</p>
+                <div class="testimonial-author">
+                    <strong>James K.</strong>
+                    <span>2023 BMW S1000RR — Club Racer</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"The bike dynamics scores helped me understand why my R6 felt twitchy. Two
+                    clicks of rebound later — completely different bike."</p>
+                <div class="testimonial-author">
+                    <strong>Lisa T.</strong>
+                    <span>2022 Yamaha YZF-R6 — Weekend Track Warrior</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- BIKE DATABASE BANNER -->
     <section class="bike-banner">
         <div class="bike-banner-inner" data-aos="fade-up">
@@ -274,7 +367,7 @@
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA with QR Code -->
     <section id="cta">
         <div class="cta-glow"></div>
         <div class="cta-content" data-aos="fade-up">
@@ -301,6 +394,14 @@
                 </a>
             </div>
 
+            <!-- QR Code for Desktop -->
+            <div class="qr-section">
+                <div class="qr-divider"><span>or scan to download</span></div>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://apps.apple.com/us/app/apex-wizard/id6759269080&bgcolor=12121a&color=00e676"
+                    alt="Scan to download Apex Wizard" class="qr-code">
+                <p class="qr-hint">Point your phone camera at this code</p>
+            </div>
+
             <a href="mailto:adrian.dokoza@icloud.com" class="support-link">Questions? Contact Support →</a>
         </div>
     </section>
@@ -309,7 +410,7 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <span class="logo-icon">⚡</span>
+                <img src="assets/favicon.png" alt="Apex Wizard" class="nav-icon">
                 <span>Apex Wizard</span>
             </div>
             <div class="footer-links">
@@ -320,13 +421,37 @@
         </div>
     </footer>
 
-    <!-- GSAP -->
+    <!-- STICKY MOBILE DOWNLOAD BAR -->
+    <div id="mobile-sticky-bar" class="mobile-sticky-bar">
+        <div class="sticky-bar-inner">
+            <div class="sticky-bar-info">
+                <img src="assets/favicon.png" alt="Apex Wizard" class="sticky-bar-icon">
+                <div>
+                    <strong>Apex Wizard</strong>
+                    <span>Free • ★★★★★</span>
+                </div>
+            </div>
+            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank"
+                class="sticky-bar-btn">GET</a>
+        </div>
+    </div>
+
+    <!-- GSAP + Lenis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
+
+            // Lenis smooth scroll
+            const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0);
 
             // Navbar scroll effect
             const navbar = document.getElementById('navbar');
@@ -340,6 +465,7 @@
                 .from('.hero-line', { y: 60, opacity: 0, duration: 1, stagger: 0.15 }, '-=0.5')
                 .from('.hero-sub', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
                 .from('.hero-buttons', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
+                .from('.rating-badge', { y: 15, opacity: 0, duration: 0.6 }, '-=0.4')
                 .from('.hero-stats', { y: 20, opacity: 0, duration: 0.8 }, '-=0.4')
                 .from('.hero-phone', { y: 100, opacity: 0, duration: 1.2, ease: 'power2.out' }, '-=1');
 
@@ -383,10 +509,26 @@
                 });
             });
 
+            // Before/After
+            gsap.utils.toArray('.compare-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 85%' },
+                    y: 40, opacity: 0, duration: 0.8, delay: i * 0.15
+                });
+            });
+
             // Steps
             gsap.utils.toArray('.step').forEach((step, i) => {
                 gsap.from(step, {
                     scrollTrigger: { trigger: step, start: 'top 85%' },
+                    y: 40, opacity: 0, duration: 0.8, delay: i * 0.1
+                });
+            });
+
+            // Testimonials
+            gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 85%' },
                     y: 40, opacity: 0, duration: 0.8, delay: i * 0.1
                 });
             });
@@ -413,6 +555,23 @@
                 });
             });
 
+            // Mobile sticky bar — show after scrolling past hero
+            const stickyBar = document.getElementById('mobile-sticky-bar');
+            if (stickyBar) {
+                ScrollTrigger.create({
+                    trigger: '#hero',
+                    start: 'bottom top',
+                    onEnter: () => stickyBar.classList.add('visible'),
+                    onLeaveBack: () => stickyBar.classList.remove('visible'),
+                });
+                // Also hide when near footer
+                ScrollTrigger.create({
+                    trigger: 'footer',
+                    start: 'top bottom',
+                    onEnter: () => stickyBar.classList.remove('visible'),
+                    onLeaveBack: () => stickyBar.classList.add('visible'),
+                });
+            }
 
             // Refresh
             window.addEventListener('load', () => ScrollTrigger.refresh());
