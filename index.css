@@ -85,14 +85,16 @@ nav.scrolled {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
 }
 .nav-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 .nav-cta {
     background: var(--green);
@@ -776,9 +778,25 @@ footer {
     transition: color 0.3s;
 }
 .footer-links a:hover { color: var(--green); }
+.footer-copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 .footer-copy {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+.legal-disclaimer {
+    font-size: 0.7rem;
     color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* ===== STICKY MOBILE BAR ===== */
@@ -813,9 +831,10 @@ footer {
     gap: 12px;
 }
 .sticky-bar-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 .sticky-bar-info div {
     display: flex;
