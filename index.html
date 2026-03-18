@@ -100,18 +100,18 @@
 
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number" data-target="115">0</span><span class="stat-plus">+</span>
+                    <span class="stat-number" data-target="115">115</span><span class="stat-plus">+</span>
                     <span class="stat-label">Bikes in Database</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-number" data-target="7">0</span>
+                    <span class="stat-number" data-target="7">7</span>
                     <span class="stat-label">Smart Modules</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-number">100</span><span class="stat-plus">%</span>
-                    <span class="stat-label">Free Forever</span>
+                    <span class="stat-number">Free</span>
+                    <span class="stat-label">To Download</span>
                 </div>
             </div>
         </div>
@@ -352,7 +352,7 @@
             <div class="bike-banner-text">
                 <h2><span class="text-gradient">115+</span> Factory Sportbikes</h2>
                 <p>From the 2003 Yamaha R6 to the 2025 Ducati Panigale V4 — two decades of sportbike evolution at your
-                    fingertips. Every fork, every shock, every adjustment range pre-loaded and ready to go.</p>
+                    fingertips. Every fork, every shock, and every adjustment range pre-loaded and ready to go.</p>
             </div>
             <div class="bike-logos">
                 <span>Yamaha</span>
@@ -424,7 +424,7 @@
             </div>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
-                <a href="mailto:adrian.dokoza@icloud.com">Support</a>
+                <a href="support.html">Support</a>
             </div>
             <div class="footer-copyright">
                 <p class="footer-copy">&copy; 2026 Adrian Dokoza. All rights reserved.</p>
@@ -440,7 +440,7 @@
                 <img src="assets/favicon.png" alt="Apex Wizard" class="sticky-bar-icon">
                 <div>
                     <strong>Apex Wizard</strong>
-                    <span>Free • ★★★★★</span>
+                    <span>Free to Download • ★★★★★</span>
                 </div>
             </div>
             <a href="#cta" class="sticky-bar-btn smart-download">GET</a>
@@ -482,12 +482,11 @@
 
             // Stat counter animation
             document.querySelectorAll('.stat-number[data-target]').forEach(el => {
-                const target = parseInt(el.dataset.target);
-                gsap.to(el, {
-                    innerText: target,
+                gsap.from(el, {
+                    innerHTML: 0,
                     duration: 2,
                     delay: 1,
-                    snap: { innerText: 1 },
+                    snap: { innerHTML: 1 },
                     ease: 'power2.out'
                 });
             });

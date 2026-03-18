@@ -1,144 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Apex Wizard</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --surface-color: #1e293b;
-            --primary-color: #22c55e;
-            --text-color: #ffffff;
-            --text-dim: #94a3b8;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--surface-color);
-            padding: 2rem;
+        .page-header {
+            padding: 140px 24px 60px;
             text-align: center;
-            border-bottom: 2px solid var(--primary-color);
         }
-
-        .container {
+        .page-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .content {
-            background-color: var(--surface-color);
-            padding: 2rem 3rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1,
-        h2,
-        h3 {
-            color: var(--primary-color);
-        }
-
-        h2 {
-            margin-top: 2rem;
-            border-bottom: 1px solid var(--text-dim);
-            padding-bottom: 0.5rem;
-        }
-
-        ul {
+            padding: 0 24px 100px;
             color: var(--text-dim);
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
-
-        p {
-            color: var(--text-dim);
+        .page-content h2 {
+            color: var(--text);
+            margin: 40px 0 16px;
+            font-size: 1.5rem;
         }
-
-        a.back-btn {
-            display: inline-block;
-            color: var(--primary-color);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            font-weight: bold;
+        .page-content p {
+            margin-bottom: 20px;
         }
-
-        a.back-btn:hover {
-            text-decoration: underline;
+        .page-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .page-content li {
+            margin-bottom: 8px;
         }
     </style>
 </head>
-
 <body>
+    <div class="glow glow-1"></div>
 
-    <header>
-        <h2>Apex Wizard</h2>
+    <!-- Navigation -->
+    <nav id="navbar" class="scrolled">
+        <div class="nav-inner">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="nav-logo">
+                    <img src="assets/favicon.png" alt="Apex Wizard" class="nav-icon">
+                    <span class="logo-text">Apex Wizard</span>
+                </div>
+            </a>
+            <a href="index.html" class="nav-cta">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <h1>Privacy <span class="text-gradient">Policy</span></h1>
+        <p class="section-sub" style="margin-top: 16px;">Last updated: March 18, 2026</p>
     </header>
 
-    <div class="container">
-        <a href="index.html" class="back-btn">&larr; Back to Home</a>
+    <!-- Content -->
+    <main class="page-content">
+        <p>Apex Wizard ("we," "our," or "us") respects your privacy. This Privacy Policy explains how your information is collected, used, and protected when you use the Apex Wizard mobile application (the "Service").</p>
 
-        <div class="content">
-            <h1>Privacy Policy</h1>
-            <p><strong>Last Updated: February 19, 2026</strong></p>
+        <h2>1. Information We Collect</h2>
+        <p>Apex Wizard is designed with a privacy-first architecture. The core functionality of logging your motorcycle suspension setups, track times, and bike telematics happens directly on your device.</p>
+        <ul>
+            <li><strong>Local Data Storage:</strong> The bikes you create, setups you log, and track sessions you record are strictly saved locally to your device's internal storage (via SQLite/CoreData/SharedPreferences).</li>
+            <li><strong>Backup Data:</strong> If you enable iCloud or Google Drive backups, your encrypted database is synced according to Apple and Google's respective cloud privacy guidelines. We do not have access to these backups.</li>
+            <li><strong>Crash Reports:</strong> We may collect anonymous crash reports to help identify software bugs and improve app stability. This data does not contain any personally identifiable information (PII).</li>
+        </ul>
 
-            <p>This Privacy Policy describes how your personal information is handled in the <strong>Apex
-                    Wizard</strong> mobile application (the "App").</p>
+        <h2>2. Data Usage</h2>
+        <p>We do not sell, rent, or trade your personal data. We do not use your motorcycle telemetry data for advertising. The data you input into Apex Wizard belongs entirely to you and is used solely to provide the Troubleshooter's diagnostic algorithms and your personal Performance Analytics within the app.</p>
 
-            <h2>1. Data Collection and Usage</h2>
-            <p><strong>Apex Wizard</strong> is designed with privacy as a core principle.</p>
-            <ul>
-                <li><strong>No Personal Data Collection:</strong> The App does not collect, transmit, or store any
-                    personally identifiable information (PII) such as your name, email address, location, or contact
-                    details.</li>
-                <li><strong>Local Storage:</strong> All information entered into the App—including motorcycle profiles,
-                    suspension setups, track session logs, and maintenance data—is stored locally on your device. We
-                    (the developers) have no access to this data.</li>
-                <li><strong>iCloud Sync:</strong> If you have iCloud enabled on your device, your data may be synced
-                    across your own devices via Apple’s secure iCloud service. This data is encrypted and managed by
-                    Apple; we do not have access to your private iCloud storage.</li>
-            </ul>
+        <h2>3. Third-Party Services</h2>
+        <p>Apex Wizard may contain links to third-party websites or services that are not owned or controlled by us. We are not responsible for the privacy practices of those external services.</p>
 
-            <h2>2. Third-Party Services</h2>
-            <p>The App does not use any third-party analytics, advertising, or tracking services. There are no hidden
-                trackers or telemetry systems included in the software.</p>
+        <h2>4. Changes to This Policy</h2>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. Changes are effective immediately upon posting.</p>
 
-            <h2>3. Permissions</h2>
-            <p>The App may request the following permissions for specific features:</p>
-            <ul>
-                <li><strong>Notifications:</strong> Used only to provide maintenance reminders and service alerts that
-                    you have specifically scheduled.</li>
-                <li><strong>Camera/Photos:</strong> Used only if you choose to upload a photo of your motorcycle to your
-                    local profile.</li>
-            </ul>
+        <h2>5. Contact Us</h2>
+        <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <strong>adrian.dokoza@icloud.com</strong>.</p>
+    </main>
 
-            <h2>4. Data Deletion</h2>
-            <p>Since all data is stored locally on your device, you have full control over it. You can delete your data
-                at any time by:</p>
-            <ul>
-                <li>Deleting specific bikes or sessions within the App.</li>
-                <li>Uninstalling the App, which will remove all locally stored data.</li>
-            </ul>
-
-            <h2>5. Changes to This Policy</h2>
-            <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an
-                updated "Last Updated" date.</p>
-
-            <h2>6. Contact Us</h2>
-            <p>If you have any questions or suggestions about this Privacy Policy, do not hesitate to contact us at:</p>
-            <p><strong><a href="mailto:adrian.dokoza@icloud.com"
-                        style="color: var(--primary-color);">adrian.dokoza@icloud.com</a></strong></p>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="assets/favicon.png" alt="Apex Wizard" class="nav-icon">
+                <span>Apex Wizard</span>
+            </div>
+            <div class="footer-links">
+                <a href="support.html">Support</a>
+            </div>
+            <div class="footer-copyright">
+                <p class="footer-copy">&copy; 2026 Adrian Dokoza. All rights reserved.</p>
+                <p class="legal-disclaimer">Apex Wizard is a trademark of Adrian Dokoza. Apple and the Apple Logo are trademarks of Apple Inc., registered in the U.S. and other countries. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+            </div>
         </div>
-    </div>
-
+    </footer>
 </body>
-
 </html>

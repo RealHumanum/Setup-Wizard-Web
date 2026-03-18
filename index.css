@@ -2,17 +2,17 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface-2: #1a1a28;
-    --surface-3: #222236;
-    --border: rgba(255,255,255,0.06);
+    --bg: #0d0d14;
+    --surface: #15151e;
+    --surface-2: #1e1e2d;
+    --surface-3: #2a2a3e;
+    --border: rgba(255,255,255,0.08);
     --green: #00e676;
     --green-dim: rgba(0,230,118,0.15);
     --green-glow: rgba(0,230,118,0.25);
     --text: #ffffff;
-    --text-dim: #8a8a9a;
-    --text-muted: #555568;
+    --text-dim: #9aa8b6;
+    --text-muted: #64748b;
     --radius: 16px;
     --radius-sm: 10px;
 }
@@ -86,9 +86,9 @@ nav.scrolled {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: -0.02em;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
 }
 .nav-icon {
     width: 34px;
@@ -841,8 +841,8 @@ footer {
     flex-direction: column;
 }
 .sticky-bar-info strong {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 800;
 }
 .sticky-bar-info span {
     font-size: 0.75rem;
