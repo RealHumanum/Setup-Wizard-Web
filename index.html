@@ -56,7 +56,7 @@
                 <img src="assets/favicon.png" alt="Apex Wizard" class="nav-icon">
                 <span class="logo-text">Apex Wizard</span>
             </div>
-            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" class="nav-cta">Download
+            <a href="#cta" class="nav-cta smart-download">Download
                 Free</a>
         </div>
     </nav>
@@ -440,8 +440,7 @@
                     <span>Free • ★★★★★</span>
                 </div>
             </div>
-            <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank"
-                class="sticky-bar-btn">GET</a>
+            <a href="#cta" class="sticky-bar-btn smart-download">GET</a>
         </div>
     </div>
 
@@ -581,6 +580,23 @@
                     onLeaveBack: () => stickyBar.classList.add('visible'),
                 });
             }
+            // Smart Download Routing
+            document.querySelectorAll('.smart-download').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const ua = navigator.userAgent || navigator.vendor || window.opera;
+                    if (/android/i.test(ua)) {
+                        e.preventDefault();
+                        window.open('https://play.google.com/store/apps/details?id=com.apexwizard.app', '_blank');
+                    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+                        e.preventDefault();
+                        window.open('https://apps.apple.com/us/app/apex-wizard/id6759269080', '_blank');
+                    } else {
+                        // On desktop, intercept and smoothly scroll down to the QR codes
+                        e.preventDefault();
+                        lenis.scrollTo('#cta');
+                    }
+                });
+            });
 
             // Refresh
             window.addEventListener('load', () => ScrollTrigger.refresh());
