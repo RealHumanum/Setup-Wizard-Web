@@ -91,13 +91,13 @@
                     </svg>
                     Download for iOS
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.apexwizard.app" target="_blank"
-                    class="btn-secondary">
+                <a href="#" onclick="alert('The Android version of Apex Wizard will be available on March 26th!'); return false;"
+                    class="btn-secondary" style="opacity: 0.7;">
                     <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
                         <path
                             d="M1 1.35L11.65 11 1 20.65V1.35zM13.77 13.12l-2.12-2.12 2.12-2.12 3.62 2.12-3.62 2.12zM1 21.5l10.5-6.12-2.13-2.13L1 21.5zM1 .5l8.37 8.25L11.5 6.62 1 .5z" />
                     </svg>
-                    Download for Android
+                    Android: March 26
                 </a>
             </div>
 
@@ -393,13 +393,13 @@
                     </svg>
                     Download for iOS
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.apexwizard.app" target="_blank"
-                    class="btn-secondary">
+                <a href="#" onclick="alert('The Android version of Apex Wizard will be available on March 26th!'); return false;"
+                    class="btn-secondary" style="opacity: 0.7;">
                     <svg width="20" height="22" viewBox="0 0 20 22" fill="currentColor">
                         <path
                             d="M1 1.35L11.65 11 1 20.65V1.35zM13.77 13.12l-2.12-2.12 2.12-2.12 3.62 2.12-3.62 2.12zM1 21.5l10.5-6.12-2.13-2.13L1 21.5zM1 .5l8.37 8.25L11.5 6.62 1 .5z" />
                     </svg>
-                    Download for Android
+                    Android: March 26
                 </a>
             </div>
 
@@ -412,11 +412,7 @@
                             alt="Scan to download iOS App" class="qr-code">
                         <span class="qr-label">iOS</span>
                     </div>
-                    <div class="qr-box">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://play.google.com/store/apps/details?id=com.apexwizard.app&bgcolor=12121a&color=00e676"
-                            alt="Scan to download Android App" class="qr-code">
-                        <span class="qr-label">Android</span>
-                    </div>
+                    <!-- Android QR Hidden until March 26 launch -->
                 </div>
             </div>
 
@@ -602,7 +598,8 @@
                     const ua = navigator.userAgent || navigator.vendor || window.opera;
                     if (/android/i.test(ua)) {
                         e.preventDefault();
-                        window.open('https://play.google.com/store/apps/details?id=com.apexwizard.app', '_blank');
+                        alert("The Android version of Apex Wizard will be available on March 26th!");
+                        // window.location.href = 'https://play.google.com/store/apps/details?id=com.apexwizard.app';
                     } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
                         e.preventDefault();
                         window.open('https://apps.apple.com/us/app/apex-wizard/id6759269080', '_blank');
