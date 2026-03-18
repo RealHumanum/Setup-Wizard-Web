@@ -2,11 +2,11 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --bg: #0d0d14;
-    --surface: #15151e;
-    --surface-2: #1e1e2d;
-    --surface-3: #2a2a3e;
-    --border: rgba(255,255,255,0.08);
+    --bg: #111118;
+    --surface: #1a1a24;
+    --surface-2: #242432;
+    --surface-3: #2e2e40;
+    --border: rgba(255,255,255,0.1);
     --green: #00e676;
     --green-dim: rgba(0,230,118,0.15);
     --green-glow: rgba(0,230,118,0.25);
