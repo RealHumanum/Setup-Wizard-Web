@@ -115,13 +115,13 @@ nav.scrolled {
 /* ===== HERO ===== */
 #hero {
     position: relative;
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 140px 24px 80px;
+    padding: 100px 24px 60px;
     max-width: 1000px;
     margin: 0 auto;
     z-index: 1;
@@ -131,29 +131,29 @@ nav.scrolled {
     display: inline-block;
     background: var(--green-dim);
     color: var(--green);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    padding: 8px 18px;
+    padding: 6px 16px;
     border-radius: 50px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     border: 1px solid rgba(0,230,118,0.2);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 #hero h1 {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
     font-weight: 900;
     line-height: 1.05;
     letter-spacing: -0.04em;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 .hero-line { display: block; }
 .hero-sub {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--text-dim);
     line-height: 1.6;
-    margin-bottom: 40px;
-    max-width: 700px;
+    margin-bottom: 32px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -162,7 +162,7 @@ nav.scrolled {
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 }
 .btn-primary, .btn-secondary {
     display: inline-flex;
@@ -318,14 +318,14 @@ nav.scrolled {
 }
 /* ===== FEATURES ROW LAYOUT ===== */
 .features-container {
-    padding: 60px 0;
+    padding: 40px 0;
     overflow: hidden;
 }
 .feature-row {
     display: flex;
     align-items: center;
-    gap: 80px;
-    margin-bottom: 120px;
+    gap: 60px;
+    margin-bottom: 80px;
     padding: 0 24px;
 }
 .feature-row.row-reverse {
@@ -333,19 +333,19 @@ nav.scrolled {
 }
 .feature-info {
     flex: 1;
-    max-width: 500px;
+    max-width: 460px;
 }
 .feature-info h3 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 900;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     color: var(--text);
 }
 .feature-info p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-dim);
-    line-height: 1.7;
-    margin-bottom: 24px;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 .feature-highlights {
     display: flex;
@@ -371,12 +371,12 @@ nav.scrolled {
 
 /* ===== PHONE MOCKUP FRAME ===== */
 .mockup-container {
-    width: 310px;
-    height: 600px;
+    width: 290px;
+    height: 540px;
     background: #0d0d14;
-    border: 12px solid #1a1a24;
-    border-radius: 44px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 
+    border: 10px solid #1a1a24;
+    border-radius: 40px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), 
                 inset 0 0 0 2px rgba(255,255,255,0.05);
     position: relative;
     overflow: hidden;
