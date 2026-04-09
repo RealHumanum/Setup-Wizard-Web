@@ -77,7 +77,7 @@
                 <span class="hero-line">Stop Guessing.</span>
                 <span class="hero-line">Start <span class="text-gradient">Winning.</span></span>
             </h1>
-            <p class="hero-sub">Apex Wizard is the professional motorcycle suspension logbook and AI-powered troubleshooter used by track riders worldwide. From base settings to podium finishes, we provide the data-driven insights you need to dial in your ride with surgical precision.</p>
+            <p class="hero-sub">Apex Wizard is the professional motorcycle suspension logbook and Expert Diagnostic engine used by track riders worldwide. From base settings to podium finishes, we provide the data-driven insights you need to dial in your ride with surgical precision.</p>
 
             <div class="hero-buttons">
                 <a href="https://apps.apple.com/us/app/apex-wizard/id6759269080" target="_blank" class="btn-primary">
@@ -148,7 +148,7 @@
             <div class="feature-card feature-large" data-aos="fade-up">
                 <div class="feature-content">
                     <span class="feature-icon">🛠️</span>
-                    <h3>The AI Troubleshooter</h3>
+                    <h3>Expert Diagnostic Logic</h3>
                     <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by the phase of movement: <strong>Braking, Turn-in, Mid-corner, and Acceleration</strong>. Simply describe what the bike is doing, and the Wizard calculates a probabilistic diagnosis, ranking the most likely suspension or geometry causes. It provides clear, step-by-step mechanical fixes that respect your bike's physical adjustment limits.</p>
                     <div class="feature-tags">
                         <span class="tag">Expert Diagnosis</span>
@@ -236,7 +236,7 @@
                 <ul>
                     <li>Every clicker, every preload — saved digitally forever</li>
                     <li>Instant comparison of any two setups</li>
-                    <li>AI troubleshooter tells you exactly what to change</li>
+                    <li>Expert Logic engine tells you exactly what to change</li>
                     <li>Auto-calculated sag and dynamics scores</li>
                     <li>Service health bars warn you before it's too late</li>
                 </ul>
@@ -471,11 +471,27 @@
                 });
             });
 
-            // Feature cards
+            // Feature cards - Cinematic Entry
             gsap.utils.toArray('.feature-card').forEach((card, i) => {
                 gsap.from(card, {
-                    scrollTrigger: { trigger: card, start: 'top 85%' },
-                    y: 60, opacity: 0, duration: 0.8, delay: i * 0.05
+                    scrollTrigger: { trigger: card, start: 'top 90%' },
+                    y: 100,
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 1.2,
+                    ease: 'power4.out',
+                    delay: i % 2 * 0.15
+                });
+            });
+
+            // Mouse follower for feature cards (Glow Effect)
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
                 });
             });
 
@@ -483,7 +499,12 @@
             gsap.utils.toArray('.compare-card').forEach((card, i) => {
                 gsap.from(card, {
                     scrollTrigger: { trigger: card, start: 'top 85%' },
-                    y: 40, opacity: 0, duration: 0.8, delay: i * 0.15
+                    y: 50,
+                    opacity: 0,
+                    scale: 0.95,
+                    duration: 1,
+                    ease: 'power3.out',
+                    delay: i * 0.2
                 });
             });
 
@@ -491,7 +512,11 @@
             gsap.utils.toArray('.step').forEach((step, i) => {
                 gsap.from(step, {
                     scrollTrigger: { trigger: step, start: 'top 85%' },
-                    y: 40, opacity: 0, duration: 0.8, delay: i * 0.1
+                    y: 40,
+                    opacity: 0,
+                    stagger: 0.2,
+                    duration: 1,
+                    ease: 'power2.out'
                 });
             });
 
@@ -499,7 +524,11 @@
             gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
                 gsap.from(card, {
                     scrollTrigger: { trigger: card, start: 'top 85%' },
-                    y: 40, opacity: 0, duration: 0.8, delay: i * 0.1
+                    y: 40,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'back.out(1.7)',
+                    delay: i * 0.1
                 });
             });
 

@@ -321,14 +321,29 @@ nav.scrolled {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 48px;
-    transition: all 0.4s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0, 230, 118, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+    z-index: 0;
 }
 .feature-card:hover {
-    border-color: rgba(0,230,118,0.3);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+    border-color: rgba(0, 230, 118, 0.4);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 100px rgba(0, 230, 118, 0.1);
+}
+.feature-card:hover::before {
+    opacity: 1;
 }
 .feature-large, .feature-wide {
     grid-column: span 2;
