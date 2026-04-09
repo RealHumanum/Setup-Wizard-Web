@@ -138,77 +138,209 @@
     <!-- FEATURES -->
     <section id="features">
         <div class="section-header">
-            <span class="section-tag">7 Smart Modules</span>
+            <span class="section-tag">Powerful Intelligence</span>
             <h2>Master Your Machine.<br><span class="text-gradient">Data-Driven Domination.</span></h2>
             <p class="section-sub">Apex Wizard replaces the chaos of paper notes and guesswork with a structured, professional engineering suite designed for the modern rider.</p>
         </div>
 
-        <div class="features-grid">
-            <!-- Feature 1: Troubleshooter -->
-            <div class="feature-card feature-large" data-aos="fade-up">
-                <div class="feature-content">
+        <div class="features-container">
+            <!-- Row 1: Troubleshooter -->
+            <div class="feature-row" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">🛠️</span>
                     <h3>Expert Diagnostic Logic</h3>
-                    <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by the phase of movement: <strong>Braking, Turn-in, Mid-corner, and Acceleration</strong>. Simply describe what the bike is doing, and the Wizard calculates a probabilistic diagnosis, ranking the most likely suspension or geometry causes. It provides clear, step-by-step mechanical fixes that respect your bike's physical adjustment limits.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Expert Diagnosis</span>
-                        <span class="tag">Corner Phase Logic</span>
-                        <span class="tag">Fix-Logic Engine</span>
+                    <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase: <strong>Braking, Turn-in, Mid-corner, and Acceleration</strong>. Simply describe what the bike is doing, and the Wizard calculates a probabilistic diagnosis, ranking the most likely suspension causes.</p>
+                    <div class="feature-highlights">
+                        <span>Phase-Specific Logic</span>
+                        <span>Mechanical Fixes</span>
+                    </div>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Diagnostic Logic</div>
+                        <div class="mockup-content diagnostic-mock">
+                            <div class="mock-label">Corner Phase</div>
+                            <div class="mock-chips">
+                                <span class="mock-chip active">Turn-in</span>
+                                <span class="mock-chip">Mid Corner</span>
+                                <span class="mock-chip">Exit Drive</span>
+                            </div>
+                            <div class="mock-label">Symptom</div>
+                            <div class="mock-selection">Bike resists leaning</div>
+                            <div class="mock-result-box">
+                                <div class="mock-result-title">Logic Result</div>
+                                <div class="mock-result-text">Increase Fork Rebound Dampening (+2 clicks) to stabilize front geometry.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Feature 2: Garage -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-content">
+            <!-- Row 2: Garage -->
+            <div class="feature-row row-reverse" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">🏍️</span>
-                    <h3>Digital Garage & Capability Sync</h3>
-                    <p>Apex Wizard adapts to you. Set up your bike's specific adjustment ranges—whether you use Clicks, 1/4 Turns, or Millimeters. The app intelligently detects your hardware capabilities, showing you only the settings your bike actually has (like High-Speed Damping or Electronic Slide Control). Organize unlimited setup variations into Street and Track folders for instant retrieval.</p>
+                    <h3>Digital Garage & Sync</h3>
+                    <p>Apex Wizard adapts to you. Set up your bike's specific adjustment ranges—Clicks, 1/4 Turns, or Millimeters. The app intelligently detects hardware capabilities, showing only the settings your bike actually has.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Garage</div>
+                        <div class="mockup-content garage-mock">
+                            <div class="mock-card">
+                                <div class="mock-card-title">Front Forks</div>
+                                <div class="mock-row"><span>Compression</span> <strong>12 Clicks</strong></div>
+                                <div class="mock-row"><span>Rebound</span> <strong>8 Clicks</strong></div>
+                                <div class="mock-row"><span>Preload</span> <strong>14 mm</strong></div>
+                            </div>
+                            <div class="mock-card">
+                                <div class="mock-card-title">Rear Shock</div>
+                                <div class="mock-row"><span>Compression</span> <strong>10 Clicks</strong></div>
+                                <div class="mock-row"><span>Rebound</span> <strong>12 Clicks</strong></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Feature 3: Track Log -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-content">
+            <!-- Row 3: Track Log -->
+            <div class="feature-row" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">⏱️</span>
-                    <h3>Professional Track Day Logger</h3>
-                    <p>Build a comprehensive history of every lap you've ever turned. Track Day logs don't just store times; they sync your session data with the specific setup and tire set you were using. Record lap progression, organizations, and—most importantly—monitor your **Tire Pressure Delta** (Cold vs. Hot) to ensure you're always operating in the grip sweet spot.</p>
+                    <h3>Track Day Logger</h3>
+                    <p>Build a comprehensive history of every lap. Logs sync session data with the specific setup and tire set used. Monitor your **Tire Pressure Delta** to ensure maximum grip.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Track Log</div>
+                        <div class="mockup-content track-mock">
+                            <div class="mock-session">
+                                <div class="session-info">
+                                    <strong>Session 1</strong>
+                                    <span>Fastest: 1:44.20</span>
+                                </div>
+                                <div class="session-pills">
+                                    <span class="pill">Cold: 1.8</span>
+                                    <span class="pill hot">Hot: 2.1</span>
+                                </div>
+                            </div>
+                            <div class="mock-session">
+                                <div class="session-info">
+                                    <strong>Session 2</strong>
+                                    <span>Fastest: 1:43.88</span>
+                                </div>
+                                <div class="session-pills">
+                                    <span class="pill">Cold: 1.8</span>
+                                    <span class="pill hot">Hot: 2.2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Feature 4: Analytics -->
-            <div class="feature-card" data-aos="fade-up">
-                <div class="feature-content">
+            <!-- Row 4: Analytics -->
+            <div class="feature-row row-reverse" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">📈</span>
-                    <h3>Performance Analytics & Setup Face-Off</h3>
-                    <p>Data without insight is just noise. Our analytics module performs "Head-to-Head" comparisons between different suspension setups. See which clicker changes actually translated into faster average lap times versus one-hit wonders. Track your seasonal progression with high-fidelity charts that visualize your growth as a rider and a tuner.</p>
+                    <h3>Performance Analytics</h3>
+                    <p>Perform "Head-to-Head" comparisons between setups. See which clicker changes actually translated into faster lap times vs one-hit wonders.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Analytics</div>
+                        <div class="mockup-content stats-mock">
+                            <div class="chart-label">Setup Comparison (Avg Laps)</div>
+                            <div class="chart-bar-row">
+                                <div class="chart-bar-label">Current</div>
+                                <div class="chart-bar-wrap"><div class="chart-bar bar-1" style="width: 85%"></div></div>
+                                <div class="chart-bar-val">1:45.2</div>
+                            </div>
+                            <div class="chart-bar-row">
+                                <div class="chart-bar-label">Previous</div>
+                                <div class="chart-bar-wrap"><div class="chart-bar bar-2" style="width: 95%"></div></div>
+                                <div class="chart-bar-val">1:46.8</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Feature 5: Fuel Manager -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-content">
+            <!-- Row 5: Fuel Manager -->
+            <div class="feature-row" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">⛽</span>
-                    <h3>Fuel Manager Wizard</h3>
-                    <p>Weight is the enemy of agility. Every extra liter of fuel is roughly 1kg of top-heavy mass. Our Fuel Manager calculates the precise amount of fuel needed for a specific session based on your bike's burn rate and a customizable safety buffer. Shave off unnecessary weight to improve flick-ability and reduce rider fatigue during long sessions.</p>
+                    <h3>Fuel Manager</h3>
+                    <p>Weight is the enemy. Calculate the precise fuel needed for a session based on burn rate and a safety buffer. Shave off top-heavy mass.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Fuel Manager</div>
+                        <div class="mockup-content fuel-mock">
+                            <div class="mock-input">
+                                <span>Target Laps</span>
+                                <strong>12</strong>
+                            </div>
+                            <div class="fuel-result-circle">
+                                <span class="fuel-val">8.4</span>
+                                <span class="fuel-unit">Liters to add</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Feature 6: Service Hub -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
-                <div class="feature-content">
+            <!-- Row 6: Service Hub -->
+            <div class="feature-row row-reverse" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">⚙️</span>
-                    <h3>Multi-Metric Service Hub</h3>
-                    <p>Motorcycle maintenance isn't just about the odometer. Apex Wizard tracks part health (Oil, Pads, Chain, Suspension) across three distinct metrics: **Calendar Time, Distance, and Track Usage Count**. Visual health bars warn you when a component is nearing its end of life based on the intense stress of track riding versus standard street miles.</p>
+                    <h3>Service Hub</h3>
+                    <p>Track part health across Time, Distance, and Track Usage. Visual status bars warn you before components reach their limit.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Service Status</div>
+                        <div class="mockup-content service-mock">
+                            <div class="service-item">
+                                <div class="item-meta"><span>Engine Oil</span> <strong>80%</strong></div>
+                                <div class="mock-progress"><div class="progress-fill" style="width: 80%"></div></div>
+                            </div>
+                            <div class="service-item">
+                                <div class="item-meta"><span>Brake Pads</span> <strong>35%</strong></div>
+                                <div class="mock-progress"><div class="progress-fill warning" style="width: 35%"></div></div>
+                            </div>
+                            <div class="service-item">
+                                <div class="item-meta"><span>Fork Oil</span> <strong>Overdue</strong></div>
+                                <div class="mock-progress"><div class="progress-fill danger" style="width: 5%"></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Feature 7: Tire Manager -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-content">
+            <!-- Row 7: Tire Manager -->
+            <div class="feature-row" data-aos="fade-up">
+                <div class="feature-info">
                     <span class="feature-icon">🏁</span>
                     <h3>Tire Life Manager</h3>
-                    <p>Tires are your most expensive consumable. Track the life of your front and rear tires independently with our dedicated manager. The app automatically calculates mileage by syncing with your bike's odometer delta. Know exactly many sessions and heat cycles a set has survived before that crucial race or qualifying session.</p>
+                    <p>Track Front and Rear tire life independently. Identify how many heat cycles and sessions a set has survived before qualifying.</p>
+                </div>
+                <div class="feature-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">Tire Life</div>
+                        <div class="mockup-content tire-mock">
+                            <div class="tire-box">
+                                <div class="tire-label">Front Set</div>
+                                <div class="tire-stats"><span>Used</span> <strong>420 km</strong></div>
+                                <div class="mock-progress"><div class="progress-fill" style="width: 42%"></div></div>
+                            </div>
+                            <div class="tire-box">
+                                <div class="tire-label">Rear Set</div>
+                                <div class="tire-stats"><span>Used</span> <strong>280 km</strong></div>
+                                <div class="mock-progress"><div class="progress-fill" style="width: 65%"></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -461,8 +593,6 @@
             gsap.from('.social-proof', {
                 scrollTrigger: { trigger: '.social-proof', start: 'top 90%' },
                 y: 30, opacity: 0, duration: 0.8
-            });
-
             // Section headers
             gsap.utils.toArray('.section-header').forEach(header => {
                 gsap.from(header, {
@@ -471,27 +601,40 @@
                 });
             });
 
-            // Feature cards - Cinematic Entry
-            gsap.utils.toArray('.feature-card').forEach((card, i) => {
-                gsap.from(card, {
-                    scrollTrigger: { trigger: card, start: 'top 90%' },
+            // Feature rows - Cinematic Entry
+            gsap.utils.toArray('.feature-row').forEach((row, i) => {
+                gsap.from(row, {
+                    scrollTrigger: { trigger: row, start: 'top 90%' },
                     y: 100,
                     opacity: 0,
-                    scale: 0.9,
                     duration: 1.2,
-                    ease: 'power4.out',
-                    delay: i % 2 * 0.15
+                    ease: 'power4.out'
                 });
             });
 
-            // Mouse follower for feature cards (Glow Effect)
-            document.querySelectorAll('.feature-card').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
+            // Diagnostic Mock Interactivity
+            const chips = document.querySelectorAll('.mock-chip');
+            const resultText = document.querySelector('.mock-result-text');
+            const resultTitle = document.querySelector('.mock-result-title');
+            
+            const diagData = {
+                'Turn-in': { title: 'Turn-in Logic', text: 'Increase Fork Rebound Dampening (+2 clicks) to stabilize front geometry.' },
+                'Mid Corner': { title: 'Mid Corner Logic', text: 'Reduce Low-Speed Compression (-1 click) for better mid-corner tracking.' },
+                'Exit Drive': { title: 'Acceleration Logic', text: 'Increase Rear Preload (+1mm) to prevent excessive squat on drive.' }
+            };
+
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    chips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    const data = diagData[chip.innerText];
+                    if (data) {
+                        gsap.to('.mock-result-box', { opacity: 0, x: -10, duration: 0.2, onComplete: () => {
+                            resultTitle.innerText = data.title;
+                            resultText.innerText = data.text;
+                            gsap.to('.mock-result-box', { opacity: 1, x: 0, duration: 0.4 });
+                        }});
+                    }
                 });
             });
 
