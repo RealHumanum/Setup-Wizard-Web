@@ -124,11 +124,27 @@ nav.scrolled {
     padding: 140px 24px 60px;
     max-width: 1200px;
     margin: 0 auto;
-    z-index: 1;
-    gap: 40px;
+    overflow: hidden;
 }
-.hero-content { flex: 1; max-width: 600px; }
-.hero-visual { flex: 1; display: flex; justify-content: center; position: relative; }
+.hero-video-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.4;
+    filter: grayscale(40%) contrast(1.2);
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18,18,26,0.5) 0%, var(--background) 100%);
+    z-index: 1;
+}
+.hero-content { flex: 1; max-width: 600px; position: relative; z-index: 2; }
+.hero-visual { flex: 1; display: flex; justify-content: center; position: relative; z-index: 2; }
 .hero-badge {
     display: inline-block;
     background: var(--green-dim);
@@ -243,21 +259,33 @@ nav.scrolled {
     background: var(--border);
 }
 
-/* ===== HERO VISUAL WIDGET ===== */
+/* ===== HERO VISUAL WIDGET (IPHONE FRAME) ===== */
 .hero-widget-mockup {
     width: 320px;
-    background: rgba(18,18,26,0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 30px;
+    height: 620px;
+    background: var(--surface);
+    border: 12px solid #2a2a30;
+    border-radius: 45px;
     padding: 24px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 10px rgba(255,255,255,0.05);
-    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    padding-top: 60px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 0 0 2px #4a4a55;
+    transform: perspective(1200px) rotateY(-15deg) rotateX(5deg);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+.hero-widget-mockup::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 28px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 10;
 }
 .hero-widget-mockup:hover {
-    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(-10px);
+    transform: perspective(1200px) rotateY(-5deg) rotateX(2deg) translateY(-10px);
 }
 .widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .widget-appname { font-size: 0.8rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
@@ -294,6 +322,23 @@ nav.scrolled {
     letter-spacing: 0.02em;
 }
 .proof-divider { color: var(--text-muted); font-size: 0.6rem; }
+
+/* ===== INTERACTIVE DEMO ===== */
+.demo-container { max-width: 900px; margin: 0 auto; }
+.demo-box { display: flex; gap: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
+.demo-controls { flex: 1; }
+.demo-controls label { font-size: 0.85rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px; }
+.demo-controls select { width: 100%; padding: 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); color: #fff; font-size: 1rem; cursor: pointer; appearance: none; outline: none; transition: border-color 0.3s; }
+.demo-controls select:focus { border-color: var(--green); }
+.demo-result { flex: 1; background: #12121a; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.result-placeholder { text-align: center; color: var(--text-muted); }
+.result-content { display: none; text-align: left; animation: fadeInUp 0.5s ease; }
+.result-content.active { display: block; }
+.result-tag { display: inline-block; background: rgba(0, 230, 118, 0.1); color: var(--green); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 800; margin-bottom: 16px; text-transform: uppercase; }
+.result-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
+.result-fix { background: var(--surface-2); padding: 12px 16px; border-left: 3px solid var(--green); border-radius: 6px; font-size: 0.95rem; margin-top: 16px; color: var(--text-dim); line-height:1.5; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ===== SECTION COMMON ===== */
 .section-header {

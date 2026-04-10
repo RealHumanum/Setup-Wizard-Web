@@ -71,6 +71,12 @@
 
     <!-- HERO -->
     <header id="hero">
+        <video autoplay loop muted playsinline class="hero-video-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-motorcyclist-riding-a-sports-bike-on-a-track-40751-large.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-riding-a-motorcycle-on-a-long-road-32219-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
         <div class="hero-content">
             <div class="hero-badge">🏁 The Expert in Your Pocket</div>
             <h1>
@@ -158,6 +164,42 @@
             <div class="proof-item">🏁 Used at tracks across Europe & North America</div>
             <div class="proof-divider">•</div>
             <div class="proof-item">📱 Android Beta Testing Live</div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DEMO -->
+    <section id="demo" style="padding: 80px 24px; position: relative; z-index: 1;">
+        <div class="demo-container" data-aos="fade-up">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <span class="section-tag">Interactive Preview</span>
+                <h2>Try the Diagnostic Engine</h2>
+                <p class="section-sub">Experience the proprietary fix-logic core. Select a corner phase and declare what the bike is doing.</p>
+            </div>
+            
+            <div class="demo-box">
+                <div class="demo-controls">
+                    <label>Corner Phase</label>
+                    <select id="demo-phase">
+                        <option value="entry">Braking & Turn-in</option>
+                        <option value="mid">Mid-Corner</option>
+                        <option value="exit">Acceleration (Exit)</option>
+                    </select>
+                    
+                    <label style="margin-top:20px;">Symptom</label>
+                    <select id="demo-symptom">
+                        <!-- Populated by JS -->
+                    </select>
+                    
+                    <button class="btn-primary" onclick="runDiagnosis()" style="margin-top: 30px; width:100%; justify-content: center;">Diagnose Issue</button>
+                </div>
+                
+                <div class="demo-result" id="demo-result">
+                    <div class="result-placeholder">
+                        <span style="font-size: 2rem;">🧠</span>
+                        <p style="margin-top:10px;">Awaiting Input...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -428,6 +470,7 @@
                 <span>Apex Wizard</span>
             </div>
             <div class="footer-links">
+                <a href="tuning-guide.html">Tuning Guide (SEO)</a>
                 <a href="legal.html">Terms & Legal</a>
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="support.html">Support</a>
@@ -659,6 +702,63 @@
                  if(e.target.id === 'androidBetaModal') closeAndroidModal();
              });
         });
+
+        // Mini-Troubleshooter Demo Logic
+        const symptomsDb = {
+            entry: [
+                { id: '1', text: 'Front end dives too fast under braking', fix: 'Increase Front Compression Damping (2 Clicks)' },
+                { id: '2', text: 'Bike resists leaning (wants to stand up)', fix: 'Decrease Front Preload / Lower Front End' },
+                { id: '3', text: 'Rear wheel hops or skips', fix: 'Decrease Rear Rebound Damping (1 Click)' }
+            ],
+            mid: [
+                { id: '4', text: 'Bike runs wide (understeer)', fix: 'Increase Rear Ride Height / Add Rear Preload' },
+                { id: '5', text: 'Front end chatters / vibrates', fix: 'Decrease Front Rebound Damping (2 Clicks)' }
+            ],
+            exit: [
+                { id: '6', text: 'Runs wide under heavy throttle', fix: 'Increase Rear Compression (Low-Speed)' },
+                { id: '7', text: 'Rear spins too easily / lacks grip', fix: 'Decrease Rear Preload / Soften Spring' }
+            ]
+        };
+        
+        function populateDemoSymptoms() {
+            const phase = document.getElementById('demo-phase').value;
+            const sympSelect = document.getElementById('demo-symptom');
+            if(!sympSelect) return;
+            sympSelect.innerHTML = '';
+            symptomsDb[phase].forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = s.text;
+                sympSelect.appendChild(opt);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const phaseSel = document.getElementById('demo-phase');
+            if(phaseSel) {
+                phaseSel.addEventListener('change', populateDemoSymptoms);
+                populateDemoSymptoms(); // Init
+            }
+        });
+
+        function runDiagnosis() {
+            const phase = document.getElementById('demo-phase').value;
+            const sympId = document.getElementById('demo-symptom').value;
+            const sympObj = symptomsDb[phase].find(s => s.id === sympId);
+            
+            const resultBox = document.getElementById('demo-result');
+            resultBox.innerHTML = `
+                <div class="result-content active">
+                    <span class="result-tag">Likeliest Cause ID'd</span>
+                    <div class="result-title">${sympObj.text}</div>
+                    <div class="result-fix">
+                        <strong style="color: #00e676;">Recommended Fix:</strong><br>
+                        ${sympObj.fix}
+                    </div>
+                    <a href="#cta" class="support-link" style="display:inline-block; margin-top:24px;">Unlock 40+ more diagnoses →</a>
+                </div>
+            `;
+        }
     </script>
 </body>
 
