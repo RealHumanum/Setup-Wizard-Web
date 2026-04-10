@@ -72,8 +72,8 @@
     <!-- HERO -->
     <header id="hero">
         <video autoplay loop muted playsinline class="hero-video-bg">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-motorcyclist-riding-a-sports-bike-on-a-track-40751-large.mp4" type="video/mp4">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-riding-a-motorcycle-on-a-long-road-32219-large.mp4" type="video/mp4">
+            <source src="https://cdn.pixabay.com/video/2020/05/11/38605-420496839_large.mp4" type="video/mp4">
+            <source src="https://cdn.pixabay.com/video/2021/08/11/84704-587889745_large.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
 
@@ -176,21 +176,21 @@
                 <p class="section-sub">Experience the proprietary fix-logic core. Select a corner phase and declare what the bike is doing.</p>
             </div>
             
-            <div class="demo-box">
+            <div class="demo-box" id="demo-box">
                 <div class="demo-controls">
                     <label>Corner Phase</label>
-                    <select id="demo-phase">
-                        <option value="entry">Braking & Turn-in</option>
-                        <option value="mid">Mid-Corner</option>
-                        <option value="exit">Acceleration (Exit)</option>
-                    </select>
+                    <div id="phase-pills" class="pill-group">
+                        <button class="pill-btn active" data-phase="entry">Braking & Turn-in</button>
+                        <button class="pill-btn" data-phase="mid">Mid-Corner</button>
+                        <button class="pill-btn" data-phase="exit">Acceleration</button>
+                    </div>
                     
                     <label style="margin-top:20px;">Symptom</label>
-                    <select id="demo-symptom">
+                    <div id="symptom-list" class="symptom-list">
                         <!-- Populated by JS -->
-                    </select>
+                    </div>
                     
-                    <button class="btn-primary" onclick="runDiagnosis()" style="margin-top: 30px; width:100%; justify-content: center;">Diagnose Issue</button>
+                    <button class="btn-primary" id="btn-diagnose" style="margin-top: 30px; width:100%; justify-content: center; opacity: 0.5; pointer-events: none;">Diagnose Issue</button>
                 </div>
                 
                 <div class="demo-result" id="demo-result">
@@ -720,45 +720,65 @@
             ]
         };
         
-        function populateDemoSymptoms() {
-            const phase = document.getElementById('demo-phase').value;
-            const sympSelect = document.getElementById('demo-symptom');
-            if(!sympSelect) return;
-            sympSelect.innerHTML = '';
-            symptomsDb[phase].forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.id;
-                opt.textContent = s.text;
-                sympSelect.appendChild(opt);
-            });
-        }
+        let activePhase = 'entry';
+        let activeSymptom = null;
 
         document.addEventListener('DOMContentLoaded', () => {
-            const phaseSel = document.getElementById('demo-phase');
-            if(phaseSel) {
-                phaseSel.addEventListener('change', populateDemoSymptoms);
-                populateDemoSymptoms(); // Init
-            }
-        });
-
-        function runDiagnosis() {
-            const phase = document.getElementById('demo-phase').value;
-            const sympId = document.getElementById('demo-symptom').value;
-            const sympObj = symptomsDb[phase].find(s => s.id === sympId);
-            
+            const phaseBtns = document.querySelectorAll('#phase-pills .pill-btn');
+            const sympList = document.getElementById('symptom-list');
+            const btnDiagnose = document.getElementById('btn-diagnose');
             const resultBox = document.getElementById('demo-result');
-            resultBox.innerHTML = `
-                <div class="result-content active">
-                    <span class="result-tag">Likeliest Cause ID'd</span>
-                    <div class="result-title">${sympObj.text}</div>
-                    <div class="result-fix">
-                        <strong style="color: #00e676;">Recommended Fix:</strong><br>
-                        ${sympObj.fix}
+
+            if(!sympList) return;
+
+            function renderSymptoms() {
+                sympList.innerHTML = '';
+                activeSymptom = null; // Reset selection
+                btnDiagnose.style.opacity = '0.5';
+                btnDiagnose.style.pointerEvents = 'none';
+
+                symptomsDb[activePhase].forEach(s => {
+                    const btn = document.createElement('button');
+                    btn.className = 'symptom-btn';
+                    btn.textContent = s.text;
+                    btn.onclick = () => {
+                        document.querySelectorAll('.symptom-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        activeSymptom = s.id;
+                        btnDiagnose.style.opacity = '1';
+                        btnDiagnose.style.pointerEvents = 'auto';
+                    };
+                    sympList.appendChild(btn);
+                });
+            }
+
+            phaseBtns.forEach(btn => {
+                btn.onclick = () => {
+                    phaseBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activePhase = btn.dataset.phase;
+                    renderSymptoms();
+                };
+            });
+
+            btnDiagnose.onclick = () => {
+                if(!activeSymptom) return;
+                const sympObj = symptomsDb[activePhase].find(s => s.id === activeSymptom);
+                resultBox.innerHTML = `
+                    <div class="result-content active">
+                        <span class="result-tag">Likeliest Cause ID'd</span>
+                        <div class="result-title">${sympObj.text}</div>
+                        <div class="result-fix">
+                            <strong style="color: #00e676;">Recommended Fix:</strong><br>
+                            ${sympObj.fix}
+                        </div>
+                        <a href="#cta" class="support-link smart-download" style="display:inline-block; margin-top:24px;">Unlock 40+ more diagnoses →</a>
                     </div>
-                    <a href="#cta" class="support-link" style="display:inline-block; margin-top:24px;">Unlock 40+ more diagnoses →</a>
-                </div>
-            `;
-        }
+                `;
+            };
+
+            renderSymptoms(); // Init
+        });
     </script>
 </body>
 

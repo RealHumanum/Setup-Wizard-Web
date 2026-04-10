@@ -326,11 +326,19 @@ nav.scrolled {
 /* ===== INTERACTIVE DEMO ===== */
 .demo-container { max-width: 900px; margin: 0 auto; }
 .demo-box { display: flex; gap: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
-.demo-controls { flex: 1; }
-.demo-controls label { font-size: 0.85rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px; }
-.demo-controls select { width: 100%; padding: 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); color: #fff; font-size: 1rem; cursor: pointer; appearance: none; outline: none; transition: border-color 0.3s; }
-.demo-controls select:focus { border-color: var(--green); }
-.demo-result { flex: 1; background: #12121a; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.demo-controls { flex: 1; display: flex; flex-direction: column; }
+.demo-controls label { font-size: 0.85rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 12px; }
+.pill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.pill-btn { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); padding: 10px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+.pill-btn:hover { border-color: rgba(0, 230, 118, 0.4); color: #fff; }
+.pill-btn.active { background: rgba(0, 230, 118, 0.1); border-color: var(--green); color: var(--green); }
+
+.symptom-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;}
+.symptom-btn { text-align: left; background: var(--surface-2); border: 1px solid var(--border); padding: 14px 20px; border-radius: 12px; color: var(--text-dim); cursor: pointer; transition: all 0.3s; font-size: 0.95rem; }
+.symptom-btn:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); color: #fff; }
+.symptom-btn.active { border-color: var(--green); background: rgba(0,230,118,0.05); color: #fff; }
+
+.demo-result { flex: 1; background: #12121a; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
 .result-placeholder { text-align: center; color: var(--text-muted); }
 .result-content { display: none; text-align: left; animation: fadeInUp 0.5s ease; }
 .result-content.active { display: block; }
