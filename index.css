@@ -125,22 +125,27 @@ nav.scrolled {
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
-}
-.hero-video-bg {
+.hero-grid-bg {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto;
-    object-fit: cover;
+    bottom: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background-image: 
+        linear-gradient(rgba(0, 230, 118, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 118, 0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(600px) rotateX(60deg) translateY(0);
+    animation: gridMove 3s linear infinite;
     z-index: 0;
-    opacity: 0.4;
-    filter: grayscale(40%) contrast(1.2);
+}
+@keyframes gridMove {
+    0% { transform: perspective(600px) rotateX(60deg) translateY(0); }
+    100% { transform: perspective(600px) rotateX(60deg) translateY(60px); }
 }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(18,18,26,0.5) 0%, var(--background) 100%);
+    background: radial-gradient(circle at center 30%, transparent 0%, var(--background) 70%),
+                linear-gradient(180deg, rgba(18,18,26,0.3) 0%, var(--background) 100%);
     z-index: 1;
 }
 .hero-content { flex: 1; max-width: 600px; position: relative; z-index: 2; }
