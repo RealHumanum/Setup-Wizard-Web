@@ -122,6 +122,32 @@
                 </div>
             </div>
         </div>
+
+        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
+            <div class="hero-widget-mockup" id="hero-widget">
+                <div class="widget-header">
+                    <span class="widget-appname">Apex Wizard</span>
+                    <div class="widget-dot"></div>
+                </div>
+                <div class="widget-block">
+                    <div class="widget-title">Agility Score</div>
+                    <div class="widget-val">94 <span>+2</span></div>
+                    <div class="widget-bar"><div class="widget-fill"></div></div>
+                </div>
+                <div class="widget-block">
+                    <div class="widget-title">Stability Score</div>
+                    <div class="widget-val">82 <span>-1</span></div>
+                    <div class="widget-bar"><div class="widget-fill orange"></div></div>
+                </div>
+                <div class="widget-block" style="display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; padding: 0;">
+                    <div>
+                        <div class="widget-title">Target Hot Pressure</div>
+                        <div class="widget-val" style="font-size: 1.2rem;">32.0 psi</div>
+                    </div>
+                    <div class="widget-dot" style="background: #3b82f6; box-shadow: 0 0 10px #3b82f6;"></div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- SOCIAL PROOF -->
@@ -143,71 +169,85 @@
             <p class="section-sub">Apex Wizard replaces the chaos of paper notes and guesswork with a structured, professional engineering suite designed for the modern rider.</p>
         </div>
 
-        <div class="features-grid">
+        <div class="bento-grid">
             <!-- Feature 1: Troubleshooter -->
-            <div class="feature-card feature-large" data-aos="fade-up">
-                <div class="feature-content">
-                    <span class="feature-icon">🛠️</span>
+            <div class="bento-card bento-large" data-aos="fade-up">
+                <div class="bento-content">
+                    <span class="bento-icon">🛠️</span>
                     <h3>Setup Troubleshooter</h3>
-                    <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase: <strong>Braking, Turn-in, Mid-corner, and Acceleration</strong>. Simply describe what the bike is doing, and the Wizard calculates a probabilistic diagnosis, ranking the most likely suspension or geometry causes. It provides clear, step-by-step mechanical fixes that respect your bike's physical adjustment limits.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Corner Phase Logic</span>
-                        <span class="tag">Fix-Logic Engine</span>
-                    </div>
+                    <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase (Braking, Turn-in, Mid-corner, Acceleration). It calculates a probabilistic diagnosis and provides clear, step-by-step mechanical fixes that respect your specific bike's limits.</p>
+                </div>
+                <!-- CSS Graphic: Radar Dial -->
+                <div class="css-graphic graphic-dial">
+                    <div class="dial-center"></div>
                 </div>
             </div>
 
-            <!-- Feature 2: Garage -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-content">
-                    <span class="feature-icon">🏍️</span>
-                    <h3>Garage</h3>
-                    <p>Apex Wizard adapts to you. Set up your bike's specific adjustment ranges—Clicks, 1/4 Turns, or Millimeters. The app intelligently detects hardware capabilities, showing only the settings your bike actually has (like High-Speed Damping or Electronic Slide Control). Organize unlimited setup variations into Street and Track folders for instant retrieval.</p>
-                </div>
-            </div>
-
-            <!-- Feature 3: Track Log -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-content">
-                    <span class="feature-icon">⏱️</span>
-                    <h3>Track Log</h3>
-                    <p>Build a comprehensive history of every lap you've ever turned. Track Day logs don't just store times; they sync your session data with the specific setup and tire set you were using. Monitor your **Tire Pressure Delta** (Cold vs. Hot) to ensure you're always operating in the grip sweet spot.</p>
-                </div>
-            </div>
-
-            <!-- Feature 4: Analytics -->
-            <div class="feature-card" data-aos="fade-up">
-                <div class="feature-content">
-                    <span class="feature-icon">📈</span>
-                    <h3>Stats</h3>
-                    <p>Data without insight is just noise. Our analytics module performs "Head-to-Head" comparisons between different suspension setups. See which clicker changes actually translated into faster average lap times versus one-hit wonders. Track your seasonal progression with high-fidelity charts.</p>
-                </div>
-            </div>
-
-            <!-- Feature 5: Fuel Manager -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-content">
-                    <span class="feature-icon">⛽</span>
-                    <h3>Fuel Manager</h3>
-                    <p>Weight is the enemy of agility. Every extra liter of fuel is roughly 1kg of top-heavy mass. Our Fuel Manager calculates the precise amount of fuel needed for a specific session based on your bike's burn rate and a customizable safety buffer.</p>
-                </div>
-            </div>
-
-            <!-- Feature 6: Service Hub -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
-                <div class="feature-content">
-                    <span class="feature-icon">⚙️</span>
-                    <h3>Service Hub</h3>
-                    <p>Motorcycle maintenance isn't just about the odometer. Apex Wizard tracks part health (Oil, Pads, Chain, Suspension) across three distinct metrics: **Calendar Time, Distance, and Track Usage Count**. Visual health bars warn you when a component is nearing its end of life.</p>
-                </div>
-            </div>
-
-            <!-- Feature 7: Tire Manager -->
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-content">
-                    <span class="feature-icon">🏁</span>
+            <!-- Feature 2: Tire Manager -->
+            <div class="bento-card bento-tall" data-aos="fade-up" data-aos-delay="100">
+                <div class="bento-content">
+                    <span class="bento-icon">🏁</span>
                     <h3>Tire Manager</h3>
-                    <p>Track the life of your front and rear tires independently with our dedicated manager. The app automatically calculates mileage by syncing with your bike's odometer delta. Know exactly many sessions and heat cycles a set has survived before that crucial race.</p>
+                    <p>Track the life of your front and rear tires independently. The app computes mileage syncing with your bike's odometer. Instantly cross-reference our database for Hot and Cold targets.</p>
+                </div>
+                <!-- CSS Graphic: Tire Heat Map -->
+                <div class="css-graphic graphic-tire">
+                    <div class="tire-tread"></div>
+                    <div class="tire-tread"></div>
+                    <div class="tire-tread"></div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Garage -->
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="bento-content">
+                    <span class="bento-icon">🏍️</span>
+                    <h3>Garage</h3>
+                    <p>Intelligently detect hardware capabilities based on your active bike. Organize setups into Street and Track folders instantly.</p>
+                </div>
+            </div>
+
+            <!-- Feature 4: Service Hub -->
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="bento-content">
+                    <span class="bento-icon">⚙️</span>
+                    <h3>Service Hub</h3>
+                    <p>Monitor component lifespans automatically across distance, calendar time, and track usage.</p>
+                </div>
+                <!-- CSS Graphic: Health Bars -->
+                <div class="css-graphic graphic-bars">
+                    <div class="health-bar-container"><div class="health-bar-fill" style="width: 80%"></div></div>
+                    <div class="health-bar-container"><div class="health-bar-fill" style="width: 45%"></div></div>
+                    <div class="health-bar-container"><div class="health-bar-fill" style="width: 15%"></div></div>
+                </div>
+            </div>
+
+            <!-- Feature 5: Track Log -->
+            <div class="bento-card bento-large" data-aos="fade-up">
+                <div class="bento-content">
+                    <span class="bento-icon">⏱️</span>
+                    <h3>Track Log</h3>
+                    <p>Build a comprehensive history of every lap you've ever turned. Sync session data with your active setup and specific tires. Monitor pressure deltas to ensure you operate in the grip sweet spot.</p>
+                </div>
+                <!-- CSS Graphic: Track SVG -->
+                <div class="css-graphic graphic-track"></div>
+            </div>
+
+            <!-- Feature 6: Analytics & Fuel -->
+            <div class="bento-card bento-huge" data-aos="fade-up" data-aos-delay="100">
+                <div class="bento-content" style="flex-direction: row; gap: 40px; align-items: center;">
+                    <div style="flex: 1;">
+                        <span class="bento-icon">📈</span>
+                        <h3>Analytics & Fuel Manager</h3>
+                        <p>Perform Head-to-Head comparisons between different suspension setups and spot your fastest records. Calculate the precise fuel volume required to lighten the bike and slice your lap times without running dry.</p>
+                    </div>
+                    <!-- CSS Graphic: Stats -->
+                    <div class="css-graphic graphic-stats" style="position: relative; opacity: 1; bottom: 0; right: 0;">
+                        <div class="stat-pillar" style="height: 40px;"></div>
+                        <div class="stat-pillar" style="height: 70px;"></div>
+                        <div class="stat-pillar" style="height: 90px; border-color: #f59e0b; background: rgba(245,158,11,0.2);"></div>
+                        <div class="stat-pillar" style="height: 100px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -476,15 +516,15 @@
             });
 
             // Feature cards - Cinematic Entry
-            gsap.utils.toArray('.feature-card').forEach((card, i) => {
+            gsap.utils.toArray('.bento-card').forEach((card, i) => {
                 gsap.from(card, {
                     scrollTrigger: { trigger: card, start: 'top 90%' },
                     y: 60, opacity: 0, duration: 1.2, ease: 'power3.out', delay: (i % 2) * 0.1
                 });
             });
 
-            // Mouse follower for feature cards (Glow Effect)
-            document.querySelectorAll('.feature-card').forEach(card => {
+            // Mouse follower for bento cards (Glow Effect)
+            document.querySelectorAll('.bento-card').forEach(card => {
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -492,6 +532,22 @@
                     card.style.setProperty('--mouse-x', `${x}px`);
                     card.style.setProperty('--mouse-y', `${y}px`);
                 });
+            });
+
+            // Advanced Scrubbing Parallax for Pure CSS Graphics
+            gsap.to('.graphic-dial', {
+                scrollTrigger: { trigger: '#features', start: 'top bottom', end: 'bottom top', scrub: 1 },
+                rotation: 180, ease: 'none'
+            });
+            gsap.to('.health-bar-fill', {
+                scrollTrigger: { trigger: '.graphic-bars', start: 'top 90%', end: 'top 50%', scrub: 1 },
+                width: (i, target) => target.parentElement.parentElement.children[i].firstElementChild.style.width,
+                stagger: 0.2,
+                easy: 'none'
+            });
+            gsap.to('#hero-widget', {
+                scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 },
+                y: -100, rotationX: 15, ease: 'none'
             });
 
             // Before/After
