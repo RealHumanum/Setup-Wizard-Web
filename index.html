@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=2.3">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -579,7 +579,11 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
+            if (typeof ScrollTrigger === 'undefined') {
+                console.warn('ScrollTrigger not loaded. Animations disabled.');
+                return;
+            }
             gsap.registerPlugin(ScrollTrigger);
 
             // THREE.JS STARFIELD - HYPER-SYNC
@@ -660,15 +664,18 @@
                 navbar.classList.toggle('scrolled', window.scrollY > 50);
             });
 
+            // Hero content starting state (Manual hide if JS is active)
+            gsap.set(['.hero-badge', '.hero-line', '.hero-sub', '.hero-buttons', '.rating-badge', '.hero-stats', '.hero-widget-mockup'], { opacity: 0 });
+
             // Hero entrance
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-            tl.from('.hero-badge', { y: 30, opacity: 0, duration: 0.8, delay: 0.2 })
-                .from('.hero-line', { y: 60, opacity: 0, duration: 1, stagger: 0.15 }, '-=0.5')
-                .from('.hero-sub', { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
-                .from('.hero-buttons', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
-                .from('.rating-badge', { y: 15, opacity: 0, duration: 0.6 }, '-=0.4')
-                .from('.hero-stats', { y: 20, opacity: 0, duration: 0.8 }, '-=0.4')
-                .from('.hero-widget-mockup', { x: 100, opacity: 0, duration: 1.2, ease: 'power2.out' }, '-=1');
+            tl.fromTo('.hero-badge', { y: 30, opacity: 0 }, { opacity: 1, duration: 0.8, delay: 0.2 })
+                .fromTo('.hero-line', { y: 60, opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.15 }, '-=0.5')
+                .fromTo('.hero-sub', { y: 30, opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.6')
+                .fromTo('.hero-buttons', { y: 20, opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.5')
+                .fromTo('.rating-badge', { y: 15, opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.4')
+                .fromTo('.hero-stats', { y: 20, opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.4')
+                .fromTo('.hero-widget-mockup', { x: 100, opacity: 0 }, { opacity: 1, duration: 1.2, ease: 'power2.out' }, '-=1');
 
             // 3D Space Scroll Effect
             gsap.to(starsMesh.rotation, {
@@ -702,72 +709,83 @@
                 });
             });
 
-            // Feature cards - SPATIAL HUD TRAVERSAL
-            const cards = gsap.utils.toArray('.bento-card');
-            const spatialTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "#features",
-                    start: "top top",
-                    end: "+=6000",
-                    scrub: 1,
-                    pin: true,
-                    anticipatePin: 1
-                }
-            });
+            // ADAPTIVE ANIMATION SYSTEM
+            let mm = gsap.matchMedia();
 
-            cards.forEach((card, i) => {
-                // Fly-in from distance
-                spatialTl.fromTo(card, 
-                    { z: -1000, opacity: 0, scale: 0.8, filter: 'blur(10px)', pointerEvents: 'none' },
-                    { z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', pointerEvents: 'auto', duration: 1, ease: 'power2.inOut', force3D: true },
-                    i === 0 ? 0 : ">-0.4"
-                );
-                
-                // Active State Marker
-                spatialTl.set(card, { className: 'bento-card active' }, ">-0.5");
-
-                // Fly-past viewer
-                if(i < cards.length - 1) {
-                    spatialTl.to(card, {
-                        z: 1000, opacity: 0, scale: 1.5, filter: 'blur(20px)', pointerEvents: 'none', duration: 1, ease: 'power2.in', force3D: true
-                    }, ">0.5");
-                    spatialTl.set(card, { className: 'bento-card' }, ">");
-                }
-            });
-
-            // MOUSE INTERACTIVE PARALLAX (Active Theory Style)
-            const viewport = document.querySelector('.spatial-viewport');
-            const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-
-            if (!isTouchDevice) {
-                viewport.addEventListener('mousemove', (e) => {
-                    const activeCard = document.querySelector('.bento-card.active');
-                    if (!activeCard) return;
-
-                    const { width, height, left, top } = viewport.getBoundingClientRect();
-                    const x = (e.clientX - left) / width - 0.5; // -0.5 to 0.5
-                    const y = (e.clientY - top) / height - 0.5;
-
-                    // Tilt the whole card
-                    gsap.to(activeCard, {
-                        rotateY: x * 15,
-                        rotateX: -y * 15,
-                        x: x * 30,
-                        y: y * 30,
-                        duration: 0.8,
-                        ease: 'power2.out'
-                    });
-
-                    // Deep Parallax for Internal Elements
-                    const telemetry = activeCard.querySelector('.hud-telemetry');
-                    const graphic = activeCard.querySelector('.css-graphic');
-                    const text = activeCard.querySelector('.text-wrapper');
-
-                    if (telemetry) gsap.to(telemetry, { x: x * 60, y: y * 60, duration: 1, ease: 'power2.out' });
-                    if (graphic) gsap.to(graphic, { x: -x * 80, y: -y * 80, duration: 1, ease: 'power2.out' });
-                    if (text) gsap.to(text, { x: x * 20, y: y * 20, duration: 1.2, ease: 'power2.out' });
+            mm.add("(min-width: 1024px)", () => {
+                // Feature cards - SPATIAL HUD TRAVERSAL (Desktop Only)
+                const cards = gsap.utils.toArray('.bento-card');
+                const spatialTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: "#features",
+                        start: "top top",
+                        end: "+=6000",
+                        scrub: 1,
+                        pin: true,
+                        anticipatePin: 1
+                    }
                 });
-            }
+
+                cards.forEach((card, i) => {
+                    // Fly-in from distance
+                    spatialTl.fromTo(card, 
+                        { z: -1000, opacity: 0, scale: 0.8, filter: 'blur(10px)', pointerEvents: 'none' },
+                        { z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', pointerEvents: 'auto', duration: 1, ease: 'power2.inOut', force3D: true },
+                        i === 0 ? 0 : ">-0.4"
+                    );
+                    
+                    // Active State Marker
+                    spatialTl.set(card, { className: 'bento-card active' }, ">-0.5");
+
+                    // Fly-past viewer
+                    if(i < cards.length - 1) {
+                        spatialTl.to(card, {
+                            z: 1000, opacity: 0, scale: 1.5, filter: 'blur(20px)', pointerEvents: 'none', duration: 1, ease: 'power2.in', force3D: true
+                        }, ">0.5");
+                        spatialTl.set(card, { className: 'bento-card' }, ">");
+                    }
+                });
+
+                // MOUSE INTERACTIVE PARALLAX
+                const viewport = document.querySelector('.spatial-viewport');
+                const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+                if (!isTouchDevice && viewport) {
+                    const mouseHandler = (e) => {
+                        const activeCard = document.querySelector('.bento-card.active');
+                        if (!activeCard) return;
+
+                        const { width, height, left, top } = viewport.getBoundingClientRect();
+                        const x = (e.clientX - left) / width - 0.5;
+                        const y = (e.clientY - top) / height - 0.5;
+
+                        gsap.to(activeCard, {
+                            rotateY: x * 15, rotateX: -y * 15,
+                            x: x * 30, y: y * 30,
+                            duration: 0.8, ease: 'power2.out'
+                        });
+
+                        const telemetry = activeCard.querySelector('.hud-telemetry');
+                        const graphic = activeCard.querySelector('.css-graphic');
+                        const text = activeCard.querySelector('.text-wrapper');
+
+                        if (telemetry) gsap.to(telemetry, { x: x * 60, y: y * 60, duration: 1, ease: 'power2.out' });
+                        if (graphic) gsap.to(graphic, { x: -x * 80, y: -y * 80, duration: 1, ease: 'power2.out' });
+                        if (text) gsap.to(text, { x: x * 20, y: y * 20, duration: 1.2, ease: 'power2.out' });
+                    };
+                    viewport.addEventListener('mousemove', mouseHandler);
+                    return () => viewport.removeEventListener('mousemove', mouseHandler);
+                }
+            });
+
+            // REFRESH ON RESIZE
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 250);
+            });
 
             // Restoring Hero & Common Parallax
             gsap.to('#hero-widget', {

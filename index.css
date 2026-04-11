@@ -177,7 +177,12 @@ nav.scrolled {
     }
 }
 
-.hero-content { flex: 1; max-width: 600px; position: relative; z-index: 2; }
+.hero-content { 
+    flex: 1; 
+    max-width: 600px; 
+    position: relative; 
+    z-index: 10; /* Increased to ensure it's always above background */
+}
 .hero-visual { flex: 1; display: flex; justify-content: center; position: relative; z-index: 2; }
 .hero-badge {
     display: inline-block;
@@ -206,6 +211,8 @@ nav.scrolled {
     line-height: 1.6;
     margin-bottom: 32px;
     max-width: 550px;
+    opacity: 1; /* Default visible */
+    will-change: transform, opacity;
 }
 .hero-buttons {
     display: flex;
@@ -459,8 +466,8 @@ nav.scrolled {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 1; /* Visible by default, hidden by GSAP only if JS is ready */
+    pointer-events: auto;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform: translate3d(0, 0, -1000px);
