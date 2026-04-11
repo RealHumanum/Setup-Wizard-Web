@@ -12,12 +12,18 @@
     <link rel="stylesheet" href="index.css">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ND0K7GQ68B"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18011258509');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-ND0K7GQ68B');
     </script>
 
     <style>
@@ -125,5 +131,48 @@
             </div>
         </div>
     </footer>
+    <!-- HUD Consent Banner -->
+    <div id="hud-consent" class="hud-consent-banner">
+        <div class="consent-text">
+            <h4>CONSENT_REQUIRED // v2.0</h4>
+            <p>We use cookies to analyze site traffic and optimize your experience. Choose your data preference below.</p>
+        </div>
+        <div class="consent-btns">
+            <button class="consent-btn secondary" onclick="updateConsent(false)">Decline All</button>
+            <button class="consent-btn primary" onclick="updateConsent(true)">Accept All</button>
+        </div>
+    </div>
+
+    <script>
+        // Consent Mode v2 Logic
+        function updateConsent(granted) {
+            const status = granted ? 'granted' : 'denied';
+            gtag('consent', 'update', {
+                'ad_storage': status,
+                'ad_user_data': status,
+                'ad_personalization': status,
+                'analytics_storage': status
+            });
+            localStorage.setItem('apex_wizard_consent', status);
+            document.getElementById('hud-consent').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedConsent = localStorage.getItem('apex_wizard_consent');
+            if (!savedConsent) {
+                setTimeout(() => {
+                    const banner = document.getElementById('hud-consent');
+                    if (banner) banner.classList.add('active');
+                }, 2000);
+            } else if (savedConsent === 'granted') {
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
+        });
+    </script>
 </body>
 </html>

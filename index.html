@@ -40,11 +40,23 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Three.js for 3D Background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ND0K7GQ68B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-ND0K7GQ68B');
+    </script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=6.0">
+    <link rel="stylesheet" href="index.css?v=7.0">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -259,9 +271,38 @@
                     </div>
                     
                     <div class="demo-result" id="demo-result">
-                        <div class="result-placeholder">
+                        <div class="result-placeholder" id="result-placeholder">
                             <span style="font-size: 1.5rem;">🧠</span>
                             <p style="font-size: 0.8rem; margin-top:5px;">Awaiting Input...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D HUD Track Visualization -->
+                <div class="hud-track-visualization">
+                    <div class="hud-grid-floor"></div>
+                    <div class="track-perspective-container">
+                        <div class="perspective-track" id="perspective-track">
+                            <svg class="track-path-svg" viewBox="0 0 300 300">
+                                <!-- Background Path -->
+                                <path class="track-line" d="M20,150 Q20,20 150,20 T280,150" />
+                                
+                                <!-- Segment Highlights -->
+                                <path id="segment-entry" class="track-segment active" d="M20,150 Q20,80 60,50" />
+                                <path id="segment-mid" class="track-segment" d="M60,50 Q100,20 150,20 Q200,20 240,50" />
+                                <path id="segment-exit" class="track-segment" d="M240,50 Q280,80 280,150" />
+                            </svg>
+                            
+                            <!-- Phase Nodes -->
+                            <div class="track-node active" id="node-entry" style="left: 20px; top: 150px;">
+                                <span class="node-label">Entry</span>
+                            </div>
+                            <div class="track-node" id="node-mid" style="left: 150px; top: 20px;">
+                                <span class="node-label">Apex</span>
+                            </div>
+                            <div class="track-node" id="node-exit" style="left: 280px; top: 150px;">
+                                <span class="node-label">Exit</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -587,6 +628,36 @@
     <script src="https://unpkg.com/lenis@1.1.5/dist/lenis.min.js"></script>
 
     <script>
+        // Consent Mode v2 Logic
+        function updateConsent(granted) {
+            const status = granted ? 'granted' : 'denied';
+            gtag('consent', 'update', {
+                'ad_storage': status,
+                'ad_user_data': status,
+                'ad_personalization': status,
+                'analytics_storage': status
+            });
+            localStorage.setItem('apex_wizard_consent', status);
+            document.getElementById('hud-consent').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedConsent = localStorage.getItem('apex_wizard_consent');
+            if (!savedConsent) {
+                setTimeout(() => {
+                    const banner = document.getElementById('hud-consent');
+                    if (banner) banner.classList.add('active');
+                }, 2000);
+            } else if (savedConsent === 'granted') {
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted',
+                    'analytics_storage': 'granted'
+                });
+            }
+        });
+
         function initApp() {
             if (window.initialized) return;
 
@@ -963,6 +1034,16 @@
                     phaseBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     activePhase = btn.dataset.phase;
+                    
+                    // Sync 3D HUD
+                    document.querySelectorAll('.track-segment, .track-node').forEach(el => el.classList.remove('active'));
+                    document.getElementById(`segment-${activePhase}`).classList.add('active');
+                    document.getElementById(`node-${activePhase === 'mid' ? 'mid' : activePhase}`).classList.add('active'); // Account for internal node ID mapping
+                    
+                    // Tilt the track based on phase for added depth effect
+                    const angles = { 'entry': 'rotateX(60deg) rotateZ(-10deg)', 'mid': 'rotateX(60deg) rotateZ(0deg)', 'exit': 'rotateX(60deg) rotateZ(10deg)' };
+                    document.getElementById('perspective-track').style.transform = angles[activePhase];
+                    
                     renderSymptoms();
                 };
             });
@@ -981,11 +1062,30 @@
                         <a href="#cta" class="support-link smart-download" style="display:inline-block; margin-top:24px;">Unlock all diagnoses →</a>
                     </div>
                 `;
+                // Add a small shake effect to the 3D track on result
+                const track = document.getElementById('perspective-track');
+                track.style.transition = 'none';
+                track.style.transform += ' translateZ(10px)';
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                    track.style.transform = track.style.transform.replace(' translateZ(10px)', '');
+                }, 50);
             };
 
             renderSymptoms(); // Init
         });
     </script>
+    <!-- HUD Consent Banner -->
+    <div id="hud-consent" class="hud-consent-banner">
+        <div class="consent-text">
+            <h4>CONSENT_REQUIRED // v2.0</h4>
+            <p>We use cookies to analyze site traffic and optimize your experience. Choose your data preference below.</p>
+        </div>
+        <div class="consent-btns">
+            <button class="consent-btn secondary" onclick="updateConsent(false)">Decline All</button>
+            <button class="consent-btn primary" onclick="updateConsent(true)">Accept All</button>
+        </div>
+    </div>
 </body>
 
 </html>
