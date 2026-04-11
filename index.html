@@ -247,7 +247,7 @@
 
         <div class="bento-grid">
             <!-- Feature 1: Troubleshooter -->
-            <div class="bento-card large">
+            <div class="bento-card">
                 <div class="hud-telemetry">
                     SYS // DIAGNOSTIC_ENGINE<br>
                     STATUS // ACTIVE<br>
@@ -423,32 +423,13 @@
                 </div>
             </div>
 
-            <!-- Feature 6: Performance Analytics -->
-            <div class="bento-card super-wide">
-                <div class="hud-telemetry">
-                    SYS // PERFORMANCE_ANALYTICS<br>
-                    STATE // DYNAMIC_CALC
-                </div>
-                <span class="bento-icon">MODULE // 06</span>
-                <h3>Performance Analytics</h3>
-                <p>Compare setups and visualize ride feel. Analyze agility, stability, and balance scores.</p>
-                <div class="scores-container">
-                    <div class="score-row"><div class="score-info"><span class="score-label">Agility</span><span class="score-value">88</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width: 88%; background: #f59e0b;"></div></div></div>
-                    <div class="score-row"><div class="score-info"><span class="score-label">Stability</span><span class="score-value">92</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width: 92%; background: #3b82f6;"></div></div></div>
-                </div>
-                <div class="balance-container">
-                    <div class="balance-labels"><span>STABLE</span><span>CHASSIS BALANCE</span><span>AGILE</span></div>
-                    <div class="balance-bar-bg"><div class="balance-marker" style="left: 65%;"></div></div>
-                </div>
-            </div>
-
-            <!-- Feature 7: Fuel Manager -->
-            <div class="bento-card col-4">
+            <!-- Feature 6: Fuel Manager -->
+            <div class="bento-card">
                 <div class="hud-telemetry">
                     SYS // FUEL_LOGIC<br>
                     STATUS // SYNCED
                 </div>
-                <span class="bento-icon">MODULE // 07</span>
+                <span class="bento-icon">MODULE // 06</span>
                 <h3>Fuel Manager</h3>
                 <p>Calculate precise fuel volume required.</p>
                 <div class="graphic-fuel">
@@ -459,6 +440,25 @@
                         <rect x="90" y="100" width="10" height="8" rx="1" fill="var(--green)" />
                         <circle class="fuel-drip dripping" cx="95" cy="112" r="2.5" fill="var(--green)" />
                     </svg>
+                </div>
+            </div>
+
+            <!-- Feature 7: Performance Analytics -->
+            <div class="bento-card full-width">
+                <div class="hud-telemetry">
+                    SYS // PERFORMANCE_ANALYTICS<br>
+                    STATE // DYNAMIC_CALC
+                </div>
+                <span class="bento-icon">MODULE // 07</span>
+                <h3>Performance Analytics</h3>
+                <p>Compare setups and visualize ride feel. Analyze agility, stability, and balance scores across the full grid spectrum.</p>
+                <div class="scores-container" style="display: flex; gap: 40px; margin-top:10px;">
+                    <div class="score-row" style="flex:1;"><div class="score-info"><span class="score-label">Agility</span><span class="score-value">88</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width: 88%; background: #f59e0b;"></div></div></div>
+                    <div class="score-row" style="flex:1;"><div class="score-info"><span class="score-label">Stability</span><span class="score-value">92</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width: 92%; background: #3b82f6;"></div></div></div>
+                </div>
+                <div class="balance-container" style="margin-top: 25px;">
+                    <div class="balance-labels"><span>STABLE</span><span>CHASSIS BALANCE</span><span>AGILE</span></div>
+                    <div class="balance-bar-bg"><div class="balance-marker" style="left: 65%;"></div></div>
                 </div>
             </div>
         </div>
