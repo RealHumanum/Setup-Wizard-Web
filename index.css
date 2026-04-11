@@ -585,13 +585,13 @@ nav.scrolled {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80px; /* Compressed Fit */
+    min-height: 110px; /* Restored from 80px */
 }
 /* 3D HUD TRACK VISUALIZATION */
 .hud-track-visualization {
-    height: 130px; /* Precise height for absolute fit */
-    margin-top: 5px;
-    padding: 10px;
+    height: 180px; /* Restored full depth */
+    margin-top: 15px;
+    padding: 15px;
     background: rgba(0,230,118,0.02);
     border-top: 1px solid rgba(255,255,255,0.05);
     display: flex;
@@ -1147,28 +1147,6 @@ nav.scrolled {
     box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,230,118,0.05);
 }
 
-.bento-icon { 
-    font-family: var(--hud-font);
-    font-size: 0.75rem;
-    color: var(--green);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 8px; /* Tightened from 20px */
-    display: block;
-    opacity: 0.8;
-}
-
-/* HUD Data Elements */
-.hud-telemetry {
-    font-family: var(--hud-font);
-    font-size: 0.65rem;
-    color: var(--green);
-    opacity: 0.5;
-    margin-bottom: 2px; /* Final trim */
-    line-height: 1.4;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 2px; /* Final trim */
-}
 
 .bento-card h3 {
     font-size: 1.4rem;
