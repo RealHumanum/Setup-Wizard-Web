@@ -507,12 +507,12 @@ nav.scrolled {
 
 /* ===== INTERACTIVE DEMO ===== */
 .demo-container { max-width: 900px; margin: 0 auto; }
-.demo-box { display: flex; gap: 24px; background: transparent; padding: 0; box-shadow: none; border: none; flex: 1; min-height: 0; }
+.demo-box { display: flex; gap: 24px; background: transparent; padding: 0; box-shadow: none; border: none; flex: 1; min-height: 250px; align-items: stretch; }
 @media (max-width: 600px) {
-    .demo-box { flex-direction: column; gap: 20px; }
+    .demo-box { flex-direction: column; gap: 20px; align-items: stretch;}
 }
 
-.demo-controls { flex: 1; display: flex; flex-direction: column; }
+.demo-controls { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 .demo-controls label { font-size: 0.85rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 12px; }
 .pill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
 .pill-btn { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); padding: 10px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
@@ -529,13 +529,15 @@ nav.scrolled {
     background: rgba(0,0,0,0.3); 
     border: 1px solid rgba(255,255,255,0.05); 
     border-radius: 12px; 
-    padding: 24px; 
+    padding: 32px; 
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
+    align-items: center; /* Center Content */
+    text-align: center;  /* Center Text */
     position: relative; 
     overflow: hidden; 
-    min-height: 220px; /* Increased slightly for better baseline */
+    min-height: 250px; /* Matched to box height */
 }
 
 /* 3D HUD TRACK VISUALIZATION */
@@ -559,11 +561,11 @@ nav.scrolled {
     transform: translateY(20px);
 }
 .perspective-track {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     transform: rotateX(60deg) rotateZ(0deg);
     position: relative;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .track-path-svg {
     width: 100%;
@@ -572,21 +574,54 @@ nav.scrolled {
 }
 .track-line {
     fill: none;
-    stroke: rgba(255,255,255,0.1);
-    stroke-width: 4;
+    stroke: rgba(255,255,255,0.05);
+    stroke-width: 6;
     stroke-linecap: round;
 }
+.track-edge {
+    fill: none;
+    stroke: rgba(255,255,255,0.02);
+    stroke-width: 40;
+    stroke-linecap: round;
+}
+.curbing {
+    fill: none;
+    stroke: #64748b;
+    stroke-width: 4;
+    stroke-dasharray: 8 8;
+    opacity: 0.3;
+}
+.racing-line-base {
+    fill: none;
+    stroke: rgba(0, 230, 118, 0.05);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+.racing-line-trace {
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 40 400; /* Create a tracing point */
+    animation: traceMove 4s linear infinite;
+    filter: drop-shadow(0 0 10px var(--green));
+}
+@keyframes traceMove {
+    from { stroke-dashoffset: 440; }
+    to { stroke-dashoffset: 0; }
+}
+
 .track-segment {
     fill: none;
     stroke: var(--green);
-    stroke-width: 6;
+    stroke-width: 4;
     stroke-linecap: round;
-    opacity: 0.1;
-    transition: opacity 0.4s, filter 0.4s;
+    opacity: 0.05;
+    transition: opacity 0.6s, filter 0.6s;
 }
 .track-segment.active {
-    opacity: 1;
-    filter: drop-shadow(0 0 8px var(--green));
+    opacity: 0.8;
+    filter: drop-shadow(0 0 12px var(--green));
     stroke-width: 8;
 }
 
@@ -625,15 +660,17 @@ nav.scrolled {
 /* Grid environment */
 .hud-grid-floor {
     position: absolute;
-    width: 200%;
-    height: 200%;
+    width: 250%;
+    height: 250%;
     background-image: 
-        linear-gradient(rgba(0, 230, 118, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 230, 118, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
+        linear-gradient(rgba(0, 230, 118, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 118, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
     transform: rotateX(60deg) translateY(-50px);
     z-index: -1;
-    opacity: 0.3;
+    mask-image: radial-gradient(circle, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+    opacity: 0.4;
 }
 
 /* HUD CONSENT BANNER */

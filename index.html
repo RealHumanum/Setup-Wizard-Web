@@ -56,7 +56,7 @@
     </script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=7.0">
+    <link rel="stylesheet" href="index.css?v=8.0">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -284,23 +284,41 @@
                     <div class="track-perspective-container">
                         <div class="perspective-track" id="perspective-track">
                             <svg class="track-path-svg" viewBox="0 0 300 300">
-                                <!-- Background Path -->
-                                <path class="track-line" d="M20,150 Q20,20 150,20 T280,150" />
+                                <defs>
+                                    <linearGradient id="trace-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="rgba(0, 230, 118, 0)" />
+                                        <stop offset="50%" stop-color="rgba(0, 230, 118, 1)" />
+                                        <stop offset="100%" stop-color="rgba(0, 230, 118, 0)" />
+                                    </linearGradient>
+                                </defs>
                                 
-                                <!-- Segment Highlights -->
-                                <path id="segment-entry" class="track-segment active" d="M20,150 Q20,80 60,50" />
-                                <path id="segment-mid" class="track-segment" d="M60,50 Q100,20 150,20 Q200,20 240,50" />
-                                <path id="segment-exit" class="track-segment" d="M240,50 Q280,80 280,150" />
+                                <!-- Physical Track Limits -->
+                                <path class="track-edge" d="M20,180 Q20,20 150,20 T280,180" />
+                                <path class="track-line" d="M20,180 Q20,20 150,20 T280,180" />
+                                
+                                <!-- Curbing (Red/White appearance via CSS dash) -->
+                                <path class="curbing" d="M35,160 Q35,35 150,35 T265,160" />
+                                
+                                <!-- Racing Line Base -->
+                                <path class="racing-line-base" d="M10,180 Q10,40 150,30 T290,180" />
+                                
+                                <!-- The Glowing Trace -->
+                                <path id="racing-trace" class="racing-line-trace" d="M10,180 Q10,40 150,30 T290,180" />
+                                
+                                <!-- Interactive Phase Highlights -->
+                                <path id="segment-entry" class="track-segment active" d="M10,180 Q10,100 50,70" />
+                                <path id="segment-mid" class="track-segment" d="M50,70 Q100,30 150,30 Q200,30 250,70" />
+                                <path id="segment-exit" class="track-segment" d="M250,70 Q290,100 290,180" />
                             </svg>
                             
-                            <!-- Phase Nodes -->
-                            <div class="track-node active" id="node-entry" style="left: 20px; top: 150px;">
+                            <!-- Phase Nodes / Beacons -->
+                            <div class="track-node active" id="node-entry" style="left: 10px; top: 180px;">
                                 <span class="node-label">Entry</span>
                             </div>
-                            <div class="track-node" id="node-mid" style="left: 150px; top: 20px;">
+                            <div class="track-node" id="node-mid" style="left: 150px; top: 30px;">
                                 <span class="node-label">Apex</span>
                             </div>
-                            <div class="track-node" id="node-exit" style="left: 280px; top: 150px;">
+                            <div class="track-node" id="node-exit" style="left: 290px; top: 180px;">
                                 <span class="node-label">Exit</span>
                             </div>
                         </div>
