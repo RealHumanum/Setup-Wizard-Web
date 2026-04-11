@@ -1046,15 +1046,16 @@ footer {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(18, 18, 26, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
+    will-change: opacity;
 }
 .modal-overlay.active {
     opacity: 1;
@@ -1069,8 +1070,9 @@ footer {
     width: 90%;
     text-align: center;
     position: relative;
-    transform: scale(0.95) translateY(10px);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.98) translateY(5px);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 230, 118, 0.05) inset;
 }
 .modal-overlay.active .modal-dialog {
