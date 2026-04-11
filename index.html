@@ -36,7 +36,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Three.js for 3D Background -->
@@ -214,13 +214,18 @@
             <p class="section-sub">Apex Wizard replaces the chaos of paper notes and guesswork with a streamlined, professional engineering suite designed for the modern rider.</p>
         </div>
 
-        <div class="features-viewport">
-            <div class="wheel-track">
+        <div class="spatial-viewport">
+            <div class="telemetry-grid">
                 <!-- Feature 1: Troubleshooter -->
                 <div class="bento-card" data-index="0">
+                    <div class="hud-telemetry">
+                        SYS // DIAGNOSTIC_ENGINE<br>
+                        STATUS // ACTIVE<br>
+                        CORE // FIX_LOGIC_V4
+                    </div>
                     <div class="bento-content horizontal">
                         <div class="text-wrapper">
-                            <span class="bento-icon">🛠️</span>
+                            <span class="bento-icon">MODULE // 01</span>
                             <h3>Setup Troubleshooter</h3>
                             <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase (Braking, Turn-in, Mid-corner, Acceleration). It provides clear, step-by-step mechanical fixes that respect your specific bike's limits.</p>
                         </div>
@@ -232,9 +237,14 @@
 
                 <!-- Feature 2: Tire Manager -->
                 <div class="bento-card" data-index="1">
+                    <div class="hud-telemetry">
+                        SYS // TIRE_TELEMETRY<br>
+                        STATUS // MONITORING<br>
+                        SENSORS // FRONT_REAR_SYNC
+                    </div>
                     <div class="bento-content horizontal">
                         <div class="text-wrapper">
-                            <span class="bento-icon">🏁</span>
+                            <span class="bento-icon">MODULE // 02</span>
                             <h3>Tire Manager</h3>
                             <p>Track the life of your front and rear tires independently. The app computes mileage syncing with your bike's odometer. Instantly cross-reference our database for Hot and Cold targets with precise heat-cycle logging.</p>
                         </div>
@@ -253,9 +263,14 @@
 
                 <!-- Feature 3: Garage -->
                 <div class="bento-card" data-index="2">
+                    <div class="hud-telemetry">
+                        SYS // MACHINE_GARAGE<br>
+                        STATUS // SYNCED<br>
+                        DATABASE // 115_BIKES
+                    </div>
                     <div class="bento-content horizontal">
                         <div class="text-wrapper">
-                            <span class="bento-icon">🏍️</span>
+                            <span class="bento-icon">MODULE // 03</span>
                             <h3>Machine Garage</h3>
                             <p>Intelligently detect hardware capabilities based on your active bike. Organize setups into Street and Track folders instantly. Apex Wizard supports over 115+ factory sportbikes with pre-loaded adjustment ranges.</p>
                         </div>
@@ -276,9 +291,14 @@
 
                 <!-- Feature 4: Service Hub -->
                 <div class="bento-card" data-index="3">
+                    <div class="hud-telemetry">
+                        SYS // COMPONENT_HEALTH<br>
+                        STATUS // SCANNING<br>
+                        ALERTS // ENABLED
+                    </div>
                     <div class="bento-content horizontal">
                         <div class="text-wrapper">
-                            <span class="bento-icon">⚙️</span>
+                            <span class="bento-icon">MODULE // 04</span>
                             <h3>Service Hub</h3>
                             <p>Monitor component lifespans automatically across distance, calendar time, and track usage. Never miss a fork oil change or brake fluid flush again with intelligent maintenance alerts.</p>
                         </div>
@@ -301,9 +321,14 @@
 
                 <!-- Feature 5: Track Log -->
                 <div class="bento-card" data-index="4">
+                    <div class="hud-telemetry">
+                        SYS // SESSION_LOGGER<br>
+                        STATUS // TRACKING<br>
+                        LAP_RECORDS // READY
+                    </div>
                     <div class="bento-content horizontal">
                         <div class="text-wrapper">
-                            <span class="bento-icon">⏱️</span>
+                            <span class="bento-icon">MODULE // 05</span>
                             <h3>Track Log</h3>
                             <p>Build a comprehensive history of every lap you've ever turned. Sync session data with your active setup and specific tires. Monitor pressure deltas to ensure you operate in the grip sweet spot across all track conditions.</p>
                         </div>
@@ -313,9 +338,14 @@
 
                 <!-- Feature 6: Analytics & Fuel -->
                 <div class="bento-card" data-index="5">
+                    <div class="hud-telemetry">
+                        SYS // PERFORMANCE_ANALYTICS<br>
+                        STATUS // COMPUTING<br>
+                        FUEL_LOGIC // SYNCED
+                    </div>
                     <div class="bento-content horizontal">
                         <div class="text-wrapper">
-                            <span class="bento-icon">📈</span>
+                            <span class="bento-icon">MODULE // 06</span>
                             <h3>Analytics & Fuel Manager</h3>
                             <p>Perform Head-to-Head comparisons between different suspension setups and spot your fastest records. Calculate the precise fuel volume required to lighten the bike and slice your lap times without running dry.</p>
                         </div>
@@ -546,13 +576,13 @@
     <!-- GSAP + Lenis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
-            // THREE.JS STARFIELD
+            // THREE.JS STARFIELD - HYPER-SYNC
             const canvas = document.getElementById('space-canvas');
             const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -564,26 +594,44 @@
 
             // Generate Stars
             const starsGeometry = new THREE.BufferGeometry();
-            const starsCount = 4000;
+            const starsCount = 6000;
             const posArray = new Float32Array(starsCount * 3);
             for(let i = 0; i < starsCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 30;
+                posArray[i] = (Math.random() - 0.5) * 50;
             }
             starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             
             const starsMaterial = new THREE.PointsMaterial({
-                size: 0.015,
-                color: 0xffffff,
+                size: 0.02,
+                color: 0x00e676,
                 transparent: true,
-                opacity: 0.8
+                opacity: 0.4
             });
             const starsMesh = new THREE.Points(starsGeometry, starsMaterial);
             scene.add(starsMesh);
 
+            let scrollVelocity = 0;
             function animateSpace() {
                 requestAnimationFrame(animateSpace);
-                starsMesh.rotation.y += 0.0003;
-                starsMesh.rotation.x += 0.0001;
+                
+                // Base rotation
+                starsMesh.rotation.y += 0.0002;
+                
+                // Hyperspace stretch based on scroll velocity
+                const stretch = 1 + Math.abs(scrollVelocity) * 0.02;
+                starsMesh.scale.z = stretch;
+                camera.fov = 75 + Math.abs(scrollVelocity) * 0.1;
+                camera.updateProjectionMatrix();
+
+                // G-Force Shake
+                if (Math.abs(scrollVelocity) > 50) {
+                    camera.position.x = (Math.random() - 0.5) * 0.05;
+                    camera.position.y = (Math.random() - 0.5) * 0.05;
+                } else {
+                    camera.position.x = 0;
+                    camera.position.y = 0;
+                }
+                
                 renderer.render(scene, camera);
             }
             animateSpace();
@@ -598,7 +646,11 @@
             const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
             function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
             requestAnimationFrame(raf);
-            lenis.on('scroll', ScrollTrigger.update);
+            
+            lenis.on('scroll', (e) => {
+                scrollVelocity = e.velocity;
+                ScrollTrigger.update();
+            });
             gsap.ticker.add((time) => { lenis.raf(time * 1000); });
             gsap.ticker.lagSmoothing(0);
 
@@ -650,13 +702,13 @@
                 });
             });
 
-            // Feature cards - 3D Wheel Logic
+            // Feature cards - SPATIAL HUD TRAVERSAL
             const cards = gsap.utils.toArray('.bento-card');
-            const wheelTl = gsap.timeline({
+            const spatialTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#features",
                     start: "top top",
-                    end: "+=5000",
+                    end: "+=6000",
                     scrub: 1,
                     pin: true,
                     anticipatePin: 1
@@ -664,40 +716,59 @@
             });
 
             cards.forEach((card, i) => {
-                // Entering from bottom
-                wheelTl.fromTo(card, 
-                    { rotateX: 60, z: -500, opacity: 0, pointerEvents: 'none' },
-                    { rotateX: 0, z: 0, opacity: 1, pointerEvents: 'auto', duration: 1, ease: 'power2.inOut' },
-                    i === 0 ? 0 : ">-0.2"
+                // Fly-in from distance
+                spatialTl.fromTo(card, 
+                    { z: -1000, opacity: 0, scale: 0.8, filter: 'blur(10px)', pointerEvents: 'none' },
+                    { z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', pointerEvents: 'auto', duration: 1, ease: 'power2.inOut' },
+                    i === 0 ? 0 : ">-0.4"
                 );
                 
-                // Active class for glow effect
-                wheelTl.set(card, { className: 'bento-card active' }, "<");
+                // Active State Marker
+                spatialTl.set(card, { className: 'bento-card active' }, ">-0.5");
 
-                // Exiting toward top (except for last card)
+                // Fly-past viewer
                 if(i < cards.length - 1) {
-                    wheelTl.to(card, {
-                        rotateX: -60, z: -500, opacity: 0, pointerEvents: 'none', duration: 1, ease: 'power2.inOut'
+                    spatialTl.to(card, {
+                        z: 1000, opacity: 0, scale: 1.5, filter: 'blur(20px)', pointerEvents: 'none', duration: 1, ease: 'power2.in'
                     }, ">0.5");
-                    wheelTl.set(card, { className: 'bento-card' }, ">");
+                    spatialTl.set(card, { className: 'bento-card' }, ">");
                 }
             });
 
-            // Mouse follower for bento cards (Glow Effect)
-            document.querySelectorAll('.bento-card').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
+            // MOUSE INTERACTIVE PARALLAX (Active Theory Style)
+            const viewport = document.querySelector('.spatial-viewport');
+            viewport.addEventListener('mousemove', (e) => {
+                const activeCard = document.querySelector('.bento-card.active');
+                if (!activeCard) return;
+
+                const { width, height, left, top } = viewport.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5; // -0.5 to 0.5
+                const y = (e.clientY - top) / height - 0.5;
+
+                // Tilt the whole card
+                gsap.to(activeCard, {
+                    rotateY: x * 15,
+                    rotateX: -y * 15,
+                    x: x * 30,
+                    y: y * 30,
+                    duration: 0.8,
+                    ease: 'power2.out'
                 });
+
+                // Deep Parallax for Internal Elements
+                const telemetry = activeCard.querySelector('.hud-telemetry');
+                const graphic = activeCard.querySelector('.css-graphic');
+                const text = activeCard.querySelector('.text-wrapper');
+
+                if (telemetry) gsap.to(telemetry, { x: x * 60, y: y * 60, duration: 1, ease: 'power2.out' });
+                if (graphic) gsap.to(graphic, { x: -x * 80, y: -y * 80, duration: 1, ease: 'power2.out' });
+                if (text) gsap.to(text, { x: x * 20, y: y * 20, duration: 1.2, ease: 'power2.out' });
             });
 
-            // Advanced Parallax for Graphics (Linked to wheel progress)
-            gsap.to('.graphic-dial', {
-                scrollTrigger: { trigger: '.features-viewport', start: 'top bottom', end: 'bottom top', scrub: 1 },
-                rotation: 360, ease: 'none'
+            // Restoring Hero & Common Parallax
+            gsap.to('#hero-widget', {
+                scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 },
+                y: -100, rotationX: 15, ease: 'none'
             });
             
             // Health bars reveal on scroll progress
@@ -710,11 +781,6 @@
                         scrollTrigger: { trigger: '#features', start: 'top top', end: 'bottom top', scrub: 1 } 
                     }
                 );
-            });
-
-            gsap.to('#hero-widget', {
-                scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 },
-                y: -100, rotationX: 15, ease: 'none'
             });
 
             // Before/After
