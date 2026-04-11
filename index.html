@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=3.0">
+    <link rel="stylesheet" href="index.css?v=4.0">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -574,7 +574,7 @@
 
             // Generate Stars
             const starsGeometry = new THREE.BufferGeometry();
-            const starsCount = 6000;
+            const starsCount = 2500;
             const posArray = new Float32Array(starsCount * 3);
             for(let i = 0; i < starsCount * 3; i++) {
                 posArray[i] = (Math.random() - 0.5) * 50;
@@ -626,8 +626,10 @@
             let lenis;
             if (typeof Lenis !== 'undefined') {
                 lenis = new Lenis({ 
-                    duration: 1.2, 
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) 
+                    duration: 0.8, 
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    smoothWheel: true,
+                    wheelMultiplier: 1.1
                 });
                 
                 function raf(time) { 
@@ -640,11 +642,6 @@
                     scrollVelocity = e.velocity;
                     ScrollTrigger.update();
                 });
-
-                gsap.ticker.add((time) => { 
-                    lenis.raf(time * 1000); 
-                });
-                gsap.ticker.lagSmoothing(0);
             } else {
                 console.warn('Lenis not found. Proceeding with native scroll.');
                 window.addEventListener('scroll', () => {
@@ -930,7 +927,7 @@
                             <strong style="color: #00e676;">Recommended Fix:</strong><br>
                             ${sympObj.fix}
                         </div>
-                        <a href="#cta" class="support-link smart-download" style="display:inline-block; margin-top:24px;">Unlock 40+ more diagnoses →</a>
+                        <a href="#cta" class="support-link smart-download" style="display:inline-block; margin-top:24px;">Unlock all diagnoses →</a>
                     </div>
                 `;
             };

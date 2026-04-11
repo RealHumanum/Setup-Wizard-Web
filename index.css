@@ -392,7 +392,26 @@ nav.scrolled {
 .result-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
 .result-fix { background: var(--surface-2); padding: 12px 16px; border-left: 3px solid var(--green); border-radius: 6px; font-size: 0.95rem; margin-top: 16px; color: var(--text-dim); line-height:1.5; }
 
+.smart-download {
+    background: var(--green);
+    color: #000 !important;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(0, 230, 118, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+}
+.smart-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 230, 118, 0.5);
+    background: #fff;
+}
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
 
 /* ===== SECTION COMMON ===== */
 .section-header {
@@ -432,7 +451,9 @@ nav.scrolled {
     padding: 100px 0;
     width: 100%;
     background: transparent !important;
+    transform: translateZ(0); /* Force GUI layer */
 }
+
 
 .bento-grid {
     display: grid;
@@ -442,7 +463,9 @@ nav.scrolled {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
+    will-change: transform;
 }
+
 
 @media (max-width: 1200px) {
     .bento-grid {
@@ -462,8 +485,9 @@ nav.scrolled {
 .bento-card {
     position: relative !important;
     background: var(--surface);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    will-change: transform;
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 32px;
