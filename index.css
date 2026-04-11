@@ -562,16 +562,16 @@ nav.scrolled {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 16px;
-    padding: 16px;
+    padding: 10px; /* Shaved */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 140px;
+    min-height: 100px; /* Shaved from 120px */
 }
 .hud-track-visualization {
-    height: 200px;
-    margin-top: 10px;
+    height: 100px; /* Final trim from 140px */
+    margin-top: 5px;
     position: relative;
     overflow: hidden;
 }
@@ -818,16 +818,17 @@ nav.scrolled {
 .service-items-grid {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
+    gap: 4px; /* Aggressively tightened */
+    margin-top: 4px; /* Reduced to almost zero */
 }
 .service-item-row {
     background: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 12px;
-    padding: 12px 16px;
+    padding: 6px 12px; /* Aggressively tightened from 10px 14px */
+    margin-bottom: -6px; /* Pull rows tighter */
 }
-.item-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.item-meta { display: flex; justify-content: space-between; margin-bottom: 4px; }
 .item-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
 .item-status-pill { font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
 .status-ok { background: rgba(0,230,118,0.1); color: var(--green); }
@@ -1102,11 +1103,11 @@ nav.scrolled {
     border-radius: 24px;
     padding: 32px;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Prevent scrollbars for absolute symmetry */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 16px; /* Tightened Gap */
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
     height: 100%;
 }
@@ -1362,10 +1363,10 @@ nav.scrolled {
 }
 .demo-box {
     display: flex;
-    flex-direction: column; /* Vertical Compaction for 1x1 size */
-    gap: 20px;
+    flex-direction: column;
+    gap: 12px; /* Tightened from 20px */
     align-items: stretch;
-    margin-top: 10px;
+    margin-top: 8px; /* Tightened from 10px */
 }
 .steps {
     display: flex;
