@@ -476,8 +476,41 @@ nav.scrolled {
     border-top: 1px solid rgba(255,255,255,0.05);
     padding-bottom: 10px;
 }
-.tab-item { font-size: 1.2rem; color: #94a3b8; opacity: 0.6; }
+.tab-item { 
+    font-size: 0.9rem; 
+    color: #94a3b8; 
+    opacity: 0.6; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    flex: 1;
+    gap: 2px;
+}
+.tab-item i { font-size: 1rem; height: 18px; }
+.tab-item span { font-size: 0.45rem; font-weight: 800; transform: scale(0.9); }
 .tab-item.active { color: var(--green); opacity: 1; }
+
+/* Pop-out FIX Button for Mockup */
+.tab-item.fix-tab.orange-forced {
+    background: linear-gradient(135deg, #f97316, #ea580c) !important;
+    color: #fff !important;
+    opacity: 1;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    transform: translateY(-16px);
+    box-shadow: 0 5px 20px rgba(249, 115, 22, 0.6) !important;
+    font-size: 1.15rem;
+    border: 3px solid #0f172a;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tab-item.fix-tab i { height: auto; }
+.tab-item.fix-tab span { display: none; }
 .widget-fill.orange { background: #f59e0b; width: 45%; }
 
 /* ===== SOCIAL PROOF ===== */
@@ -522,22 +555,20 @@ nav.scrolled {
 .symptom-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px;}
 .symptom-btn { text-align: left; background: var(--surface-2); border: 1px solid var(--border); padding: 14px 20px; border-radius: 12px; color: var(--text-dim); cursor: pointer; transition: all 0.3s; font-size: 0.95rem; }
 .symptom-btn:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); color: #fff; }
-.symptom-btn.active { border-color: var(--green); background: rgba(0,230,118,0.05); color: #fff; }
+.symptom-btn.active { border-color: var(--orange); background: rgba(249, 115, 22, 0.05); color: #fff; }
 
-.demo-result { 
-    flex: 1; 
-    background: rgba(0,0,0,0.3); 
-    border: 1px solid rgba(255,255,255,0.05); 
-    border-radius: 12px; 
-    padding: 32px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; /* Center Content */
-    text-align: center;  /* Center Text */
-    position: relative; 
-    overflow: hidden; 
-    min-height: 250px; /* Matched to box height */
+.demo-result {
+    width: 240px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Forced top alignment */
+    min-height: 200px;
+    margin-top: 0 !important;
 }
 
 /* 3D HUD TRACK VISUALIZATION */
@@ -619,43 +650,137 @@ nav.scrolled {
     opacity: 0.05;
     transition: opacity 0.6s, filter 0.6s;
 }
-.track-segment.active {
-    opacity: 0.8;
-    filter: drop-shadow(0 0 12px var(--green));
-    stroke-width: 8;
+/* High-Fidelity Technical Asset: Bike Front */
+.bike-front-svg-high {
+    width: 160px;
+    height: 160px;
+}
+.bike-body { fill: rgba(255,255,255,0.05); stroke: var(--green); stroke-width: 0.5; }
+.bike-visor { fill: rgba(0, 230, 118, 0.2); stroke: var(--green); stroke-width: 0.3; }
+.bike-headlights { fill: var(--green); filter: drop-shadow(0 0 5px var(--green-glow)); }
+
+/* High-Fidelity Gas Pump High-Fid */
+.gas-pump-high-fid-svg {
+    filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.2));
+}
+.gas-pump-high-fid-svg .fuel-drip {
+    fill: var(--green);
+    filter: drop-shadow(0 0 5px var(--green-glow));
 }
 
-.track-node {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: #000;
-    border: 2px solid rgba(255,255,255,0.2);
+/* Status Radar Spinner for "Awaiting Input" */
+.status-radar-spinner {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(0, 230, 118, 0.1);
+    border-top: 2px solid var(--green);
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.4s;
-    z-index: 5;
+    margin: 15px auto;
+    animation: spin 1s linear infinite;
 }
-.track-node.active {
-    background: var(--green);
-    border-color: #fff;
-    box-shadow: 0 0 20px var(--green);
-    transform: translate(-50%, -50%) scale(1.5);
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
-.node-label {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--text-dim);
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.5;
+
+/* SERVICE HUB ENHANCEMENTS */
+.service-items-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
 }
-.track-node.active .node-label { color: #fff; opacity: 1; }
+.service-item-row {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+.item-meta { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.item-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
+.item-status-pill { font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+.status-ok { background: rgba(0,230,118,0.1); color: var(--green); }
+.status-due { background: rgba(245,158,11,0.1); color: #f59e0b; }
+
+.multi-health-bars { display: flex; flex-direction: column; gap: 3px; }
+.health-mini-bar { display: flex; align-items: center; gap: 8px; }
+.mini-label { font-size: 0.6rem; color: var(--text-dim); width: 60px; }
+.mini-progress { flex: 1; height: 3px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
+.mini-fill { height: 100%; border-radius: 2px; }
+
+/* PERFORMANCE ANALYTICS: DYNAMIC SCORES */
+.scores-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+.score-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.score-info { display: flex; justify-content: space-between; }
+.score-label { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; }
+.score-value { font-size: 0.85rem; font-weight: 900; color: #fff; font-family: var(--hud-font); }
+.score-bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; position: relative; }
+.score-bar-fill { height: 100%; border-radius: 3px; transform: scaleX(0); transform-origin: left; transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.score-bar-fill.animated { transform: scaleX(1); }
+
+/* FUEL MANAGER: GAS PUMP & DRIP */
+.graphic-fuel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    position: relative;
+}
+.gas-pump-svg {
+    width: 100px;
+    height: 100px;
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 0 10px var(--green-glow));
+}
+.fuel-drip {
+    fill: var(--green);
+    opacity: 0;
+    animation: fuelDripLoop 3s infinite;
+}
+@keyframes fuelDripLoop {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    20% { transform: translateY(5px) scale(1); opacity: 1; }
+    80% { transform: translateY(40px) scale(0.8); opacity: 0.6; }
+    100% { transform: translateY(45px) scale(0); opacity: 0; }
+}
+
+/* CHASSIS BALANCE BAR */
+.balance-container {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(0,230,118,0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+.balance-labels { display: flex; justify-content: space-between; font-size: 0.65rem; font-weight: 800; color: var(--text-dim); margin-bottom: 8px; }
+.balance-bar-bg { height: 4px; background: linear-gradient(90deg, #3b82f6, var(--green), #f59e0b); border-radius: 2px; position: relative; }
+.balance-marker { position: absolute; top: 50%; width: 12px; height: 12px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 10px #fff; }
+
+/* MONZA TRACK */
+.monza-svg {
+    width: 240px;
+    height: 240px;
+    fill: none;
+    stroke: rgba(255,255,255,0.05);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 5px rgba(0, 230, 118, 0.1));
+}
+.monza-path { stroke-width: 3; stroke: rgba(255,255,255,0.08); }
+.monza-trace { stroke: var(--green); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 50 1000; animation: monzaTraceMove 6s linear infinite; filter: drop-shadow(0 0 10px var(--green)); }
+@keyframes monzaTraceMove {
+    from { stroke-dashoffset: 1050; }
+    to { stroke-dashoffset: 0; }
+}
 
 /* Grid environment */
 .hud-grid-floor {
@@ -672,6 +797,158 @@ nav.scrolled {
     -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
     opacity: 0.4;
 }
+
+/* GARAGE BIKE SVG */
+.bike-front-svg {
+    width: 140px;
+    height: 140px;
+    filter: drop-shadow(0 0 15px rgba(0, 230, 118, 0.3));
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 0.8;
+}
+.bike-accent { fill: var(--green); opacity: 0.8; }
+
+/* SERVICE HUB ENHANCEMENTS */
+.service-items-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+.service-item-row {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 12px 16px;
+}
+.item-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.item-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
+.item-status-pill { font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+.status-ok { background: rgba(0,230,118,0.1); color: var(--green); }
+.status-due { background: rgba(245,158,11,0.1); color: #f59e0b; }
+
+.multi-health-bars { display: flex; flex-direction: column; gap: 4px; }
+.health-mini-bar { display: flex; align-items: center; gap: 8px; }
+.mini-label { font-size: 0.6rem; color: var(--text-dim); width: 60px; }
+.mini-progress { flex: 1; height: 3px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
+.mini-fill { height: 100%; border-radius: 2px; }
+
+/* PERFORMANCE ANALYTICS: DYNAMIC SCORES */
+.scores-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+.score-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.score-info { display: flex; justify-content: space-between; }
+.score-label { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; }
+.score-value { font-size: 0.85rem; font-weight: 900; color: #fff; font-family: var(--hud-font); }
+.score-bar-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; position: relative; }
+.score-bar-fill { height: 100%; border-radius: 3px; transform: scaleX(0); transform-origin: left; transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.score-bar-fill.animated { transform: scaleX(1); }
+
+/* CHASSIS BALANCE BAR */
+.balance-container {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(0,230,118,0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+.balance-labels { display: flex; justify-content: space-between; font-size: 0.65rem; font-weight: 800; color: var(--text-dim); margin-bottom: 8px; }
+.balance-bar-bg { height: 4px; background: linear-gradient(90deg, #3b82f6, var(--green), #f59e0b); border-radius: 2px; position: relative; }
+.balance-marker { position: absolute; top: 50%; width: 12px; height: 12px; background: #fff; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 10px #fff; }
+
+/* FUEL MANAGER: GAS PUMP & DRIP */
+.graphic-fuel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160px;
+    position: relative;
+}
+.gas-pump-svg {
+    width: 100px;
+    height: 120px;
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 15px var(--green-glow));
+}
+.fuel-drip {
+    fill: var(--green);
+    opacity: 0;
+}
+.fuel-drip.dripping {
+    animation: fuelDripLoop 2s infinite;
+}
+@keyframes fuelDripLoop {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    20% { transform: translateY(5px) scale(1.5); opacity: 1; }
+    90% { transform: translateY(50px) scale(0.5); opacity: 0; }
+    100% { transform: translateY(60px) scale(0); opacity: 0; }
+}
+
+/* MONZA TRACK */
+.monza-svg {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.2));
+}
+.monza-path { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 8; stroke-linecap: round; }
+.monza-trace { fill: none; stroke: var(--green); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 100 1300; animation: monzaTrace 4s linear infinite; filter: drop-shadow(0 0 15px var(--green)); }
+@keyframes monzaTrace {
+    from { stroke-dashoffset: 1400; }
+    to { stroke-dashoffset: 0; }
+}
+
+/* MOCKUP NAVIGATION REDESIGN */
+.phone-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+    z-index: 10;
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-dim);
+}
+.nav-item i { font-size: 1rem; }
+.nav-item span { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.05em; }
+.nav-item.active { color: var(--green); }
+
+.nav-fix-btn {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #f97316, #ea580c) !important;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-20px);
+    box-shadow: 0 8px 30px rgba(249, 115, 22, 0.6) !important;
+    color: #fff !important;
+}
+.nav-fix-btn i { font-size: 1.4rem; }
 
 /* HUD CONSENT BANNER */
 .hud-consent-banner {
@@ -834,9 +1111,18 @@ nav.scrolled {
 .bento-card.large { grid-column: span 2; grid-row: span 2; }
 .bento-card.wide { grid-column: span 2; }
 .bento-card.tall { grid-row: span 2; }
+.bento-card.full-width { grid-column: span 4 !important; }
+.bento-card.super-wide-fixed { grid-column: 1 / 4 !important; grid-row: 3 !important; }
+.bento-card.col-4-fixed { grid-column: 4 / 5 !important; grid-row: 3 !important; }
+@media (max-width: 1200px) {
+    .bento-card.super-wide, .bento-card.col-4 { grid-column: auto; }
+}
 
 @media (max-width: 1200px) {
-    .bento-card.large, .bento-card.wide, .bento-card.tall { grid-column: auto; grid-row: auto; }
+    .bento-card.large, .bento-card.wide, .bento-card.tall, .bento-card.full-width, .bento-card.super-wide { 
+        grid-column: auto; 
+        grid-row: auto; 
+    }
 }
 
 .bento-card:hover {
@@ -1088,7 +1374,7 @@ nav.scrolled {
 .step-number {
     font-size: 3rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--green), #22d3ee);
+    background: linear-gradient(135deg, #f97316, #ea580c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
