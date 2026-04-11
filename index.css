@@ -438,7 +438,9 @@ nav.scrolled {
     justify-content: center;
     align-items: center;
     perspective: 1200px;
+    perspective-origin: center center;
     overflow: visible; /* Relaxed for Safari 3D */
+    z-index: 10;
 }
 
 .telemetry-grid {
@@ -470,9 +472,18 @@ nav.scrolled {
     pointer-events: auto;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    transform: translate3d(0, 0, -1000px);
+    transform: translate3d(0, 0, 0); /* Reset to Z:0 for guaranteed visibility */
     will-change: transform, opacity;
+    z-index: 1; /* Default baseline */
 }
+
+/* Explicit Sequential Z-Ordering for Chrome */
+.bento-card[data-index="0"] { z-index: 106; }
+.bento-card[data-index="1"] { z-index: 105; }
+.bento-card[data-index="2"] { z-index: 104; }
+.bento-card[data-index="3"] { z-index: 103; }
+.bento-card[data-index="4"] { z-index: 102; }
+.bento-card[data-index="5"] { z-index: 101; }
 
 /* HUD Corner Brackets */
 .bento-card::after {

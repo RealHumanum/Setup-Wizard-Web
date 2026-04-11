@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=2.3">
+    <link rel="stylesheet" href="index.css?v=2.5">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -585,6 +585,9 @@
                 return;
             }
             gsap.registerPlugin(ScrollTrigger);
+
+            // Universal Staging: Hide all overlapping cards once script is ready
+            gsap.set('.bento-card', { opacity: 0, z: -1000, pointerEvents: 'none' });
 
             // THREE.JS STARFIELD - HYPER-SYNC
             const canvas = document.getElementById('space-canvas');
