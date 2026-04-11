@@ -575,7 +575,17 @@ nav.scrolled {
 .symptom-btn:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); color: #fff; }
 .symptom-btn.active { border-color: var(--orange); background: rgba(249, 115, 22, 0.05); color: #fff; }
 
-    min-height: 300px; /* Reclaiming HUD vertical space for symmetry */
+.demo-result {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px; /* Airtight compaction for 600px symmetry */
 }
 /* 3D HUD TRACK VISUALIZATION */
 .hud-track-visualization {
@@ -1112,7 +1122,7 @@ nav.scrolled {
     justify-content: flex-start;
     gap: 12px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
-    height: 700px; /* Uniform tile height */
+    height: 600px; /* Master Symmetry Height (MSH) */
 }
 
 /* Grid Layout Spans */
