@@ -39,6 +39,7 @@ body {
     background: #050510;
     color: var(--text);
     overflow-x: hidden;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     margin: 0;
 }
@@ -65,12 +66,16 @@ body {
 /* Nebula effects */
 .nebula {
     position: fixed;
-    width: 800px; height: 800px;
+    width: min(800px, 100vw); height: auto;
+    aspect-ratio: 1;
     border-radius: 50%;
     filter: blur(180px);
     opacity: 0.15;
     z-index: -1;
     pointer-events: none;
+}
+@media (max-width: 768px) {
+    .nebula, .glow { display: none; }
 }
 .nebula-purple { background: radial-gradient(circle, #7e22ce, transparent 70%); top: 10%; right: -10%; }
 .nebula-teal { background: radial-gradient(circle, #0ea5e9, transparent 70%); bottom: 10%; left: -10%; }
@@ -137,6 +142,9 @@ nav.scrolled {
     align-items: center;
     text-align: left;
     padding: 140px 24px 60px;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 #space-canvas {
     position: fixed;
@@ -394,14 +402,14 @@ nav.scrolled {
     margin-bottom: 16px;
 }
 .section-header h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 8vw, 3rem);
     font-weight: 900;
     line-height: 1.15;
     letter-spacing: -0.02em;
     margin-bottom: 16px;
 }
 .section-sub {
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 3vw, 1.05rem);
     color: var(--text-dim);
     line-height: 1.6;
 }
@@ -630,15 +638,12 @@ nav.scrolled {
 .card-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 
 @media (max-width: 1024px) {
-    .wheel-track { height: auto; display: flex; flex-direction: column; gap: 40px; }
-    .bento-card { position: relative; opacity: 1; transform: none !important; height: auto; padding: 40px; }
-    .features-viewport { height: auto; overflow: visible; padding: 40px 0; }
-}
-
-@media (max-width: 768px) {
-    .bento-content.horizontal { flex-direction: column; text-align: center; gap: 40px; }
-    .bento-content h3 { font-size: 2rem; }
-    .bento-content p { font-size: 1.1rem; }
+    .feature-row, .feature-row.row-reverse {
+        flex-direction: column !important;
+        gap: 40px;
+        text-align: center;
+        margin-bottom: 80px;
+    }
 }
 
 /* RESPONSIVE */
@@ -1141,44 +1146,102 @@ footer {
     text-decoration: none;
 }
 
-/* ===== RESPONSIVE HUD FALLBACK ===== */
+/* ===== GLOBAL RESPONSIVE SYSTEM ===== */
 @media (max-width: 1024px) {
+    /* Layout Containment */
+    section, header, footer, #hero, #features, #how-it-works, #testimonials, #before-after {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Navigation Fixes */
+    .nav-inner { padding: 0; }
+    .nav-logo { font-size: clamp(1rem, 5vw, 1.4rem); gap: 8px; }
+    .nav-icon { width: 28px; height: 28px; }
+    .nav-cta { padding: 8px 14px; font-size: 0.75rem; }
+
+    /* Hero Fixes */
+    #hero {
+        flex-direction: column;
+        padding: 120px 16px 60px;
+        text-align: center;
+        gap: 50px;
+    }
+    .hero-content { align-items: center; max-width: 100%; }
+    .hero-widget-mockup {
+        width: min(280px, 80vw);
+        height: auto;
+        aspect-ratio: 320/620;
+        transform: none !important;
+    }
+    .hero-stats {
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+    }
+    .stat-number { font-size: 1.4rem; }
+    .stat-label { font-size: 0.6rem; }
+    .hero-buttons { flex-direction: column; width: 100%; align-items: stretch; }
+    .btn-primary, .btn-secondary { justify-content: center; }
+
+    /* Spatial HUD Fallback */
     .spatial-viewport {
         height: auto;
-        padding: 40px 20px;
+        padding: 60px 0;
+        perspective: none;
     }
     .telemetry-grid {
         height: auto;
+        width: 100%;
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
         transform: none !important;
     }
     .bento-card {
         position: relative;
+        width: 100%;
         height: auto;
         opacity: 1 !important;
         pointer-events: auto !important;
         transform: none !important;
-        filter: none !important;
-        padding: 40px 24px;
-        border-radius: 8px;
+        padding: 32px 20px;
+        border-radius: 12px;
     }
-    .bento-content.horizontal {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .css-graphic {
-        width: 100%;
-        max-width: 300px;
-        height: 300px;
-    }
-    .hud-telemetry {
-        position: relative;
-        top: 0; right: 0;
-        text-align: left;
-        margin-bottom: 20px;
-    }
-    .bento-content h3 {
-        font-size: 2rem;
-    }
+    .bento-content.horizontal { flex-direction: column; gap: 32px; text-align: center; }
+    .bento-content h3 { font-size: clamp(1.4rem, 8vw, 2.2rem); word-break: break-word; }
+    .css-graphic { width: 100%; max-width: 260px; height: 260px; margin: 0 auto; }
+    .hud-telemetry { position: relative; top: 0; right: 0; text-align: center; font-size: 0.6rem; margin-bottom: 10px; }
+
+    /* Steps Restored */
+    .steps { flex-direction: column; align-items: center; gap: 40px; }
+    .step { padding: 0; width: 100%; }
+    .step-connector { display: none; }
+
+    /* Comparison Restored */
+    .comparison { grid-template-columns: 1fr; gap: 20px; }
+    .compare-card { padding: 24px; }
+
+    /* Testimonials Restored */
+    .testimonial-grid { grid-template-columns: 1fr; gap: 16px; }
+    
+    /* Demo Fix */
+    .demo-box { flex-direction: column; padding: 20px; gap: 20px; }
+}
+
+@media (max-width: 480px) {
+    #hero h1 { font-size: clamp(2rem, 12vw, 3rem); }
+    .hero-sub { font-size: 0.95rem; }
+    .section-header h2 { font-size: 1.8rem; }
+    .bento-content p { font-size: 1rem; }
+}
+
+/* ===== ULTRAWIDE ENHANCEMENT ===== */
+@media (min-width: 1800px) {
+    .spatial-viewport { perspective: 2000px; }
+    .telemetry-grid { max-width: 1600px; }
+    .bento-card { padding: 80px; }
 }

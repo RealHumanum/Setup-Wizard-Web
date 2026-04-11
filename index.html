@@ -737,33 +737,37 @@
 
             // MOUSE INTERACTIVE PARALLAX (Active Theory Style)
             const viewport = document.querySelector('.spatial-viewport');
-            viewport.addEventListener('mousemove', (e) => {
-                const activeCard = document.querySelector('.bento-card.active');
-                if (!activeCard) return;
+            const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
-                const { width, height, left, top } = viewport.getBoundingClientRect();
-                const x = (e.clientX - left) / width - 0.5; // -0.5 to 0.5
-                const y = (e.clientY - top) / height - 0.5;
+            if (!isTouchDevice) {
+                viewport.addEventListener('mousemove', (e) => {
+                    const activeCard = document.querySelector('.bento-card.active');
+                    if (!activeCard) return;
 
-                // Tilt the whole card
-                gsap.to(activeCard, {
-                    rotateY: x * 15,
-                    rotateX: -y * 15,
-                    x: x * 30,
-                    y: y * 30,
-                    duration: 0.8,
-                    ease: 'power2.out'
+                    const { width, height, left, top } = viewport.getBoundingClientRect();
+                    const x = (e.clientX - left) / width - 0.5; // -0.5 to 0.5
+                    const y = (e.clientY - top) / height - 0.5;
+
+                    // Tilt the whole card
+                    gsap.to(activeCard, {
+                        rotateY: x * 15,
+                        rotateX: -y * 15,
+                        x: x * 30,
+                        y: y * 30,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+
+                    // Deep Parallax for Internal Elements
+                    const telemetry = activeCard.querySelector('.hud-telemetry');
+                    const graphic = activeCard.querySelector('.css-graphic');
+                    const text = activeCard.querySelector('.text-wrapper');
+
+                    if (telemetry) gsap.to(telemetry, { x: x * 60, y: y * 60, duration: 1, ease: 'power2.out' });
+                    if (graphic) gsap.to(graphic, { x: -x * 80, y: -y * 80, duration: 1, ease: 'power2.out' });
+                    if (text) gsap.to(text, { x: x * 20, y: y * 20, duration: 1.2, ease: 'power2.out' });
                 });
-
-                // Deep Parallax for Internal Elements
-                const telemetry = activeCard.querySelector('.hud-telemetry');
-                const graphic = activeCard.querySelector('.css-graphic');
-                const text = activeCard.querySelector('.text-wrapper');
-
-                if (telemetry) gsap.to(telemetry, { x: x * 60, y: y * 60, duration: 1, ease: 'power2.out' });
-                if (graphic) gsap.to(graphic, { x: -x * 80, y: -y * 80, duration: 1, ease: 'power2.out' });
-                if (text) gsap.to(text, { x: x * 20, y: y * 20, duration: 1.2, ease: 'power2.out' });
-            });
+            }
 
             // Restoring Hero & Common Parallax
             gsap.to('#hero-widget', {
