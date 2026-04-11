@@ -256,8 +256,8 @@
                 <span class="bento-icon">MODULE // 01</span>
                 <h3>Setup Troubleshooter</h3>
                 
-                <div class="demo-box" id="demo-box" style="margin-top: 20px; display: flex; gap: 24px; align-items: flex-start;">
-                    <div class="demo-controls" style="flex: 1;">
+                <div class="demo-box" id="demo-box">
+                    <div class="demo-controls">
                         <label>Corner Phase</label>
                         <div id="phase-pills" class="pill-group">
                             <button class="pill-btn active" data-phase="entry">Braking</button>
@@ -273,7 +273,7 @@
                         <button class="btn-primary" id="btn-diagnose" style="margin-top: 20px; width:100%; justify-content: center; opacity: 0.5; pointer-events: none;">Diagnose Issue</button>
                     </div>
                     
-                    <div class="demo-result" id="demo-result" style="width: 240px; margin-top: 0;">
+                    <div class="demo-result" id="demo-result">
                         <div class="result-placeholder" id="result-placeholder">
                             <span style="font-size: 1.5rem;">🧠</span>
                             <p style="font-size: 0.8rem; margin-top:10px; font-weight: 700;">Awaiting Input...</p>
@@ -283,7 +283,7 @@
                 </div>
 
                 <!-- 3D HUD Track Visualization -->
-                <div class="hud-track-visualization" style="margin-top: 40px;">
+                <div class="hud-track-visualization">
                     <div class="hud-grid-floor"></div>
                     <div class="track-perspective-container">
                         <div class="perspective-track" id="perspective-track">
@@ -424,7 +424,7 @@
             </div>
 
             <!-- Feature 6: Performance Analytics -->
-            <div class="bento-card super-wide-fixed" style="grid-column: 1 / 4 !important; grid-row: 3 !important; min-height: 400px;">
+            <div class="bento-card super-wide">
                 <div class="hud-telemetry">
                     SYS // PERFORMANCE_ANALYTICS<br>
                     STATE // DYNAMIC_CALC
@@ -432,18 +432,18 @@
                 <span class="bento-icon">MODULE // 06</span>
                 <h3>Performance Analytics</h3>
                 <p>Compare setups and visualize ride feel. Analyze agility, stability, and balance scores.</p>
-                <div class="scores-container" style="margin-top:20px;">
+                <div class="scores-container">
                     <div class="score-row"><div class="score-info"><span class="score-label">Agility</span><span class="score-value">88</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width: 88%; background: #f59e0b;"></div></div></div>
                     <div class="score-row"><div class="score-info"><span class="score-label">Stability</span><span class="score-value">92</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width: 92%; background: #3b82f6;"></div></div></div>
                 </div>
-                <div class="balance-container" style="margin-top: 25px;">
+                <div class="balance-container">
                     <div class="balance-labels"><span>STABLE</span><span>CHASSIS BALANCE</span><span>AGILE</span></div>
                     <div class="balance-bar-bg"><div class="balance-marker" style="left: 65%;"></div></div>
                 </div>
             </div>
 
             <!-- Feature 7: Fuel Manager -->
-            <div class="bento-card col-4-fixed" style="grid-column: 4 / 5 !important; grid-row: 3 !important; min-height: 400px;">
+            <div class="bento-card col-4">
                 <div class="hud-telemetry">
                     SYS // FUEL_LOGIC<br>
                     STATUS // SYNCED
@@ -451,8 +451,8 @@
                 <span class="bento-icon">MODULE // 07</span>
                 <h3>Fuel Manager</h3>
                 <p>Calculate precise fuel volume required.</p>
-                <div class="graphic-fuel" style="margin-top: 40px; display: flex; justify-content: center;">
-                    <svg class="gas-pump-high-fid-svg" viewBox="0 0 100 120" style="width: 160px; height: 160px;">
+                <div class="graphic-fuel">
+                    <svg class="gas-pump-high-fid-svg" viewBox="0 0 100 120" style="width: 140px; height: 140px;">
                         <rect x="25" y="20" width="50" height="85" rx="3" fill="#1e293b" stroke="var(--green)" stroke-width="2" />
                         <rect x="32" y="30" width="36" height="15" rx="1" fill="rgba(34, 197, 94, 0.1)" stroke="var(--green)" stroke-width="0.5" />
                         <path d="M75,50 Q95,50 95,75 L95,100" stroke="var(--green)" stroke-width="3.5" fill="none" stroke-linecap="round" />

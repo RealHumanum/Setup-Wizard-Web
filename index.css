@@ -558,17 +558,16 @@ nav.scrolled {
 .symptom-btn.active { border-color: var(--orange); background: rgba(249, 115, 22, 0.05); color: #fff; }
 
 .demo-result {
-    width: 240px;
+    width: 260px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 16px;
-    padding: 20px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Forced top alignment */
-    min-height: 200px;
-    margin-top: 0 !important;
+    justify-content: flex-start;
+    min-height: 220px;
 }
 
 /* 3D HUD TRACK VISUALIZATION */
@@ -1065,8 +1064,10 @@ nav.scrolled {
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(300px, auto);
-    gap: 24px;
+    grid-auto-rows: min-content;
+    align-items: start;
+    gap: 32px;
+    margin-top: 60px;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
@@ -1090,21 +1091,18 @@ nav.scrolled {
 
 /* ===== AGGRESSIVE HUD CARDS ===== */
 .bento-card {
-    position: relative !important;
     background: var(--surface);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    will-change: transform;
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 32px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    overflow: hidden;
-    height: 100%;
+    justify-content: flex-start;
+    gap: 16px; /* Tightened Gap */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
+    height: auto; /* Allow content to drive height */
 }
 
 /* Grid Layout Spans */
@@ -1112,10 +1110,10 @@ nav.scrolled {
 .bento-card.wide { grid-column: span 2; }
 .bento-card.tall { grid-row: span 2; }
 .bento-card.full-width { grid-column: span 4 !important; }
-.bento-card.super-wide-fixed { grid-column: 1 / 4 !important; grid-row: 3 !important; }
-.bento-card.col-4-fixed { grid-column: 4 / 5 !important; grid-row: 3 !important; }
+.bento-card.super-wide { grid-column: 1 / 4 !important; grid-row: 3 !important; }
+.bento-card.col-4 { grid-column: 4 / 5 !important; grid-row: 3 !important; }
 @media (max-width: 1200px) {
-    .bento-card.super-wide, .bento-card.col-4 { grid-column: auto; }
+    .bento-card.super-wide, .bento-card.col-4 { grid-column: auto !important; grid-row: auto !important; }
 }
 
 @media (max-width: 1200px) {
@@ -1156,19 +1154,17 @@ nav.scrolled {
 }
 
 .bento-card h3 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    color: var(--text);
-    letter-spacing: -0.02em;
+    font-size: 1.4rem;
+    font-weight: 850;
+    line-height: 1.2;
+    margin-bottom: 4px;
 }
 
 .bento-card p {
     font-size: 0.95rem;
     color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 24px;
-    flex: 1;
+    line-height: 1.5;
+    margin-bottom: 8px; /* Added small margin to separate from graphic */
 }
 
 
