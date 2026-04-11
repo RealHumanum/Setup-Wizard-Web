@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=2.7">
+    <link rel="stylesheet" href="index.css?v=3.0">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -170,41 +170,7 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE DEMO -->
-    <section id="demo" style="padding: 100px 24px; position: relative; z-index: 1; background: transparent !important;">
-        <div class="demo-container" data-aos="fade-up">
-            <div class="section-header" style="margin-bottom: 40px;">
-                <span class="section-tag">Interactive Preview</span>
-                <h2>Try the Diagnostic Engine</h2>
-                <p class="section-sub">Experience the proprietary fix-logic core. Select a corner phase and declare what the bike is doing.</p>
-            </div>
-            
-            <div class="demo-box" id="demo-box">
-                <div class="demo-controls">
-                    <label>Corner Phase</label>
-                    <div id="phase-pills" class="pill-group">
-                        <button class="pill-btn active" data-phase="entry">Braking & Turn-in</button>
-                        <button class="pill-btn" data-phase="mid">Mid-Corner</button>
-                        <button class="pill-btn" data-phase="exit">Acceleration</button>
-                    </div>
-                    
-                    <label style="margin-top:20px;">Symptom</label>
-                    <div id="symptom-list" class="symptom-list">
-                        <!-- Populated by JS -->
-                    </div>
-                    
-                    <button class="btn-primary" id="btn-diagnose" style="margin-top: 30px; width:100%; justify-content: center; opacity: 0.5; pointer-events: none;">Diagnose Issue</button>
-                </div>
-                
-                <div class="demo-result" id="demo-result">
-                    <div class="result-placeholder">
-                        <span style="font-size: 2rem;">🧠</span>
-                        <p style="margin-top:10px;">Awaiting Input...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- FEATURES -->
     <section id="features">
@@ -224,9 +190,30 @@
                 </div>
                 <span class="bento-icon">MODULE // 01</span>
                 <h3>Setup Troubleshooter</h3>
-                <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase (Braking, Turn-in, Mid-corner, Acceleration). It provides clear, step-by-step mechanical fixes that respect your specific bike's limits.</p>
-                <div class="css-graphic graphic-dial">
-                    <div class="dial-center"></div>
+                
+                <div class="demo-box" id="demo-box" style="margin-top: 20px;">
+                    <div class="demo-controls">
+                        <label>Corner Phase</label>
+                        <div id="phase-pills" class="pill-group">
+                            <button class="pill-btn active" data-phase="entry">Braking</button>
+                            <button class="pill-btn" data-phase="mid">Mid-Corner</button>
+                            <button class="pill-btn" data-phase="exit">Exit</button>
+                        </div>
+                        
+                        <label style="margin-top:15px;">Handling Symptom</label>
+                        <div id="symptom-list" class="symptom-list">
+                            <!-- Populated by JS -->
+                        </div>
+                        
+                        <button class="btn-primary" id="btn-diagnose" style="margin-top: 20px; width:100%; justify-content: center; opacity: 0.5; pointer-events: none;">Diagnose Issue</button>
+                    </div>
+                    
+                    <div class="demo-result" id="demo-result">
+                        <div class="result-placeholder">
+                            <span style="font-size: 1.5rem;">🧠</span>
+                            <p style="font-size: 0.8rem; margin-top:5px;">Awaiting Input...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

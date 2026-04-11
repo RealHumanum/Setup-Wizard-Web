@@ -367,7 +367,11 @@ nav.scrolled {
 
 /* ===== INTERACTIVE DEMO ===== */
 .demo-container { max-width: 900px; margin: 0 auto; }
-.demo-box { display: flex; gap: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
+.demo-box { display: flex; gap: 24px; background: transparent; padding: 0; box-shadow: none; border: none; flex: 1; min-height: 0; }
+@media (max-width: 600px) {
+    .demo-box { flex-direction: column; gap: 20px; }
+}
+
 .demo-controls { flex: 1; display: flex; flex-direction: column; }
 .demo-controls label { font-size: 0.85rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 12px; }
 .pill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
@@ -380,7 +384,7 @@ nav.scrolled {
 .symptom-btn:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); color: #fff; }
 .symptom-btn.active { border-color: var(--green); background: rgba(0,230,118,0.05); color: #fff; }
 
-.demo-result { flex: 1; background: #12121a; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.demo-result { flex: 1; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; min-height: 180px; }
 .result-placeholder { text-align: center; color: var(--text-muted); }
 .result-content { display: none; text-align: left; animation: fadeInUp 0.5s ease; }
 .result-content.active { display: block; }
@@ -456,16 +460,16 @@ nav.scrolled {
 
 /* ===== AGGRESSIVE HUD CARDS ===== */
 .bento-card {
-    position: relative;
+    position: relative !important;
     background: var(--surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border);
     border-radius: 24px;
-    padding: 40px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: stretch;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
     overflow: hidden;
