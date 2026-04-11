@@ -431,7 +431,7 @@ nav.scrolled {
     justify-content: center;
     align-items: center;
     perspective: 1200px;
-    overflow: hidden;
+    overflow: visible; /* Relaxed for Safari 3D */
 }
 
 .telemetry-grid {
@@ -440,6 +440,7 @@ nav.scrolled {
     max-width: 1300px;
     height: 700px;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -460,10 +461,10 @@ nav.scrolled {
     justify-content: center;
     opacity: 0;
     pointer-events: none;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     transform: translate3d(0, 0, -1000px);
-    transition: border-color 0.3s, box-shadow 0.3s;
-    text-align: left;
-    overflow: visible;
+    will-change: transform, opacity;
 }
 
 /* HUD Corner Brackets */
@@ -473,6 +474,7 @@ nav.scrolled {
     inset: -1px;
     border: 2px solid var(--green);
     mask: conic-gradient(from 0deg, #000 90deg, transparent 90deg) 0 0 / 40px 40px repeat;
+    -webkit-mask: conic-gradient(from 0deg, #000 90deg, transparent 90deg) 0 0 / 40px 40px repeat;
     pointer-events: none;
     opacity: 0.5;
 }

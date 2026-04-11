@@ -719,7 +719,7 @@
                 // Fly-in from distance
                 spatialTl.fromTo(card, 
                     { z: -1000, opacity: 0, scale: 0.8, filter: 'blur(10px)', pointerEvents: 'none' },
-                    { z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', pointerEvents: 'auto', duration: 1, ease: 'power2.inOut' },
+                    { z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', pointerEvents: 'auto', duration: 1, ease: 'power2.inOut', force3D: true },
                     i === 0 ? 0 : ">-0.4"
                 );
                 
@@ -729,7 +729,7 @@
                 // Fly-past viewer
                 if(i < cards.length - 1) {
                     spatialTl.to(card, {
-                        z: 1000, opacity: 0, scale: 1.5, filter: 'blur(20px)', pointerEvents: 'none', duration: 1, ease: 'power2.in'
+                        z: 1000, opacity: 0, scale: 1.5, filter: 'blur(20px)', pointerEvents: 'none', duration: 1, ease: 'power2.in', force3D: true
                     }, ">0.5");
                     spatialTl.set(card, { className: 'bento-card' }, ">");
                 }
