@@ -325,13 +325,19 @@
                 <h3>Garage</h3>
                 <p>Intelligently detect hardware capabilities and setup history for every bike in your stable. Support for 115+ factory models.</p>
                 <div class="css-graphic" style="display:flex; justify-content:center; align-items:center;">
-                    <svg class="bike-front-svg-high" viewBox="0 0 24 24">
-                        <!-- Precise Symmetric Front View -->
-                        <path class="bike-body" d="M12,4 C16,4 18,8 18,12 L14,16 L12,20 L10,16 L6,12 C6,8 8,4 12,4 Z" />
-                        <path class="bike-visor" d="M12,5 C15,5 17,8 17,11 L7,11 C7,8 9,5 12,5 Z" />
-                        <path class="bike-headlights" d="M13,10 L16,11 L15,13 Z M11,10 L8,11 L9,13 Z" />
-                        <rect fill="var(--green)" x="10.5" y="16" width="3" height="7" rx="0.5" />
-                        <path stroke="var(--green)" stroke-width="0.5" d="M18,10 L22,9 L21,11 Z M6,10 L2,9 L3,11 Z" />
+                    <svg class="bike-front-svg-detailed" viewBox="0 0 100 120" style="width: 160px; height: 160px;">
+                        <!-- Front Tire -->
+                        <rect x="42" y="90" width="16" height="25" rx="8" fill="#1e293b" stroke="var(--green)" stroke-width="1.5" />
+                        <!-- Symmetric Forks -->
+                        <path d="M35,30 L42,100 M65,30 L58,100" stroke="var(--green)" stroke-width="3" stroke-linecap="round" />
+                        <!-- Upper Fairing / Windshield -->
+                        <path d="M25,40 Q50,20 75,40 L80,60 Q50,85 20,60 Z" fill="#1e293b" stroke="var(--green)" stroke-width="2" />
+                        <path d="M40,35 Q50,25 60,35" stroke="var(--green)" stroke-width="2" fill="none" />
+                        <!-- Headlights -->
+                        <circle cx="38" cy="48" r="2" fill="var(--green)" />
+                        <circle cx="62" cy="48" r="2" fill="var(--green)" />
+                        <!-- Handlebars -->
+                        <path d="M35,30 L20,25 M65,30 L80,25" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" />
                     </svg>
                 </div>
             </div>
