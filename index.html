@@ -276,36 +276,6 @@
                         <button class="btn-primary" id="btn-diagnose" style="margin-top: 10px; width:100%; justify-content: center; opacity: 0.5; pointer-events: none;">Diagnose Issue</button>
                     </div>
                 </div>
-
-                <!-- 3D HUD Track Visualization -->
-                <div class="hud-track-visualization">
-                    <div class="hud-grid-floor"></div>
-                    <div class="track-perspective-container">
-                        <div class="perspective-track" id="perspective-track">
-                            <svg class="track-path-svg" viewBox="0 0 300 300">
-                                <defs>
-                                    <linearGradient id="trace-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="rgba(0, 230, 118, 0)" />
-                                        <stop offset="50%" stop-color="rgba(0, 230, 118, 1)" />
-                                        <stop offset="100%" stop-color="rgba(0, 230, 118, 0)" />
-                                    </linearGradient>
-                                </defs>
-                                
-                                <path class="track-edge" d="M20,180 Q20,20 150,20 T280,180" />
-                                <path class="track-line" d="M20,180 Q20,20 150,20 T280,180" />
-                                <path class="curbing" d="M35,160 Q35,35 150,35 T265,160" />
-                                <path class="racing-line-base" d="M10,180 Q10,40 150,30 T290,180" />
-                                <path id="racing-trace" class="racing-line-trace" d="M10,180 Q10,40 150,30 T290,180" />
-                                <path id="segment-entry" class="track-segment active" d="M10,180 Q10,100 50,70" />
-                                <path id="segment-mid" class="track-segment" d="M50,70 Q100,30 150,30 Q200,30 250,70" />
-                                <path id="segment-exit" class="track-segment" d="M250,70 Q290,100 290,180" />
-                            </svg>
-                            <div class="track-node active" id="node-entry" style="left: 10px; top: 180px;"><span class="node-label">Entry</span></div>
-                            <div class="track-node" id="node-mid" style="left: 150px; top: 30px;"><span class="node-label">Apex</span></div>
-                            <div class="track-node" id="node-exit" style="left: 290px; top: 180px;"><span class="node-label">Exit</span></div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Feature 2: Tire Manager -->
@@ -396,11 +366,34 @@
             <div class="bento-card">
                 <h3>Track Log</h3>
                 <p>Build a comprehensive history of every lap. Sync session data with your active setup and precise Monza telemetry.</p>
-                <div class="css-graphic" style="display:flex; justify-content:center; align-items:center;">
-                    <svg class="monza-svg" viewBox="0 0 400 300">
-                        <path class="monza-path" d="M300,100 L300,50 Q300,20 250,20 L100,20 Q50,20 50,70 L50,230 Q50,280 100,280 L250,280 Q350,280 350,200 L350,150 L300,100" />
-                        <path id="monza-trace" class="monza-trace" d="M300,100 L300,50 Q300,20 250,20 L100,20 Q50,20 50,70 L50,230 Q50,280 100,280 L250,280 Q350,280 350,200 L350,150 L300,100" />
-                    </svg>
+                <!-- 3D HUD Track Visualization -->
+                <div class="hud-track-visualization">
+                    <div class="hud-grid-floor"></div>
+                    <div class="track-perspective-container">
+                        <div class="perspective-track" id="perspective-track">
+                            <svg class="track-path-svg" viewBox="0 0 300 300">
+                                <defs>
+                                    <linearGradient id="trace-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="rgba(0, 230, 118, 0)" />
+                                        <stop offset="50%" stop-color="rgba(0, 230, 118, 1)" />
+                                        <stop offset="100%" stop-color="rgba(0, 230, 118, 0)" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <path class="track-edge" d="M20,180 Q20,20 150,20 T280,180" />
+                                <path class="track-line" d="M20,180 Q20,20 150,20 T280,180" />
+                                <path class="curbing" d="M35,160 Q35,35 150,35 T265,160" />
+                                <path class="racing-line-base" d="M10,180 Q10,40 150,30 T290,180" />
+                                <path id="racing-trace" class="racing-line-trace" d="M10,180 Q10,40 150,30 T290,180" />
+                                <path id="segment-entry" class="track-segment active" d="M10,180 Q10,100 50,70" />
+                                <path id="segment-mid" class="track-segment" d="M50,70 Q100,30 150,30 Q200,30 250,70" />
+                                <path id="segment-exit" class="track-segment" d="M250,70 Q290,100 290,180" />
+                            </svg>
+                            <div class="track-node active" id="node-entry" style="left: 10px; top: 180px;"><span class="node-label">Entry</span></div>
+                            <div class="track-node" id="node-mid" style="left: 150px; top: 30px;"><span class="node-label">Apex</span></div>
+                            <div class="track-node" id="node-exit" style="left: 290px; top: 180px;"><span class="node-label">Exit</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -575,17 +575,7 @@ nav.scrolled {
 .symptom-btn:hover { background: var(--surface); border-color: rgba(255,255,255,0.2); color: #fff; }
 .symptom-btn.active { border-color: var(--orange); background: rgba(249, 115, 22, 0.05); color: #fff; }
 
-.demo-result {
-    width: 100%;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 16px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 110px; /* Restored from 80px */
+    min-height: 300px; /* Reclaiming HUD vertical space for symmetry */
 }
 /* 3D HUD TRACK VISUALIZATION */
 .hud-track-visualization {
