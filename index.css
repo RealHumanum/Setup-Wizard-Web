@@ -430,142 +430,118 @@ nav.scrolled {
     background: transparent !important;
 }
 
-.spatial-viewport {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
-    perspective-origin: center center;
-    overflow: visible; /* Relaxed for Safari 3D */
-    z-index: 10;
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-.telemetry-grid {
-    position: relative;
-    width: 90%;
-    max-width: 1300px;
-    height: 700px;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media (max-width: 1200px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 16px;
+    }
+}
+
 /* ===== AGGRESSIVE HUD CARDS ===== */
 .bento-card {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    position: relative;
     background: var(--surface);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border);
-    border-radius: 4px; /* Sharper racetrack feel */
-    padding: 60px;
+    border-radius: 24px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    opacity: 1; /* Visible by default, hidden by GSAP only if JS is ready */
-    pointer-events: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: translate3d(0, 0, 0); /* Reset to Z:0 for guaranteed visibility */
-    will-change: transform, opacity;
-    z-index: 1; /* Default baseline */
+    justify-content: space-between;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    overflow: hidden;
+    height: 100%;
 }
 
-/* HUD Corner Brackets */
-.bento-card::after {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border: 2px solid var(--green);
-    mask: conic-gradient(from 0deg, #000 90deg, transparent 90deg) 0 0 / 40px 40px repeat;
-    -webkit-mask: conic-gradient(from 0deg, #000 90deg, transparent 90deg) 0 0 / 40px 40px repeat;
-    pointer-events: none;
-    opacity: 0.5;
+/* Grid Layout Spans */
+.bento-card.large { grid-column: span 2; grid-row: span 2; }
+.bento-card.wide { grid-column: span 2; }
+.bento-card.tall { grid-row: span 2; }
+
+@media (max-width: 1200px) {
+    .bento-card.large, .bento-card.wide, .bento-card.tall { grid-column: auto; grid-row: auto; }
 }
 
-.bento-card.active {
-    pointer-events: auto;
-}
 .bento-card:hover {
-    border-color: rgba(0, 230, 118, 0.5);
-    box-shadow: 0 40px 100px rgba(0, 230, 118, 0.12), 0 0 20px rgba(0,230,118,0.05) inset;
+    transform: translateY(-8px);
+    border-color: var(--green-glow);
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.05), rgba(0, 230, 118, 0.02));
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,230,118,0.05);
 }
-.bento-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0, 230, 118, 0.08), transparent 40%);
-    opacity: 0;
-    transition: opacity 0.5s;
-    pointer-events: none;
-    z-index: 0;
-}
-.bento-card:hover::before { opacity: 1; }
 
-/* Sizing Utilities */
-.bento-large { grid-column: span 2; }
-.bento-huge { grid-column: span 3; }
-.bento-tall { grid-row: span 2; }
-
-/* Content overlay */
-.bento-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; transition: all 0.5s ease; }
-.bento-content.horizontal { flex-direction: row; gap: 80px; align-items: center; }
-.bento-content.horizontal .text-wrapper { flex: 1.2; }
-.bento-content h3 { 
-    font-size: 3rem; 
-    font-weight: 900; 
-    margin-bottom: 24px; 
-    color: var(--text); 
-    letter-spacing: -0.04em; 
-    text-transform: uppercase;
-}
-.bento-content p { 
-    font-size: 1.3rem; 
-    color: var(--text-dim); 
-    line-height: 1.6; 
-    margin-bottom: 40px; 
-    max-width: 600px; 
-}
 .bento-icon { 
-    font-family: var(--hud-font);
-    font-size: 0.9rem;
-    color: var(--green);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 20px;
-    display: block;
-}
-/* HUD Data Elements */
-.hud-telemetry {
     font-family: var(--hud-font);
     font-size: 0.75rem;
     color: var(--green);
-    opacity: 0.6;
-    position: absolute;
-    top: 40px; right: 40px;
-    text-align: right;
-    line-height: 1.8;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.8;
 }
+
+/* HUD Data Elements */
+.hud-telemetry {
+    font-family: var(--hud-font);
+    font-size: 0.65rem;
+    color: var(--green);
+    opacity: 0.5;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+}
+
+.bento-card h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.bento-card p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex: 1;
+}
+
 
 /* === Pure CSS Graphic Elements === */
 .css-graphic {
     position: relative;
-    width: 380px;
-    height: 380px;
+    width: 100%;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.7;
+    opacity: 0.9;
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .bento-card:hover .css-graphic {
     transform: scale(1.1);
     opacity: 1;
@@ -575,14 +551,14 @@ nav.scrolled {
 .graphic-bars { 
     display: flex; 
     flex-direction: column; 
-    gap: 30px; 
+    gap: 15px; 
     width: 100%; 
-    max-width: 320px;
-    background: rgba(255,255,255,0.03); 
-    padding: 30px; 
-    border-radius: 20px; 
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.2); 
+    padding: 20px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(255,255,255,0.05);
 }
+
 .health-bar-item { display: flex; flex-direction: column; gap: 10px; }
 .health-bar-label { font-size: 0.85rem; color: var(--text); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; justify-content: space-between; }
 .health-bar-container { background: rgba(0,0,0,0.5); height: 10px; border-radius: 5px; overflow: hidden; width: 100%; border: 1px solid rgba(255,255,255,0.05); }
@@ -1200,33 +1176,21 @@ footer {
     .hero-buttons { flex-direction: column; width: 100%; align-items: stretch; }
     .btn-primary, .btn-secondary { justify-content: center; }
 
-    /* Spatial HUD Fallback */
-    .spatial-viewport {
-        height: auto;
-        padding: 60px 0;
-        perspective: none;
-    }
-    .telemetry-grid {
-        height: auto;
-        width: 100%;
-        flex-direction: column;
-        gap: 32px;
-        transform: none !important;
+    /* Bento Grid Fallback */
+    .bento-grid {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
     }
     .bento-card {
-        position: relative;
-        width: 100%;
-        height: auto;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        transform: none !important;
-        padding: 32px 20px;
-        border-radius: 12px;
+        padding: 24px;
+        min-height: 450px;
     }
-    .bento-content.horizontal { flex-direction: column; gap: 32px; text-align: center; }
-    .bento-content h3 { font-size: clamp(1.4rem, 8vw, 2.2rem); word-break: break-word; }
-    .css-graphic { width: 100%; max-width: 260px; height: 260px; margin: 0 auto; }
-    .hud-telemetry { position: relative; top: 0; right: 0; text-align: center; font-size: 0.6rem; margin-bottom: 10px; }
+    .bento-card.large, .bento-card.wide, .bento-card.tall {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .css-graphic { height: 180px; }
+
 
     /* Steps Restored */
     .steps { flex-direction: column; align-items: center; gap: 40px; }
