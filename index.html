@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=2.5">
+    <link rel="stylesheet" href="index.css?v=2.7">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -579,9 +579,13 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script>
-        window.onload = () => {
-            if (typeof ScrollTrigger === 'undefined') {
-                console.warn('ScrollTrigger not loaded. Animations disabled.');
+        function initApp() {
+            if (window.initialized) return;
+            window.initialized = true;
+
+            if (typeof ScrollTrigger === 'undefined' || typeof gsap === 'undefined') {
+                console.warn('GSAP or ScrollTrigger not loaded. Retrying in 100ms...');
+                setTimeout(initApp, 100);
                 return;
             }
             gsap.registerPlugin(ScrollTrigger);
@@ -722,7 +726,7 @@
                     scrollTrigger: {
                         trigger: "#features",
                         start: "top top",
-                        end: "+=6000",
+                        end: "+=4500",
                         scrub: 1,
                         pin: true,
                         anticipatePin: 1
@@ -732,9 +736,13 @@
                 cards.forEach((card, i) => {
                     // Fly-in from distance
                     spatialTl.fromTo(card, 
-                        { z: -1000, opacity: 0, scale: 0.8, filter: 'blur(10px)', pointerEvents: 'none' },
-                        { z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', pointerEvents: 'auto', duration: 1, ease: 'power2.inOut', force3D: true },
-                        i === 0 ? 0 : ">-0.4"
+                        { z: -1000, opacity: 0, scale: 0.8, filter: 'blur(10px)', pointerEvents: 'none', zIndex: 1 },
+                        { 
+                            z: 0, opacity: 1, scale: 1, filter: 'blur(0px)', 
+                            pointerEvents: 'auto', duration: 1, ease: 'power2.inOut', 
+                            force3D: true, zIndex: 200
+                        },
+                        i === 0 ? 0 : ">-0.8"
                     );
                     
                     // Active State Marker
@@ -743,8 +751,10 @@
                     // Fly-past viewer
                     if(i < cards.length - 1) {
                         spatialTl.to(card, {
-                            z: 1000, opacity: 0, scale: 1.5, filter: 'blur(20px)', pointerEvents: 'none', duration: 1, ease: 'power2.in', force3D: true
-                        }, ">0.5");
+                            z: 800, opacity: 0, scale: 1.4, filter: 'blur(20px)', 
+                            pointerEvents: 'none', duration: 0.8, ease: 'power2.in', 
+                            force3D: true, zIndex: 1
+                        }, ">0.4");
                         spatialTl.set(card, { className: 'bento-card' }, ">");
                     }
                 });
@@ -897,9 +907,20 @@
                 });
             });
 
-            // Refresh
-            window.addEventListener('load', () => ScrollTrigger.refresh());
-        });
+            // Force absolute final refresh
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+                AOS.init({ duration: 800, once: true });
+            }, 500);
+        }
+
+        // Robust launch sequence
+        if (document.readyState === 'complete') {
+            initApp();
+        } else {
+            window.addEventListener('load', initApp);
+            document.addEventListener('DOMContentLoaded', initApp);
+        }
 
         // Global Modal functions
         function showAndroidModal() {
