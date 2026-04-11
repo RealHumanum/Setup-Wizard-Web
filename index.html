@@ -39,6 +39,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
+    <!-- Three.js for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="index.css">
 
@@ -53,28 +56,9 @@
 </head>
 
 <body>
-    <!-- Ambient Glow Effects -->
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <span class="logo-text">Apex Wizard</span>
-            </div>
-            <a href="#cta" class="nav-cta smart-download">Download
-                Free</a>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <header id="hero">
-        <div class="blueprint-grid"></div>
-        <div class="hero-overlay"></div>
-        
-        <!-- Interactive Suspension Animation -->
+    <canvas id="space-canvas"></canvas>
+    
+    <div class="suspension-background">
         <div class="suspension-container">
             <svg class="suspension-svg" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- FORK (Left) -->
@@ -114,6 +98,27 @@
                 </defs>
             </svg>
         </div>
+    </div>
+    
+    <!-- Ambient Glow Effects (Kept for depth) -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="logo-text">Apex Wizard</span>
+            </div>
+            <a href="#cta" class="nav-cta smart-download">Download
+                Free</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="hero" style="background:transparent;">
+        <div class="hero-overlay"></div>
 
         <div class="hero-content">
             <div class="hero-badge">🏁 The Expert in Your Pocket</div>
@@ -553,6 +558,48 @@
         document.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
+            // THREE.JS STARFIELD
+            const canvas = document.getElementById('space-canvas');
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // Generate Stars
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsCount = 4000;
+            const posArray = new Float32Array(starsCount * 3);
+            for(let i = 0; i < starsCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 30;
+            }
+            starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const starsMaterial = new THREE.PointsMaterial({
+                size: 0.015,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.8
+            });
+            const starsMesh = new THREE.Points(starsGeometry, starsMaterial);
+            scene.add(starsMesh);
+
+            function animateSpace() {
+                requestAnimationFrame(animateSpace);
+                starsMesh.rotation.y += 0.0003;
+                starsMesh.rotation.x += 0.0001;
+                renderer.render(scene, camera);
+            }
+            animateSpace();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
             // Lenis smooth scroll
             const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
             function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
@@ -575,29 +622,28 @@
                 .from('.hero-buttons', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
                 .from('.rating-badge', { y: 15, opacity: 0, duration: 0.6 }, '-=0.4')
                 .from('.hero-stats', { y: 20, opacity: 0, duration: 0.8 }, '-=0.4')
-                .from('.suspension-container', { x: 100, opacity: 0, duration: 1.5, ease: 'power2.out' }, '-=1.2');
+                .from('.suspension-background', { opacity: 0, duration: 2 }, '-=1.5')
+                .from('.hero-widget-mockup', { x: 100, opacity: 0, duration: 1.2, ease: 'power2.out' }, '-=1');
 
-            // Interactive "Exploded View" Scroll Animation
+            // Interactive "Exploded View" Background Animation
             const suspensionTL = gsap.timeline({
                 scrollTrigger: {
-                    trigger: '#hero',
+                    trigger: 'body',
                     start: 'top top',
-                    end: 'bottom top',
-                    scrub: 1
+                    end: 'bottom bottom',
+                    scrub: 2
                 }
             });
 
-            // Fork Explosion
-            suspensionTL.to('#fork-upper', { y: -120, ease: 'none' }, 0)
-                .to('#fork-lower', { y: 120, ease: 'none' }, 0)
-                .to('#fork-cap', { y: -160, ease: 'none' }, 0)
-                .to('#fork-internals', { opacity: 1, scaleY: 1.2, y: -10, ease: 'none' }, 0.1);
-
-            // Shock Explosion
-            suspensionTL.to('#shock-eye-top', { y: -80, ease: 'none' }, 0)
-                .to('#shock-eye-bottom', { y: 80, ease: 'none' }, 0)
-                .to('#shock-reservoir', { x: 50, opacity: 0.7, ease: 'none' }, 0.1)
-                .to('#shock-spring .coil', { y: (i) => (i - 2) * 20, ease: 'none' }, 0);
+            // Re-arrange: Parts fly horizontally into space
+            suspensionTL.to('#fork', { x: -400, y: -50, rotate: -20, rotateX: 45, scale: 0.7, opacity: 0.4, ease: 'none' }, 0)
+                .to('#shock', { x: 400, y: 50, rotate: 20, rotateX: -45, scale: 0.7, opacity: 0.4, ease: 'none' }, 0)
+                .to('#fork-upper', { y: -100, ease: 'none' }, 0.2)
+                .to('#fork-lower', { y: 100, ease: 'none' }, 0.2)
+                .to('#fork-internals', { opacity: 1, scaleY: 1.2, ease: 'none' }, 0.3)
+                .to('#shock-eye-top', { y: -80, opacity: 0.5, ease: 'none' }, 0.2)
+                .to('#shock-eye-bottom', { y: 80, opacity: 0.5, ease: 'none' }, 0.2)
+                .to('#shock-spring .coil', { y: (i) => (i - 2) * 20, ease: 'none' }, 0.3);
 
             // Stat counter animation
             document.querySelectorAll('.stat-number[data-target]').forEach(el => {
