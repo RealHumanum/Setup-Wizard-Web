@@ -125,6 +125,7 @@ nav.scrolled {
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
+}
 .blueprint-grid {
     position: absolute;
     inset: 0;
