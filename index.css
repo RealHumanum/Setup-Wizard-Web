@@ -300,44 +300,184 @@ nav.scrolled {
     background: var(--border);
 }
 
-/* ===== HERO VISUAL WIDGET (IPHONE FRAME) ===== */
-.hero-widget-mockup {
+/* ===== HERO IPHONE MOCKUP ===== */
+.hero-phone {
+    position: relative;
     width: 320px;
-    height: 620px;
-    background: var(--surface);
+    height: 640px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+.phone-case {
+    width: 100%;
+    height: 100%;
+    background: #0f172a; /* iOS AppTheme.background (Slate 900) */
     border: 12px solid #2a2a30;
-    border-radius: 45px;
-    padding: 24px;
-    padding-top: 60px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 0 0 2px #4a4a55;
-    transform: perspective(1200px) rotateY(-15deg) rotateX(5deg);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 50px;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8), inset 0 0 0 2px #4a4a55;
     position: relative;
     overflow: hidden;
+    transform: rotateY(-15deg) rotateX(5deg);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.hero-widget-mockup::before {
+.hero-phone:hover .phone-case {
+    transform: rotateY(-5deg) rotateX(2deg) translateY(-10px);
+}
+.phone-case::before {
     content: '';
     position: absolute;
-    top: 12px; left: 50%;
+    top: 0; left: 50%;
     transform: translateX(-50%);
-    width: 90px; height: 28px;
+    width: 120px; height: 32px;
     background: #000;
-    border-radius: 20px;
-    z-index: 10;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 100;
 }
-.hero-widget-mockup:hover {
-    transform: perspective(1200px) rotateY(-5deg) rotateX(2deg) translateY(-10px);
+.phone-screen-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 36px;
 }
-.widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.widget-appname { font-size: 0.8rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
-.widget-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 10px var(--green); }
 
-.widget-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; margin-bottom: 12px; }
-.widget-title { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 8px; }
-.widget-val { font-size: 1.6rem; font-weight: 900; color: #fff; }
-.widget-val span { font-size: 1rem; color: var(--green); }
-.widget-bar { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin-top: 10px; overflow: hidden; }
-.widget-fill { height: 100%; background: var(--green); width: 75%; }
+/* iOS Header & Status Bar */
+.ios-status-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.ios-icons { display: flex; gap: 6px; }
+
+.ios-app-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+.ios-app-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+}
+.ios-top-btns { display: flex; gap: 12px; }
+.ios-icon-circle {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--green);
+    font-size: 0.8rem;
+}
+
+/* iOS Cards */
+.ios-scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.ios-card {
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.ios-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.ios-card-tag {
+    font-size: 0.7rem;
+    font-weight: 950;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+}
+
+/* Specific Card: Active Setup */
+.ios-active-setup {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(34, 197, 94, 0.3);
+}
+.ios-edit-circle {
+    width: 24px; height: 24px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+}
+.ios-bike-model { font-size: 1.6rem; font-weight: 900; line-height: 1.2; }
+.ios-setup-name { font-size: 1rem; font-weight: 700; opacity: 0.9; }
+
+/* Surface Cards (Slate 800) */
+.ios-surface {
+    background: #1e293b; /* AppTheme.surface */
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.ios-pressure-grid {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.ios-pressure-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+}
+.ios-pressure-label { font-size: 0.65rem; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+.ios-pressure-value { font-size: 1.2rem; font-weight: 900; color: #fff; }
+.ios-pressure-divider { width: 1px; height: 30px; background: rgba(255,255,255,0.1); }
+
+/* Toggle Row */
+.ios-toggle-row { display: flex; gap: 8px; margin-top: 10px; }
+.ios-toggle {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #94a3b8;
+}
+.ios-toggle.active {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--green);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* Tab Bar */
+.ios-tab-bar {
+    height: 70px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 10px;
+}
+.tab-item { font-size: 1.2rem; color: #94a3b8; opacity: 0.6; }
+.tab-item.active { color: var(--green); opacity: 1; }
 .widget-fill.orange { background: #f59e0b; width: 45%; }
 
 /* ===== SOCIAL PROOF ===== */

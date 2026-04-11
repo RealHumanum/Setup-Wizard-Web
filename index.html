@@ -38,12 +38,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Three.js for 3D Background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="index.css?v=4.0">
+    <link rel="stylesheet" href="index.css?v=6.0">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18011258509"></script>
@@ -132,28 +133,77 @@
             </div>
         </div>
 
-        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
-            <div class="hero-widget-mockup" id="hero-widget">
-                <div class="widget-header">
-                    <span class="widget-appname">Apex Wizard</span>
-                    <div class="widget-dot"></div>
-                </div>
-                <div class="widget-block">
-                    <div class="widget-title">Agility Score</div>
-                    <div class="widget-val">94 <span>+2</span></div>
-                    <div class="widget-bar"><div class="widget-fill"></div></div>
-                </div>
-                <div class="widget-block">
-                    <div class="widget-title">Stability Score</div>
-                    <div class="widget-val">82 <span>-1</span></div>
-                    <div class="widget-bar"><div class="widget-fill orange"></div></div>
-                </div>
-                <div class="widget-block" style="display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; padding: 0;">
-                    <div>
-                        <div class="widget-title">Target Hot Pressure</div>
-                        <div class="widget-val" style="font-size: 1.2rem;">32.0 psi</div>
+        <div class="hero-visual">
+            <!-- Authentic Phone Mockup -->
+            <div class="hero-phone">
+                <div class="phone-case">
+                    <div class="phone-screen-container">
+                        <div class="ios-status-bar">
+                            <span class="ios-time">9:41</span>
+                            <div class="ios-icons">
+                                <i class="fas fa-signal"></i>
+                                <i class="fas fa-wifi"></i>
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="ios-app-nav">
+                            <span class="ios-app-title">Apex Wizard</span>
+                            <div class="ios-top-btns">
+                                <div class="ios-icon-circle"><i class="fas fa-sliders-h"></i></div>
+                                <div class="ios-icon-circle"><i class="fas fa-cog"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="ios-scroll-content">
+                            <!-- Active Setup Card -->
+                            <div class="ios-card ios-active-setup">
+                                <div class="ios-card-header">
+                                    <span class="ios-card-tag">ACTIVE SETUP</span>
+                                    <div class="ios-edit-circle"><i class="fas fa-pencil-alt"></i></div>
+                                </div>
+                                <div class="ios-bike-model">BMW S1000RR</div>
+                                <div class="ios-setup-name">Misano // Q-Run</div>
+                            </div>
+
+                            <!-- Tire Pressure Card -->
+                            <div class="ios-card ios-surface">
+                                <div class="ios-card-header">
+                                    <span class="ios-card-tag" style="color: var(--text-dim);">TIRE PRESSURE (PSI)</span>
+                                </div>
+                                <div class="ios-pressure-grid">
+                                    <div class="ios-pressure-box">
+                                        <span class="ios-pressure-label">FRONT</span>
+                                        <span class="ios-pressure-value">33.5</span>
+                                    </div>
+                                    <div class="ios-pressure-divider"></div>
+                                    <div class="ios-pressure-box">
+                                        <span class="ios-pressure-label">REAR</span>
+                                        <span class="ios-pressure-value">29.0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Electronics Card -->
+                            <div class="ios-card ios-surface">
+                                <div class="ios-card-header">
+                                    <span class="ios-card-tag" style="color: var(--text-dim);">QUICK CHECKS</span>
+                                </div>
+                                <div class="ios-toggle-row">
+                                    <div class="ios-toggle active">TC // 4</div>
+                                    <div class="ios-toggle active">EB // 2</div>
+                                    <div class="ios-toggle">ABS // 0</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ios-tab-bar">
+                            <div class="tab-item active"><i class="fas fa-home"></i></div>
+                            <div class="tab-item"><i class="fas fa-motorcycle"></i></div>
+                            <div class="tab-item"><i class="fas fa-tools"></i></div>
+                            <div class="tab-item"><i class="fas fa-flag-checkered"></i></div>
+                        </div>
                     </div>
-                    <div class="widget-dot" style="background: #3b82f6; box-shadow: 0 0 10px #3b82f6;"></div>
                 </div>
             </div>
         </div>
