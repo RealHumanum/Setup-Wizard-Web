@@ -57,6 +57,8 @@
 
 <body>
     <canvas id="space-canvas"></canvas>
+    <div class="nebula nebula-purple"></div>
+    <div class="nebula nebula-teal"></div>
     
     <!-- Ambient Glow Effects (Kept for depth) -->
     <div class="glow glow-1"></div>
@@ -169,7 +171,7 @@
     </section>
 
     <!-- INTERACTIVE DEMO -->
-    <section id="demo" style="padding: 80px 24px; position: relative; z-index: 1;">
+    <section id="demo" style="padding: 100px 24px; position: relative; z-index: 1; background: transparent !important;">
         <div class="demo-container" data-aos="fade-up">
             <div class="section-header" style="margin-bottom: 40px;">
                 <span class="section-tag">Interactive Preview</span>
@@ -214,72 +216,109 @@
 
         <div class="bento-grid">
             <!-- Feature 1: Troubleshooter -->
-            <div class="bento-card bento-large" data-aos="fade-up">
-                <div class="bento-content">
-                    <span class="bento-icon">🛠️</span>
-                    <h3>Setup Troubleshooter</h3>
-                    <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase (Braking, Turn-in, Mid-corner, Acceleration). It calculates a probabilistic diagnosis and provides clear, step-by-step mechanical fixes that respect your specific bike's limits.</p>
-                </div>
-                <!-- CSS Graphic: Radar Dial -->
-                <div class="css-graphic graphic-dial">
-                    <div class="dial-center"></div>
+            <div class="bento-card bento-huge" data-aos="fade-up">
+                <div class="bento-content horizontal">
+                    <div class="text-wrapper">
+                        <span class="bento-icon">🛠️</span>
+                        <h3>Setup Troubleshooter</h3>
+                        <p>Stop guessing which clicker to turn. Our proprietary diagnostic engine categorizes handling symptoms by corner phase (Braking, Turn-in, Mid-corner, Acceleration). It calculates a probabilistic diagnosis and provides clear, step-by-step mechanical fixes that respect your specific bike's limits.</p>
+                    </div>
+                    <!-- CSS Graphic: Radar Dial -->
+                    <div class="css-graphic graphic-dial">
+                        <div class="dial-center"></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Feature 2: Tire Manager -->
-            <div class="bento-card bento-tall" data-aos="fade-up" data-aos-delay="100">
-                <div class="bento-content">
-                    <span class="bento-icon">🏁</span>
-                    <h3>Tire Manager</h3>
-                    <p>Track the life of your front and rear tires independently. The app computes mileage syncing with your bike's odometer. Instantly cross-reference our database for Hot and Cold targets.</p>
-                </div>
-                <!-- CSS Graphic: Tire Heat Map -->
-                <div class="css-graphic graphic-tire">
-                    <div class="tire-tread"></div>
-                    <div class="tire-tread"></div>
-                    <div class="tire-tread"></div>
+            <div class="bento-card bento-huge" data-aos="fade-up" data-aos-delay="100">
+                <div class="bento-content horizontal reverse">
+                    <div class="text-wrapper">
+                        <span class="bento-icon">🏁</span>
+                        <h3>Tire Manager</h3>
+                        <p>Track the life of your front and rear tires independently. The app computes mileage syncing with your bike's odometer. Instantly cross-reference our database for Hot and Cold targets with precise heat-cycle logging.</p>
+                    </div>
+                    <!-- CSS Graphic: Tire Heat Map -->
+                    <div class="css-graphic graphic-tire-pair">
+                        <div class="graphic-tire">
+                            <span class="tire-label">Front</span>
+                            <div class="tire-tread"></div><div class="tire-tread"></div><div class="tire-tread"></div>
+                        </div>
+                        <div class="graphic-tire rear">
+                            <span class="tire-label">Rear</span>
+                            <div class="tire-tread"></div><div class="tire-tread"></div><div class="tire-tread"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Feature 3: Garage -->
-            <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="bento-content">
-                    <span class="bento-icon">🏍️</span>
-                    <h3>Garage</h3>
-                    <p>Intelligently detect hardware capabilities based on your active bike. Organize setups into Street and Track folders instantly.</p>
+            <div class="bento-card bento-huge" data-aos="fade-up" data-aos-delay="200">
+                <div class="bento-content horizontal">
+                    <div class="text-wrapper">
+                        <span class="bento-icon">🏍️</span>
+                        <h3>Machine Garage</h3>
+                        <p>Intelligently detect hardware capabilities based on your active bike. Organize setups into Street and Track folders instantly. Apex Wizard supports over 115+ factory sportbikes with pre-loaded adjustment ranges.</p>
+                    </div>
+                    <!-- CSS Graphic: Setup Cards -->
+                    <div class="css-graphic graphic-garage">
+                        <div class="setup-card">
+                            <div class="card-dot"></div>
+                            <div class="card-line"></div>
+                            <div class="card-line short"></div>
+                        </div>
+                        <div class="setup-card">
+                            <div class="card-dot"></div>
+                            <div class="card-line"></div>
+                            <div class="card-line short"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Feature 4: Service Hub -->
-            <div class="bento-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="bento-content">
-                    <span class="bento-icon">⚙️</span>
-                    <h3>Service Hub</h3>
-                    <p>Monitor component lifespans automatically across distance, calendar time, and track usage.</p>
-                </div>
-                <!-- CSS Graphic: Health Bars -->
-                <div class="css-graphic graphic-bars">
-                    <div class="health-bar-container"><div class="health-bar-fill" style="width: 80%"></div></div>
-                    <div class="health-bar-container"><div class="health-bar-fill" style="width: 45%"></div></div>
-                    <div class="health-bar-container"><div class="health-bar-fill" style="width: 15%"></div></div>
+            <div class="bento-card bento-huge" data-aos="fade-up" data-aos-delay="300">
+                <div class="bento-content horizontal reverse">
+                    <div class="text-wrapper">
+                        <span class="bento-icon">⚙️</span>
+                        <h3>Service Hub</h3>
+                        <p>Monitor component lifespans automatically across distance, calendar time, and track usage. Never miss a fork oil change or brake fluid flush again with intelligent maintenance alerts.</p>
+                    </div>
+                    <!-- CSS Graphic: Health Bars -->
+                    <div class="css-graphic graphic-bars">
+                        <div class="health-bar-item">
+                            <div class="health-bar-label"><span>Fork Service</span><span>80%</span></div>
+                            <div class="health-bar-container"><div class="health-bar-fill" style="width: 80%"></div></div>
+                        </div>
+                        <div class="health-bar-item">
+                            <div class="health-bar-label"><span>Brake Fluid</span><span>45%</span></div>
+                            <div class="health-bar-container"><div class="health-bar-fill" style="width: 45%"></div></div>
+                        </div>
+                        <div class="health-bar-item">
+                            <div class="health-bar-label"><span>Engine Oil</span><span>15%</span></div>
+                            <div class="health-bar-container"><div class="health-bar-fill" style="width: 15%"></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Feature 5: Track Log -->
-            <div class="bento-card bento-large" data-aos="fade-up">
-                <div class="bento-content">
-                    <span class="bento-icon">⏱️</span>
-                    <h3>Track Log</h3>
-                    <p>Build a comprehensive history of every lap you've ever turned. Sync session data with your active setup and specific tires. Monitor pressure deltas to ensure you operate in the grip sweet spot.</p>
+            <div class="bento-card bento-huge" data-aos="fade-up">
+                <div class="bento-content horizontal">
+                    <div class="text-wrapper">
+                        <span class="bento-icon">⏱️</span>
+                        <h3>Track Log</h3>
+                        <p>Build a comprehensive history of every lap you've ever turned. Sync session data with your active setup and specific tires. Monitor pressure deltas to ensure you operate in the grip sweet spot across all track conditions.</p>
+                    </div>
+                    <!-- CSS Graphic: Track SVG -->
+                    <div class="css-graphic graphic-track" style="position: relative; right: 20px; bottom: 0;"></div>
                 </div>
-                <!-- CSS Graphic: Track SVG -->
-                <div class="css-graphic graphic-track"></div>
             </div>
 
             <!-- Feature 6: Analytics & Fuel -->
             <div class="bento-card bento-huge" data-aos="fade-up" data-aos-delay="100">
-                <div class="bento-content" style="flex-direction: row; gap: 40px; align-items: center;">
-                    <div style="flex: 1;">
+                <div class="bento-content horizontal reverse">
+                    <div class="text-wrapper">
                         <span class="bento-icon">📈</span>
                         <h3>Analytics & Fuel Manager</h3>
                         <p>Perform Head-to-Head comparisons between different suspension setups and spot your fastest records. Calculate the precise fuel volume required to lighten the bike and slice your lap times without running dry.</p>
@@ -297,7 +336,7 @@
     </section>
 
     <!-- BEFORE vs AFTER -->
-    <section id="before-after">
+    <section id="before-after" style="background: transparent !important;">
         <div class="section-header">
             <span class="section-tag">Why Apex Wizard?</span>
             <h2>From Chaos to <span class="text-gradient">Precision.</span></h2>
@@ -327,7 +366,7 @@
     </section>
 
     <!-- HOW IT WORKS -->
-    <section id="how-it-works">
+    <section id="how-it-works" style="background: transparent !important;">
         <div class="section-header">
             <span class="section-tag">How It Works</span>
             <h2>Three Steps to <span class="text-gradient">Your Fastest Lap.</span></h2>
@@ -357,7 +396,7 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section id="testimonials">
+    <section id="testimonials" style="background: transparent !important;">
         <div class="section-header">
             <span class="section-tag">Riders Love It</span>
             <h2>What Track Riders <span class="text-gradient">Are Saying.</span></h2>
@@ -394,7 +433,7 @@
     </section>
 
     <!-- BIKE DATABASE BANNER -->
-    <section class="bike-banner">
+    <section class="bike-banner" style="background: transparent !important;">
         <div class="bike-banner-inner" data-aos="fade-up">
             <div class="bike-banner-text">
                 <h2><span class="text-gradient">115+</span> Factory Sportbikes</h2>
@@ -415,7 +454,7 @@
     </section>
 
     <!-- CTA with QR Code -->
-    <section id="cta">
+    <section id="cta" style="background: transparent !important;">
         <div class="cta-glow"></div>
         <div class="cta-content" data-aos="fade-up">
             <h2>Ready to Find Your <span class="text-gradient">Apex?</span></h2>
