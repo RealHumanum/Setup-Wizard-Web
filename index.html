@@ -58,48 +58,6 @@
 <body>
     <canvas id="space-canvas"></canvas>
     
-    <div class="suspension-background">
-        <div class="suspension-container">
-            <svg class="suspension-svg" viewBox="0 0 400 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- FORK (Left) -->
-                <g id="fork">
-                    <rect id="fork-cap" x="80" y="50" width="40" height="10" rx="2" fill="#d4af37" />
-                    <rect id="fork-upper" x="85" y="60" width="30" height="180" rx="4" fill="url(#goldGradient)" />
-                    <rect id="fork-lower" x="88" y="240" width="24" height="180" rx="2" fill="#e0e0e0" />
-                    <!-- Fork internal parts -->
-                    <g id="fork-internals" opacity="0">
-                        <line x1="100" y1="100" x2="100" y2="250" stroke="#fff" stroke-width="1" />
-                        <path id="fork-spring" d="M90 100 L110 110 L90 120 L110 130 L90 140 L110 150 L90 160 L110 170 L90 180 L110 190" stroke="#00e676" stroke-width="2" />
-                    </g>
-                </g>
-                
-                <!-- SHOCK (Right) -->
-                <g id="shock">
-                    <circle id="shock-eye-top" cx="300" cy="80" r="10" stroke="#fff" stroke-width="2" />
-                    <rect id="shock-body" x="290" y="90" width="20" height="120" rx="2" fill="#c0c0c0" />
-                    <rect id="shock-reservoir" x="315" y="100" width="25" height="40" rx="4" fill="#d4af37" />
-                    <!-- Repeated coils for the shock -->
-                    <g id="shock-spring">
-                        <path class="coil" d="M285 110 Q300 115 315 110" stroke="#00e676" stroke-width="3" fill="none" />
-                        <path class="coil" d="M285 130 Q300 135 315 130" stroke="#00e676" stroke-width="3" fill="none" />
-                        <path class="coil" d="M285 150 Q300 155 315 150" stroke="#00e676" stroke-width="3" fill="none" />
-                        <path class="coil" d="M285 170 Q300 175 315 170" stroke="#00e676" stroke-width="3" fill="none" />
-                        <path class="coil" d="M285 190 Q300 195 315 190" stroke="#00e676" stroke-width="3" fill="none" />
-                    </g>
-                    <circle id="shock-eye-bottom" cx="300" cy="220" r="10" stroke="#fff" stroke-width="2" />
-                </g>
-
-                <defs>
-                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#f9d71c;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-    </div>
-    
     <!-- Ambient Glow Effects (Kept for depth) -->
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
@@ -622,28 +580,20 @@
                 .from('.hero-buttons', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
                 .from('.rating-badge', { y: 15, opacity: 0, duration: 0.6 }, '-=0.4')
                 .from('.hero-stats', { y: 20, opacity: 0, duration: 0.8 }, '-=0.4')
-                .from('.suspension-background', { opacity: 0, duration: 2 }, '-=1.5')
                 .from('.hero-widget-mockup', { x: 100, opacity: 0, duration: 1.2, ease: 'power2.out' }, '-=1');
 
-            // Interactive "Exploded View" Background Animation
-            const suspensionTL = gsap.timeline({
+            // 3D Space Scroll Effect
+            gsap.to(starsMesh.rotation, {
                 scrollTrigger: {
                     trigger: 'body',
                     start: 'top top',
                     end: 'bottom bottom',
-                    scrub: 2
-                }
+                    scrub: 1
+                },
+                y: Math.PI * 0.1,
+                x: Math.PI * 0.05,
+                ease: 'none'
             });
-
-            // Re-arrange: Parts fly horizontally into space
-            suspensionTL.to('#fork', { x: -400, y: -50, rotate: -20, rotateX: 45, scale: 0.7, opacity: 0.4, ease: 'none' }, 0)
-                .to('#shock', { x: 400, y: 50, rotate: 20, rotateX: -45, scale: 0.7, opacity: 0.4, ease: 'none' }, 0)
-                .to('#fork-upper', { y: -100, ease: 'none' }, 0.2)
-                .to('#fork-lower', { y: 100, ease: 'none' }, 0.2)
-                .to('#fork-internals', { opacity: 1, scaleY: 1.2, ease: 'none' }, 0.3)
-                .to('#shock-eye-top', { y: -80, opacity: 0.5, ease: 'none' }, 0.2)
-                .to('#shock-eye-bottom', { y: 80, opacity: 0.5, ease: 'none' }, 0.2)
-                .to('#shock-spring .coil', { y: (i) => (i - 2) * 20, ease: 'none' }, 0.3);
 
             // Stat counter animation
             document.querySelectorAll('.stat-number[data-target]').forEach(el => {
