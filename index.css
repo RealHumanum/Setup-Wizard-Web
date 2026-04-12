@@ -586,6 +586,7 @@ nav.scrolled {
     align-items: center;
     justify-content: center;
     min-height: 160px; /* Airtight compaction for 600px symmetry */
+    margin: 0 auto;
 }
 /* 3D HUD TRACK VISUALIZATION */
 .hud-track-visualization {
@@ -1238,7 +1239,7 @@ nav.scrolled {
 @keyframes morph { 0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } 50% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; } 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; } }
 
 /* Tire Manager: Dual Heat Map */
-.graphic-tire-pair { display: flex; gap: 40px; align-items: center; margin-top: 40px; position: relative; }
+.graphic-tire-pair { display: flex; gap: 40px; align-items: center; margin-top: 40px; justify-content: center; width: 100%; position: relative; }
 .graphic-tire { width: 70px; height: 180px; border-radius: 35px; background: linear-gradient(0deg, #1e1e24 0%, #1e1e24 40%, rgba(245, 158, 11,0.4) 70%, rgba(0, 230, 118, 0.4) 100%); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; position: relative; bottom: 0; right: 0; }
 .graphic-tire.rear { width: 90px; height: 180px; background: linear-gradient(0deg, #1e1e24 0%, #1e1e24 30%, rgba(239, 68, 68,0.4) 60%, rgba(0, 230, 118, 0.4) 100%); }
 .tire-tread { width: 50%; height: 1px; background: rgba(255,255,255,0.05); }
@@ -1262,9 +1263,10 @@ nav.scrolled {
 .card-line { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; width: 100%; }
 .card-line.short { width: 60%; }
 .card-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-.graphic-garage-container { margin-top: 50px; }
-.service-items-grid { margin-top: 25px; display: flex; flex-direction: column; gap: 12px; }
-.graphic-fuel { margin-top: 40px; }
+.graphic-garage-container { margin-top: 50px; display: flex; justify-content: center; width: 100%; }
+.service-items-grid { margin-top: 25px; display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%; }
+.service-item-row { width: 100%; max-width: 320px; } /* Anchor width for centering */
+.graphic-fuel { margin-top: 40px; display: flex; justify-content: center; width: 100%; }
 
 @media (max-width: 1024px) {
     .feature-row, .feature-row.row-reverse {
