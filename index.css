@@ -1148,6 +1148,11 @@ nav.scrolled {
         gap: 16px;
         padding: 0 16px;
     }
+    .bento-card {
+        height: auto !important;
+        min-height: 500px;
+        padding: 20px;
+    }
 }
 
 /* ===== AGGRESSIVE HUD CARDS ===== */
