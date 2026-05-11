@@ -585,7 +585,7 @@ nav.scrolled {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 160px; /* Airtight compaction for 600px symmetry */
+    min-height: 140px; /* Compacted for 640px symmetry capacity */
     margin: 0 auto;
 }
 /* 3D HUD TRACK VISUALIZATION */
@@ -1168,7 +1168,7 @@ nav.scrolled {
     justify-content: flex-start;
     gap: 12px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
-    height: 600px; /* Master Symmetry Height (MSH) */
+    height: 640px; /* Master Symmetry Height (MSH) - v22.0 Optimized */
 }
 
 /* Grid Layout Spans */
