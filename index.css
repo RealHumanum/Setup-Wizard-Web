@@ -1910,3 +1910,179 @@ footer {
     .telemetry-grid { max-width: 1600px; }
     .bento-card { padding: 80px; }
 }
+
+/* ===== PATREON SUPPORT SECTION ===== */
+.patreon-section {
+    padding: 100px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.patreon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+    align-items: stretch;
+}
+.patreon-card {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.patreon-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 230, 118, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 230, 118, 0.05);
+}
+.patreon-card.premium-tier {
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    background: rgba(249, 115, 22, 0.03);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.02);
+}
+.patreon-card.premium-tier:hover {
+    border-color: #f97316;
+    box-shadow: 0 20px 40px rgba(249, 115, 22, 0.08);
+}
+.tier-badge {
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-dim);
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+.tier-badge.orange-badge {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+    border: 1px solid rgba(249, 115, 22, 0.2);
+}
+.patreon-card h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+.tier-price {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+.tier-price span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dim);
+}
+.patreon-card.premium-tier .tier-price {
+    color: #f97316;
+}
+.tier-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 30px;
+    text-align: center;
+    min-height: 54px;
+}
+.tier-perks {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 24px;
+}
+.tier-perks li {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+}
+.tier-perks li strong {
+    color: #fff;
+}
+.tier-perks li i {
+    color: var(--green);
+    margin-top: 3px;
+    font-size: 0.8rem;
+}
+.patreon-card.premium-tier .tier-perks li i {
+    color: #f97316;
+}
+.patreon-cta-container {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+.btn-patreon {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #f97316;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.25);
+}
+.btn-patreon:hover {
+    transform: translateY(-3px);
+    background: #ea580c;
+    box-shadow: 0 15px 40px rgba(249, 115, 22, 0.45);
+}
+.btn-patreon i {
+    font-size: 1.15rem;
+}
+.patreon-disclaimer {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    max-width: 450px;
+    line-height: 1.4;
+}
+
+/* Nav Link */
+.nav-patreon-link {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    margin-right: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.nav-patreon-link:hover {
+    color: #f97316;
+}
+.nav-patreon-link i {
+    font-size: 0.95rem;
+}
