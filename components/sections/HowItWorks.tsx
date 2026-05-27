@@ -2,28 +2,57 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 
 const STEPS = [
-  { n: "01", title: "Add Your Bike", desc: "Pick from 115+ factory sportbikes or build a custom profile. Define every adjustment range your suspension offers." },
-  { n: "02", title: "Log Your Setup", desc: "Record every clicker position, preload setting, sag measurement and tire pressure before you roll onto the track." },
-  { n: "03", title: "Diagnose & Improve", desc: "Use the Troubleshooter or compare sessions with analytics. Know exactly what to change and why." },
+  {
+    n: "01",
+    title: "Add Your Bike",
+    desc: "Pick from 115+ factory sportbikes or build a custom profile. Define every adjustment range your suspension offers.",
+  },
+  {
+    n: "02",
+    title: "Log Your Setup",
+    desc: "Record every clicker position, preload setting, sag measurement and tire pressure before you roll onto the track.",
+  },
+  {
+    n: "03",
+    title: "Diagnose & Improve",
+    desc: "Use the Troubleshooter or compare sessions with analytics. Know exactly what to change and why.",
+  },
 ];
 
 export function HowItWorks() {
   return (
-    <section className="relative px-6 py-20">
-      <div className="mx-auto max-w-5xl">
+    <section id="how-it-works" className="relative px-6 py-24">
+      <div className="mx-auto max-w-6xl">
         <SectionHeader
           tag="How It Works"
-          title={<>Three Steps to <span className="aw-gradient-text">Your Fastest Lap.</span></>}
+          title={
+            <>
+              Three Steps to{" "}
+              <span className="aw-gradient-text">Your Fastest Lap.</span>
+            </>
+          }
         />
-        <div className="grid gap-6 md:grid-cols-3">
+
+        <div className="relative grid gap-6 md:grid-cols-3">
+          <div className="pointer-events-none absolute inset-x-12 top-12 hidden h-px bg-gradient-to-r from-transparent via-[var(--color-primary)]/30 to-transparent md:block" />
+
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.1}>
-              <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-                <span className="font-mono text-4xl font-extrabold text-[var(--color-primary-dim)]">
+              <div className="group relative h-full overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)]/70 p-8 backdrop-blur transition-all hover:-translate-y-1 hover:border-[var(--color-border-bright)]">
+                <div className="pointer-events-none absolute -top-12 -right-8 select-none font-mono text-[7rem] font-black leading-none text-[var(--color-primary)]/[0.04]">
                   {s.n}
-                </span>
-                <h3 className="mt-3 text-lg font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm text-[var(--color-text-dim)]">{s.desc}</p>
+                </div>
+                <div className="relative">
+                  <span className="inline-flex size-12 items-center justify-center rounded-2xl border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 font-mono text-base font-extrabold text-[var(--color-primary)]">
+                    {s.n}
+                  </span>
+                  <h3 className="mt-5 text-xl font-extrabold leading-tight">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-dim)]">
+                    {s.desc}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}

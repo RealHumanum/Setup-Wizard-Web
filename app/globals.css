@@ -44,7 +44,25 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.005em;
+  background-image:
+    radial-gradient(
+      circle at 20% -10%,
+      oklch(78% 0.2 152 / 0.07),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 110%,
+      oklch(72% 0.19 55 / 0.05),
+      transparent 50%
+    );
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
 }
 
 /* Ambient radial glow used behind hero / sections */

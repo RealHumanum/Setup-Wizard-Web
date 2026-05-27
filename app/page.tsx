@@ -1,6 +1,5 @@
 import { TftHeader } from "@/components/TftHeader";
-import { PitLaneChecklist } from "@/components/PitLaneChecklist";
-import { Sandbox } from "@/components/sections/Sandbox";
+import { SocialProof } from "@/components/sections/SocialProof";
 import { Features } from "@/components/sections/Features";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -13,8 +12,7 @@ export default function Home() {
   return (
     <main>
       <TftHeader />
-      <Sandbox />
-      <PitLaneChecklist />
+      <SocialProof />
       <Features />
       <BeforeAfter />
       <HowItWorks />
