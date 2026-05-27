@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/*
+  Apex Wizard HMI theme — high-contrast carbon dark theme with fluorescent
+  telemetry green + safety orange accents, tuned for glanceability in sunlight.
+  All colors authored in OKLCh for consistent luminance across screens.
+*/
+@theme {
+  --color-bg: oklch(12% 0.01 250);
+  --color-surface: oklch(18% 0.02 250);
+  --color-surface-2: oklch(22% 0.02 250);
+  --color-border: oklch(28% 0.02 250);
+  --color-border-bright: oklch(45% 0.08 152);
+
+  --color-primary: oklch(78% 0.2 152);
+  --color-primary-dim: oklch(78% 0.2 152 / 12%);
+  --color-primary-foreground: oklch(15% 0.02 152);
+
+  --color-warning: oklch(72% 0.19 55);
+  --color-warning-dim: oklch(72% 0.19 55 / 12%);
+
+  --color-danger: oklch(63% 0.22 25);
+
+  --color-text: oklch(98% 0 0);
+  --color-text-dim: oklch(72% 0.02 250);
+  --color-text-muted: oklch(50% 0.02 250);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+
+  --radius: 1rem;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-osx-font-smoothing: grayscale;
+}
+
+/* Ambient radial glow used behind hero / sections */
+.aw-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aw-gradient-text {
+  background: linear-gradient(
+    90deg,
+    oklch(82% 0.2 152),
+    oklch(88% 0.18 175),
+    oklch(80% 0.16 200)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
