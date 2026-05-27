@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { DownloadButtons } from "@/components/DownloadButtons";
 import { UnitToggleBar } from "@/components/UnitToggleBar";
+import { PhoneMockup } from "@/components/PhoneMockup";
 
 function Clock() {
   const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
-    // Mount-only: render a placeholder on the server, then start the clock
-    // client-side to avoid a hydration mismatch on the live time string.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setNow(new Date());
     const t = setInterval(() => setNow(new Date()), 1000);
@@ -42,28 +41,40 @@ export function TftHeader() {
             <Clock />
           </div>
 
-          <div className="px-6 py-10 sm:px-10 sm:py-14">
-            <Badge>The Expert in Your Pocket</Badge>
-            <h1 className="mt-5 font-mono text-4xl font-extrabold leading-tight sm:text-6xl">
-              Stop Guessing.
-              <br />
-              Own the <span className="aw-gradient-text">Track.</span>
-            </h1>
-            <p className="mt-5 max-w-2xl text-base text-[var(--color-text-dim)] sm:text-lg">
-              Professional suspension logbook and expert diagnostic engine. Track settings,
-              analyze telemetry, and eliminate guesswork with data-driven precision.
-            </p>
-
-            <div className="mt-8">
-              <DownloadButtons />
-            </div>
-
-            <div className="mt-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)]/40 p-4">
-              <p className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-                Sandbox Unit System
+          <div className="grid items-center gap-10 px-6 py-10 sm:px-10 sm:py-14 lg:grid-cols-[1.15fr_1fr]">
+            <div>
+              <Badge>The Expert in Your Pocket</Badge>
+              <h1 className="mt-5 font-mono text-4xl font-extrabold leading-tight sm:text-6xl">
+                Stop Guessing.
+                <br />
+                Own the <span className="aw-gradient-text">Track.</span>
+              </h1>
+              <p className="mt-5 max-w-2xl text-base text-[var(--color-text-dim)] sm:text-lg">
+                Professional suspension logbook and expert diagnostic engine. Track settings,
+                analyze telemetry, and eliminate guesswork with data-driven precision.
               </p>
-              <UnitToggleBar />
+
+              <div className="mt-8">
+                <DownloadButtons />
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)]/40 p-4">
+                <p className="mb-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                  Sandbox Unit System
+                </p>
+                <UnitToggleBar />
+              </div>
             </div>
+
+            <div className="hidden justify-center lg:flex">
+              <PhoneMockup />
+            </div>
+          </div>
+
+          {/* Mobile phone — placed below copy so the hero still
+              shows the visual on small screens without crowding. */}
+          <div className="flex justify-center px-6 pb-10 lg:hidden">
+            <PhoneMockup />
           </div>
         </div>
       </div>
