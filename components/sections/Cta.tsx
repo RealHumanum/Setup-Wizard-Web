@@ -3,8 +3,9 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { DownloadButtons } from "@/components/DownloadButtons";
 import { CONTACT_EMAIL, APP_STORE_URL, PLAY_STORE_URL } from "@/lib/constants";
 
-const QR = (data: string) =>
-  `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(data)}`;
+// QR codes are pre-generated at build time into public/assets/ to drop the
+// two extra cross-origin HTTPS handshakes the old api.qrserver.com calls
+// added to the CTA.
 
 export function Cta() {
   return (
@@ -46,10 +47,11 @@ export function Cta() {
             >
               <div className="rounded-2xl border border-[var(--color-border)] bg-white p-2 transition-transform group-hover:scale-105">
                 <Image
-                  src={QR(APP_STORE_URL)}
+                  src="/assets/qr-ios.png"
                   alt="iOS App Store QR"
                   width={160}
                   height={160}
+                  loading="lazy"
                   unoptimized
                 />
               </div>
@@ -65,10 +67,11 @@ export function Cta() {
             >
               <div className="rounded-2xl border border-[var(--color-border)] bg-white p-2 transition-transform group-hover:scale-105">
                 <Image
-                  src={QR("https://play.google.com/store/apps/details?id=com.apexwizard.app")}
+                  src="/assets/qr-android.png"
                   alt="Android QR"
                   width={160}
                   height={160}
+                  loading="lazy"
                   unoptimized
                 />
               </div>

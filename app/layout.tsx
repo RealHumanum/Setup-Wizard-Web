@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import "katex/dist/katex.min.css";
 import { Analytics } from "@/components/Analytics";
 import { Starfield } from "@/components/Starfield";
 import { Navbar } from "@/components/Navbar";
