@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Motorcycle Suspension Tuning Guide | Apex Wizard",
   description:
     "Master sag, rebound and compression damping to drop lap times. A practical motorcycle suspension tuning guide.",
+  alternates: { canonical: "/tuning-guide" },
 };
 
 export default function TuningGuidePage() {
