@@ -9,7 +9,7 @@ import { CONTACT_EMAIL, APP_STORE_URL, PLAY_STORE_URL } from "@/lib/constants";
 
 export function Cta() {
   return (
-    <section id="cta" className="relative overflow-hidden px-6 py-28">
+    <section id="cta" className="relative overflow-hidden px-6 py-16">
       <div
         className="aw-glow size-[700px] bg-[var(--color-primary)]"
         style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)", opacity: 0.18 }}

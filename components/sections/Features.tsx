@@ -63,7 +63,7 @@ const PHASE_LABEL: Record<Phase, string> = {
 
 export function Features() {
   return (
-    <section id="features" className="relative px-6 py-20">
+    <section id="features" className="relative px-6 py-12">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           tag="Powerful Intelligence"
