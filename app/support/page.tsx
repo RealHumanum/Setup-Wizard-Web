@@ -7,6 +7,7 @@ import { CONTACT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Rider Support | Apex Wizard",
   description: "Get help with Apex Wizard — custom bikes, backups, and clicker vs turns explained.",
+  alternates: { canonical: "/support" },
 };
 
 const FAQ = [

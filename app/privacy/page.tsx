@@ -5,6 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Privacy Policy | Apex Wizard",
   description: "How Apex Wizard handles your data: local-first app, transparent web analytics.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

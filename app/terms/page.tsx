@@ -5,6 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Terms of Service & Disclaimer | Apex Wizard",
   description: "Terms of Service, track-safety disclaimer and liability limitations for Apex Wizard.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

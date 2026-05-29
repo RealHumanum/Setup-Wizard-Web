@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/Analytics";
@@ -38,6 +38,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Adrian Dokoza" }],
   icons: { icon: "/assets/favicon.png", apple: "/assets/favicon.png" },
+  appleWebApp: {
+    capable: true,
+    title: "Apex Wizard",
+    statusBarStyle: "black-translucent",
+  },
   openGraph: {
     type: "website",
     title: "Apex Wizard — Pro Motorcycle Suspension Logbook",
@@ -53,6 +58,11 @@ export const metadata: Metadata = {
     description: "Stop guessing in the pits. 115+ bikes, 7 smart modules, 100% free.",
     images: ["/assets/hero 2.png"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0d12",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

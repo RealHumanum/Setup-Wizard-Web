@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { TftHeader } from "@/components/TftHeader";
 import { SocialProof } from "@/components/sections/SocialProof";
 import { Features } from "@/components/sections/Features";
@@ -7,6 +8,10 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { BikeBanner } from "@/components/sections/BikeBanner";
 import { Patreon } from "@/components/sections/Patreon";
 import { Cta } from "@/components/sections/Cta";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
