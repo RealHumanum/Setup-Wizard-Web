@@ -22,7 +22,7 @@ const REVIEWS = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative px-6 py-24">
+    <section id="testimonials" className="relative px-6 py-12">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           tag="Riders Love It"

@@ -13,7 +13,7 @@ const BRANDS = [
 
 export function BikeBanner() {
   return (
-    <section className="relative px-6 py-24">
+    <section className="relative px-6 py-12">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-border-bright)] bg-[var(--color-surface)] p-10 sm:p-14">
