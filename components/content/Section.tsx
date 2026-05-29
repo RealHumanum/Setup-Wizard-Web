@@ -31,7 +31,7 @@ export function Section({
           <LinkIcon className="size-4 text-[var(--color-text-muted)]" />
         </a>
       </h2>
-      <div className="mt-4 space-y-4 leading-relaxed text-[var(--color-text-dim)] [&_a]:text-[var(--color-primary)] [&_a:hover]:brightness-110 [&_h3]:mt-6 [&_h3]:font-mono [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[var(--color-text)] [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-[var(--color-text)] [&_ul]:space-y-2.5">
+      <div className="mt-4 space-y-4 leading-relaxed text-[var(--color-text-dim)] [&_p_a]:text-[var(--color-primary)] [&_p_a:hover]:brightness-110 [&_li_a]:text-[var(--color-primary)] [&_li_a:hover]:brightness-110 [&_h3]:mt-6 [&_h3]:font-mono [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-[var(--color-text)] [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-[var(--color-text)] [&_ul]:space-y-2.5">
         {children}
       </div>
     </section>

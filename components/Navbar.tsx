@@ -43,8 +43,12 @@ export function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
         <Link
           href="/"
-          className="font-mono text-lg font-extrabold tracking-tight"
+          aria-label="Apex Wizard home"
+          className="flex items-center gap-2 font-mono text-xl font-extrabold tracking-tight text-white drop-shadow-[0_0_10px_oklch(78%_0.2_152/0.5)] sm:text-2xl"
         >
+          <span className="relative inline-flex size-7 items-center justify-center rounded-md bg-[var(--color-primary)]/15 ring-1 ring-[var(--color-primary)]/40">
+            <span className="text-[0.95rem] font-black text-[var(--color-primary)]">A</span>
+          </span>
           Apex<span className="text-[var(--color-primary)]"> Wizard</span>
         </Link>
         <div className="flex items-center gap-2 sm:gap-3">
