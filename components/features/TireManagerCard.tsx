@@ -2,321 +2,178 @@
 
 import { BentoCard } from "./BentoCard";
 
-// Tire Manager card — three stacked pieces:
-//   A) horizontal tread cross-section showing INSIDE / CENTER / OUTSIDE zones
-//      (shoulders run hotter than the centre — real cornering thermals)
-//   B) inline SVG heat-cycle line chart with operating-window band and an
-//      animated "current lap" cursor sweeping the session
-//   C) compact spec strip (pressure / compound / cycle)
-// Pure CSS animation, no JS state, no effects.
+// Tire Manager — front + rear tire heat visualisation with a realistic
+// warm-up animation. Each tire starts cold (blue) and warms up: the centre
+// stays cooler while the shoulders (edges) climb into orange/red when hot.
+// No session trace — just the live tires.
 export function TireManagerCard() {
-  // --- Chart geometry (viewBox units) ---
-  const W = 220;
-  const H = 70;
-  const PADL = 4;
-  const PADR = 4;
-  const PADT = 4;
-  const PADB = 8;
-  const chartW = W - PADL - PADR;
-  const chartH = H - PADT - PADB;
-
-  // Temperature scale: 20 °C (bottom) → 120 °C (top)
-  const TMIN = 20;
-  const TMAX = 120;
-  const tempY = (t: number) => PADT + (1 - (t - TMIN) / (TMAX - TMIN)) * chartH;
-
-  // 18-lap session: cold start, steep warm-up, plateau in 90–105 °C, slight cool-down
-  const laps: number[] = [
-    30, // L0 paddock
-    58, // L1 out-lap
-    82, // L2 warm-up
-    93, // L3
-    99, // L4 plateau start
-    102, // L5
-    104, // L6
-    103, // L7
-    105, // L8
-    104, // L9
-    102, // L10
-    103, // L11
-    101, // L12
-    102, // L13
-    100, // L14
-    97, // L15 cool-down begins
-    90, // L16
-    82, // L17 in-lap
-  ];
-  const lapX = (i: number) => PADL + (i / (laps.length - 1)) * chartW;
-
-  const pathD = laps
-    .map((t, i) => `${i === 0 ? "M" : "L"} ${lapX(i).toFixed(2)} ${tempY(t).toFixed(2)}`)
-    .join(" ");
-
-  // Operating-window band (80–110 °C)
-  const bandTop = tempY(110);
-  const bandBottom = tempY(80);
-  const bandH = bandBottom - bandTop;
-
   return (
     <BentoCard
       title="Tire Manager"
       desc="Log heat-cycles, wear patterns and pressure targets. Sync with global track databases for precise cold/hot baseline settings."
     >
       <style>{`
-        @keyframes aw-tm-shoulder {
-          0%, 100% { opacity: 0.85; }
-          50%      { opacity: 1; }
+        /* Warm-up cycle: cold -> up to operating/hot -> cools -> repeat.
+           We cross-fade a cold-blue base with a warmed shoulder gradient. */
+        @keyframes aw-tire-warm {
+          0%   { opacity: 0; }
+          45%  { opacity: 1; }
+          80%  { opacity: 1; }
+          100% { opacity: 0; }
         }
-        @keyframes aw-tm-cursor {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(${chartW}px); }
+        /* Subtle breathing on the hot shoulders so the heat feels alive. */
+        @keyframes aw-tire-shoulder {
+          0%, 100% { opacity: 0.0; }
+          50%      { opacity: 0.55; }
         }
-        @keyframes aw-tm-livedot {
-          0%, 100% { opacity: 0.55; }
-          50%      { opacity: 1; }
+        @keyframes aw-tire-dot {
+          0%, 100% { opacity: 1; }
+          50%      { opacity: 0.3; }
         }
-        .aw-tm-shoulder { animation: aw-tm-shoulder 2.4s ease-in-out infinite; }
-        .aw-tm-cursor   { animation: aw-tm-cursor 6s linear infinite; transform-box: fill-box; }
-        .aw-tm-livedot  { animation: aw-tm-livedot 1.8s ease-in-out infinite; }
+        .aw-tm-warm     { animation: aw-tire-warm 7s ease-in-out infinite; }
+        .aw-tm-warm-r   { animation: aw-tire-warm 7s ease-in-out infinite; animation-delay: -0.9s; }
+        .aw-tm-shoulder { animation: aw-tire-shoulder 7s ease-in-out infinite; }
+        .aw-tm-shoulder-r { animation: aw-tire-shoulder 7s ease-in-out infinite; animation-delay: -0.9s; }
+        .aw-tm-dot      { animation: aw-tire-dot 1.8s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .aw-tm-warm, .aw-tm-warm-r, .aw-tm-shoulder, .aw-tm-shoulder-r, .aw-tm-dot {
+            animation: none;
+          }
+          .aw-tm-warm, .aw-tm-warm-r { opacity: 1; }
+        }
       `}</style>
 
-      <div className="flex flex-1 flex-col gap-4">
-        {/* Status strip */}
-        <div className="mt-1 flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-[0.22em] text-[var(--color-text-muted)]">
-          <span className="inline-flex items-center gap-1.5">
-            <span
-              aria-hidden="true"
-              className="aw-tm-livedot inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]"
-              style={{ boxShadow: "0 0 8px var(--color-primary)" }}
-            />
-            <span className="tabular-nums">Live · Corner 12</span>
-          </span>
-          <span className="rounded-md border border-[var(--color-border-bright)] bg-[var(--color-surface-2)] px-2 py-[3px] tabular-nums tracking-wider text-[var(--color-text-dim)]">
-            REAR · SOFT
-          </span>
-        </div>
+      {/* Status strip */}
+      <div className="mt-1 flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
+        <span className="flex items-center gap-1.5">
+          <span
+            className="aw-tm-dot inline-block size-1.5 rounded-full bg-[var(--color-primary)]"
+            style={{ boxShadow: "0 0 8px var(--color-primary)" }}
+            aria-hidden="true"
+          />
+          Live · Lap 14
+        </span>
+        <span className="text-[var(--color-text-dim)]">SLICK · WARMERS OFF</span>
+      </div>
 
-        {/* A. 3-zone temperature readout */}
+      {/* Tires */}
+      <div className="relative mt-3 flex flex-1 items-center justify-center gap-8">
+        <Tire label="FRONT" width={64} tempC={86} pressureBar={1.95} />
+        <Tire label="REAR" width={92} tempC={104} pressureBar={1.75} rear />
+      </div>
+
+      {/* Legend */}
+      <div className="mt-3 flex items-center justify-between gap-3 font-mono text-[0.58rem] uppercase tracking-wider text-[var(--color-text-muted)]">
+        <span>Cold</span>
         <div
-          role="img"
-          aria-label="Rear tire temperature: inside shoulder 95 degrees, center 88 degrees, outside shoulder 108 degrees"
-          className="rounded-xl border border-[var(--color-border-bright)] bg-[var(--color-surface-2)] p-3"
-        >
-          <div className="mb-2 flex items-center justify-between font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-            <span>Tread Section</span>
-            <span className="tabular-nums text-[var(--color-text-dim)]">°C</span>
-          </div>
-          <div className="flex items-end gap-2" aria-hidden="true">
-            <TreadZone label="INSIDE" tempC={95} />
-            <TreadZone label="CENTER" tempC={88} />
-            <TreadZone label="OUTSIDE" tempC={108} pulse />
-          </div>
-        </div>
-
-        {/* B. Heat-cycle line chart */}
-        <div className="rounded-xl border border-[var(--color-border-bright)] bg-[var(--color-surface-2)] p-3">
-          <div className="mb-1 flex items-center justify-between font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-            <span>Session Thermal Trace</span>
-            <span className="tabular-nums text-[var(--color-text-dim)]">20 – 120 °C</span>
-          </div>
-          <svg
-            viewBox={`0 0 ${W} ${H}`}
-            preserveAspectRatio="none"
-            role="img"
-            aria-label="Tire temperature across 18 laps: cold start, warm-up, plateau in operating window, cool-down"
-            className="block h-[88px] w-full overflow-visible"
-          >
-            {/* Operating window band 80–110 °C */}
-            <rect
-              x={PADL}
-              y={bandTop}
-              width={chartW}
-              height={bandH}
-              fill="var(--color-primary)"
-              opacity={0.12}
-              aria-hidden="true"
-            />
-            {/* Band edge lines */}
-            <line
-              x1={PADL}
-              x2={PADL + chartW}
-              y1={bandTop}
-              y2={bandTop}
-              stroke="var(--color-primary)"
-              strokeWidth={0.4}
-              strokeDasharray="2 2"
-              opacity={0.45}
-              aria-hidden="true"
-            />
-            <line
-              x1={PADL}
-              x2={PADL + chartW}
-              y1={bandBottom}
-              y2={bandBottom}
-              stroke="var(--color-primary)"
-              strokeWidth={0.4}
-              strokeDasharray="2 2"
-              opacity={0.45}
-              aria-hidden="true"
-            />
-
-            {/* Trace curve */}
-            <path
-              d={pathD}
-              fill="none"
-              stroke="var(--color-text)"
-              strokeWidth={1.2}
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              aria-hidden="true"
-            />
-
-            {/* Lap dots */}
-            {laps.map((t, i) => {
-              const inWindow = t >= 80 && t <= 110;
-              const hot = t > 105;
-              const color = hot
-                ? "var(--color-warning)"
-                : inWindow
-                  ? "var(--color-primary)"
-                  : "oklch(70% 0.18 250)";
-              return (
-                <circle
-                  key={i}
-                  cx={lapX(i)}
-                  cy={tempY(t)}
-                  r={1.2}
-                  fill={color}
-                  aria-hidden="true"
-                />
-              );
-            })}
-
-            {/* Animated current-lap cursor */}
-            <g className="aw-tm-cursor" aria-hidden="true">
-              <line
-                x1={PADL}
-                x2={PADL}
-                y1={PADT}
-                y2={PADT + chartH}
-                stroke="var(--color-text)"
-                strokeWidth={0.8}
-                opacity={0.85}
-              />
-              <circle
-                cx={PADL}
-                cy={PADT + chartH * 0.5}
-                r={1.6}
-                fill="var(--color-text)"
-                opacity={0.9}
-              />
-            </g>
-          </svg>
-          <div className="mt-1 flex items-center justify-between font-mono text-[0.55rem] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-            <span className="tabular-nums">HEAT CYCLE · L7 / 18</span>
-            <span className="inline-flex items-center gap-1.5">
-              <span
-                aria-hidden="true"
-                className="inline-block h-1.5 w-3 rounded-sm"
-                style={{ background: "var(--color-primary)", opacity: 0.35 }}
-              />
-              <span className="tabular-nums">OP. 80 – 110</span>
-            </span>
-          </div>
-        </div>
-
-        {/* C. Spec strip */}
-        <div className="mt-auto flex items-stretch gap-2 font-mono text-[0.6rem] tabular-nums uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
-          <SpecCell label="Pressure" value="1.95" unit="bar" />
-          <SpecCell label="Compound" value="SOFT" />
-          <SpecCell label="Cycle" value="3 / 5" />
-        </div>
+          className="h-1.5 flex-1 rounded-full"
+          style={{
+            background:
+              "linear-gradient(90deg, oklch(70% 0.18 250), var(--color-primary), var(--color-warning), var(--color-danger))",
+          }}
+          aria-hidden="true"
+        />
+        <span>Hot</span>
       </div>
     </BentoCard>
   );
 }
 
-function TreadZone({
+function Tire({
   label,
+  width,
   tempC,
-  pulse,
+  pressureBar,
+  rear,
 }: {
   label: string;
+  width: number;
   tempC: number;
-  pulse?: boolean;
+  pressureBar: number;
+  rear?: boolean;
 }) {
-  // Color by temperature window
-  const color =
-    tempC > 105
-      ? "var(--color-warning)"
-      : tempC >= 80
-        ? "var(--color-primary)"
-        : "oklch(70% 0.18 250)";
+  // Across the tire WIDTH: cool centre, hot shoulders (edges). Rear leans
+  // hotter so its shoulders push further into red.
+  const warmGradient = rear
+    ? "linear-gradient(90deg, var(--color-danger) 0%, var(--color-warning) 16%, var(--color-primary) 42%, var(--color-primary) 58%, var(--color-warning) 84%, var(--color-danger) 100%)"
+    : "linear-gradient(90deg, var(--color-warning) 0%, var(--color-primary) 30%, oklch(72% 0.16 200) 50%, var(--color-primary) 70%, var(--color-warning) 100%)";
 
-  // Bar fill: map 60 °C → 0%, 120 °C → 100% within the cell
-  const pct = Math.max(8, Math.min(100, ((tempC - 60) / (120 - 60)) * 100));
+  // Extra hot-shoulder flare that breathes on top.
+  const shoulderFlare =
+    "linear-gradient(90deg, var(--color-danger) 0%, transparent 22%, transparent 78%, var(--color-danger) 100%)";
 
   return (
-    <div className="flex flex-1 flex-col items-stretch gap-1">
-      <div
-        aria-hidden="true"
-        className="relative h-[58px] overflow-hidden rounded-md border border-[var(--color-border)] bg-[var(--color-surface)]"
-      >
-        {/* Subtle horizontal tread groove */}
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2"
-          style={{ background: "rgba(0,0,0,0.35)" }}
-        />
-        {/* Heat fill */}
-        <span
-          aria-hidden="true"
-          className={"absolute inset-x-0 bottom-0 " + (pulse ? "aw-tm-shoulder" : "")}
-          style={{
-            height: `${pct}%`,
-            background: `linear-gradient(180deg, ${color} 0%, ${color} 60%, color-mix(in oklab, ${color} 60%, transparent) 100%)`,
-            boxShadow: pulse
-              ? `0 0 14px -2px ${color}, inset 0 1px 0 color-mix(in oklab, ${color} 80%, white)`
-              : `inset 0 1px 0 color-mix(in oklab, ${color} 80%, white)`,
-          }}
-        />
-      </div>
-      <div className="flex items-baseline justify-between">
-        <span className="font-mono text-[0.52rem] tracking-[0.18em] text-[var(--color-text-muted)]">
-          {label}
-        </span>
-        <span
-          className="font-mono text-[0.72rem] font-semibold leading-none tabular-nums"
-          style={{ color }}
-        >
-          {tempC}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function SpecCell({
-  label,
-  value,
-  unit,
-}: {
-  label: string;
-  value: string;
-  unit?: string;
-}) {
-  return (
-    <div className="flex flex-1 flex-col gap-0.5 rounded-md border border-[var(--color-border)] bg-[var(--color-surface-2)] px-2 py-1.5">
-      <span className="text-[0.5rem] tracking-[0.22em] text-[var(--color-text-muted)]">
+    <div className="flex flex-col items-center gap-2">
+      <span className="font-mono text-[0.58rem] uppercase tracking-[0.22em] text-[var(--color-text-muted)]">
         {label}
       </span>
-      <span className="text-[0.7rem] font-semibold tabular-nums text-[var(--color-text)]">
-        {value}
-        {unit ? (
-          <span className="ml-1 text-[0.5rem] font-normal text-[var(--color-text-muted)]">
-            {unit}
+
+      <div
+        role="img"
+        aria-label={`${label} tire ${tempC} degrees celsius`}
+        className="relative overflow-hidden rounded-[16px] border border-[var(--color-border-bright)]"
+        style={{ width: `${width}px`, height: "168px" }}
+      >
+        {/* Cold base — always present underneath */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "oklch(60% 0.16 250)" }}
+          aria-hidden="true"
+        />
+
+        {/* Warmed-up gradient — fades in/out to animate the heat cycle */}
+        <div
+          className={rear ? "aw-tm-warm-r absolute inset-0" : "aw-tm-warm absolute inset-0"}
+          style={{ background: warmGradient }}
+          aria-hidden="true"
+        />
+
+        {/* Hot-shoulder flare breathing on top */}
+        <div
+          className={
+            (rear ? "aw-tm-shoulder-r" : "aw-tm-shoulder") + " absolute inset-0"
+          }
+          style={{ background: shoulderFlare, mixBlendMode: "screen" }}
+          aria-hidden="true"
+        />
+
+        {/* Tread grooves */}
+        <div
+          className="absolute inset-0 flex flex-col justify-between py-4 pointer-events-none"
+          aria-hidden="true"
+        >
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <span
+              key={i}
+              className="block h-px w-full"
+              style={{ background: "rgba(0,0,0,0.28)" }}
+            />
+          ))}
+        </div>
+
+        {/* Centre temperature readout */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span
+            className="font-mono text-[1.05rem] font-bold leading-none tabular-nums text-white"
+            style={{ textShadow: "0 1px 6px rgba(0,0,0,0.7)" }}
+          >
+            {tempC}
           </span>
-        ) : null}
+          <span
+            className="font-mono text-[0.5rem] leading-tight tracking-wider text-white/80"
+            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.7)" }}
+          >
+            °C
+          </span>
+        </div>
+      </div>
+
+      {/* Pressure */}
+      <span className="font-mono text-[0.68rem] font-semibold tabular-nums leading-none text-[var(--color-text)]">
+        {pressureBar.toFixed(2)}
+        <span className="ml-1 text-[0.52rem] font-normal text-[var(--color-text-muted)]">
+          bar
+        </span>
       </span>
     </div>
   );
