@@ -11,19 +11,60 @@ import { BentoCard } from "./BentoCard";
 const TRACK_CENTRELINE =
   "M70,235 L300,235 C340,235 360,225 358,200 C355,170 305,170 285,150 C265,130 290,105 268,85 C246,65 215,95 195,90 C175,85 175,55 145,55 C95,55 60,75 50,115 C40,155 80,170 75,200 C72,218 60,228 70,235 Z";
 
-// Racing line — runs wide on entry/exit, cuts the apex of each corner. Same
-// rough loop as the centreline but pulled to the inside through every turn.
+// Racing line — a proper outside-inside-outside sweep through every corner.
+// On the bottom straight the line runs roughly down the middle of the asphalt.
+// At each turn it begins on the OUTSIDE of the track, tucks to the INSIDE curb
+// at the apex, then releases back to the OUTSIDE on exit, so the line visibly
+// crosses the track width diagonally at every corner.
+//
+// Geometry reference: asphalt stroke is 26 units wide so the surface lies ±13
+// off the centreline. The racing line samples points at roughly ±10 off the
+// centreline (outside for entry/exit, inside for the apex) and is smoothed with
+// cubic beziers.
 const RACING_LINE =
-  "M80,240 L298,240 C336,238 350,228 348,205 C344,180 298,178 280,156 C262,134 286,108 264,90 C244,72 218,100 196,96 C176,92 178,62 148,62 C100,62 70,80 60,116 C52,150 88,170 84,202 C82,220 70,230 80,240 Z";
+  // Start mid-track on the bottom straight, just before S/F
+  "M70,242 " +
+  "L260,242 " +
+  // T1 (right-hander into the up-section, far right): swing outside (bottom),
+  // tuck to the inside of the corner (upper-left of the curve at ~346,200),
+  // then release back to the outside (lower-right) on exit.
+  "C310,244 348,238 346,212 " +
+  "C344,188 320,182 310,170 " +
+  // T2 (right-hander at ~285,150): entry wide on the lower-left side of the
+  // bend, apex on the inside (upper-right of the curve at ~278,142), exit
+  // releases wide toward the lower-left for the run to T3.
+  "C300,158 286,150 278,142 " +
+  "C268,132 282,118 276,100 " +
+  // T3 (right-hander at the top-right, ~268,85): outside on the lower side,
+  // apex brushes the inside (top edge at ~262,78), exit releases to the
+  // lower-outside for the top straight toward T4.
+  "C272,88 268,80 262,78 " +
+  "C250,76 232,92 214,94 " +
+  // T4 (left-hander mid-top, ~195,90): entry on the upper-outside, apex on
+  // the inside (lower edge at ~196,100), exit releases to the upper-outside.
+  "C204,96 196,100 188,96 " +
+  "C176,90 172,72 156,64 " +
+  // T5 (long left hairpin at the far left, ~50,115): entry wide on the upper
+  // side, sweeps the inside curb (right side of the bend, ~62,115), exit
+  // releases to the lower-outside for the run down to T6.
+  "C130,52 78,62 62,90 " +
+  "C50,108 56,128 70,148 " +
+  "C82,164 92,180 88,198 " +
+  // T6 (left-hander returning to the bottom straight, ~75,200): entry wide
+  // on the upper-outside (left side), apex tucked to the inside (right side
+  // of the bend at ~88,208), exit releases mid-track for the straight.
+  "C86,212 78,224 70,238 " +
+  "Z";
 
-// Apex points along the racing line — picked at the tightest part of each turn.
+// Apex points along the racing line — picked at the tightest part of each turn
+// where the racing line tangents the inside curb.
 const APEXES = [
-  { x: 348, y: 205, label: "T1", tx: 360, ty: 200 },
-  { x: 280, y: 156, label: "T2", tx: 296, ty: 152 },
-  { x: 264, y: 90, label: "T3", tx: 278, ty: 80 },
-  { x: 196, y: 96, label: "T4", tx: 202, ty: 78 },
-  { x: 60, y: 116, label: "T5", tx: 36, ty: 116 },
-  { x: 84, y: 202, label: "T6", tx: 38, ty: 208 },
+  { x: 346, y: 212, label: "T1", tx: 366, ty: 210 },
+  { x: 278, y: 142, label: "T2", tx: 296, ty: 138 },
+  { x: 262, y: 78, label: "T3", tx: 274, ty: 68 },
+  { x: 196, y: 100, label: "T4", tx: 200, ty: 116 },
+  { x: 62, y: 115, label: "T5", tx: 40, ty: 116 },
+  { x: 88, y: 208, label: "T6", tx: 64, ty: 220 },
 ];
 
 export function TrackLogCard() {
@@ -96,19 +137,6 @@ export function TrackLogCard() {
               strokeLinecap="round"
             />
 
-            {/* Inner curb dashes — alternating dashes along the inside edge */}
-            <path
-              d={TRACK_CENTRELINE}
-              fill="none"
-              stroke="color-mix(in oklch, var(--color-primary) 35%, transparent)"
-              strokeWidth="2"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeDasharray="6 6"
-              opacity="0.85"
-              transform="translate(0,0)"
-            />
-
             {/* Outer edge thin border */}
             <path
               d={TRACK_CENTRELINE}
@@ -143,7 +171,7 @@ export function TrackLogCard() {
               </text>
             </g>
 
-            {/* Racing line — the hero stroke */}
+            {/* Racing line — the hero stroke (soft glow pass) */}
             <path
               id="racing-line"
               d={RACING_LINE}
@@ -156,6 +184,7 @@ export function TrackLogCard() {
               opacity="0.95"
               filter="url(#track-glow)"
             />
+            {/* Racing line — sharp thin pass on top */}
             <path
               d={RACING_LINE}
               fill="none"

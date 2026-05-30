@@ -1,23 +1,16 @@
 "use client";
 
-import { Fuel, Clock, Weight } from "lucide-react";
+import { Fuel, Timer, Weight } from "lucide-react";
 import { BentoCard } from "./BentoCard";
 
 // Telemetry numbers — BMW S1000RR scale, 22 min track session at 0.65 L/min.
-// Required = 22 * 0.65 ≈ 14.3 L; we round up to a planned 14.5 L (incl. margin).
+// Required = 22 * 0.65 + 0.2 margin ≈ 14.5 L of a 23 L tank → 63% fill.
 const TANK_CAPACITY_L = 23;
 const REQUIRED_L = 14.5;
-const RESERVE_L = 3.5; // reserve band at the bottom of the tank
-const FILL_PCT = (REQUIRED_L / TANK_CAPACITY_L) * 100;
-const RESERVE_PCT = (RESERVE_L / TANK_CAPACITY_L) * 100;
+const FILL_PCT = 63; // 14.5 / 23
 
-// Per-lap fuel-remaining model. ~0.78 L per lap → 14.5 → 0.5 after 18 laps.
-const LAP_PLAN: { lap: string; remaining: number; reserve?: boolean }[] = [
-  { lap: "L1", remaining: 13.7 },
-  { lap: "L5", remaining: 10.6 },
-  { lap: "L10", remaining: 6.7 },
-  { lap: "L15", remaining: 2.8, reserve: true },
-];
+// Needle rotation maps fill % onto the semicircle: 0% → -90deg, 100% → +90deg.
+const NEEDLE_DEG = -90 + (FILL_PCT / 100) * 180; // ≈ 23.4°
 
 export function FuelManagerCard() {
   return (
@@ -27,101 +20,187 @@ export function FuelManagerCard() {
     >
       <div className="aw-bento-graphic relative mt-auto flex flex-1 flex-col gap-3 pt-3">
         {/* Strategy header */}
-        <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
+        <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
           <span className="flex items-center gap-1.5">
-            <Fuel className="size-3 text-[var(--color-primary)]" aria-hidden="true" />
+            <span
+              className="inline-block size-1.5 rounded-full bg-[var(--color-primary)] shadow-[0_0_6px_var(--color-primary)] aw-fuel-pulse"
+              aria-hidden="true"
+            />
             Race Strategy
           </span>
           <span className="text-[var(--color-text-dim)]">S1000RR · 23L</span>
         </div>
 
-        {/* Horizontal tank-level indicator */}
-        <div
-          className="relative h-9 w-full overflow-hidden rounded-md border border-[var(--color-border-bright)] bg-[var(--color-surface-2)]"
-          role="img"
-          aria-label={`Fuel level ${REQUIRED_L} of ${TANK_CAPACITY_L} liters`}
-        >
-          {/* Reserve zone at left edge of tank (empty end) */}
-          <div
-            className="absolute inset-y-0 left-0 border-r border-dashed border-[var(--color-warning)]/40 bg-[var(--color-warning)]/10"
-            style={{ width: `${RESERVE_PCT}%` }}
-            aria-hidden="true"
-          />
-          {/* Fuel fill — anchored to the right (tank fills from the top/right) */}
-          <div
-            className="absolute inset-y-0 right-0 bg-gradient-to-l from-[var(--color-primary)]/70 via-[var(--color-primary)]/45 to-[var(--color-primary)]/25"
-            style={{ width: `${100 - FILL_PCT}%` }}
-            aria-hidden="true"
-          />
-          <div
-            className="absolute inset-y-0 left-0 bg-gradient-to-r from-[var(--color-primary)]/55 via-[var(--color-primary)]/35 to-transparent"
-            style={{ width: `${FILL_PCT}%` }}
-            aria-hidden="true"
-          />
-          {/* Tick marks at 25/50/75% */}
-          <div className="absolute inset-0 flex" aria-hidden="true">
-            <div className="h-full flex-1 border-r border-[var(--color-border)]/60" />
-            <div className="h-full flex-1 border-r border-[var(--color-border)]/60" />
-            <div className="h-full flex-1 border-r border-[var(--color-border)]/60" />
-            <div className="h-full flex-1" />
-          </div>
-          {/* Readout */}
-          <div className="absolute inset-0 flex items-center justify-between px-2.5 font-mono text-[11px] tabular-nums">
-            <span className="text-[var(--color-warning)]">RES</span>
-            <span className="text-[var(--color-text)]">
-              <span className="text-[var(--color-primary)]">{REQUIRED_L.toFixed(1)}</span>
-              <span className="text-[var(--color-text-muted)]"> / {TANK_CAPACITY_L} L</span>
+        {/* Hero: semicircular fuel dial */}
+        <div className="relative flex flex-1 items-center justify-center">
+          <svg
+            viewBox="0 0 220 130"
+            className="h-auto w-full max-w-[280px]"
+            role="img"
+            aria-label={`Fuel gauge: ${REQUIRED_L} of ${TANK_CAPACITY_L} liters, ${FILL_PCT}% full`}
+          >
+            <defs>
+              <filter id="fuelNeedleGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2.2" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="fuelArcGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.4" />
+              </filter>
+            </defs>
+
+            {/* Base arc — surface track */}
+            <path
+              d="M 20 115 A 90 90 0 0 1 200 115"
+              fill="none"
+              stroke="var(--color-surface-2)"
+              strokeWidth="12"
+              strokeLinecap="round"
+              aria-hidden="true"
+            />
+
+            {/* Reserve segment (0% → 25%) */}
+            <path
+              d="M 20 115 A 90 90 0 0 1 46.36 51.36"
+              fill="none"
+              stroke="var(--color-warning)"
+              strokeWidth="12"
+              strokeLinecap="round"
+              opacity="0.85"
+              aria-hidden="true"
+            />
+            {/* Reserve threshold dashed outline */}
+            <path
+              d="M 20 115 A 90 90 0 0 1 46.36 51.36"
+              fill="none"
+              stroke="var(--color-warning)"
+              strokeWidth="1"
+              strokeDasharray="2 2"
+              opacity="0.9"
+              transform="translate(0 -10)"
+              aria-hidden="true"
+            />
+
+            {/* Operating window (30% → 85%) */}
+            <path
+              d="M 57.1 42.19 A 90 90 0 0 1 190.18 74.15"
+              fill="none"
+              stroke="var(--color-primary)"
+              strokeWidth="12"
+              strokeLinecap="round"
+              filter="url(#fuelArcGlow)"
+              opacity="0.55"
+              aria-hidden="true"
+            />
+            <path
+              d="M 57.1 42.19 A 90 90 0 0 1 190.18 74.15"
+              fill="none"
+              stroke="var(--color-primary)"
+              strokeWidth="12"
+              strokeLinecap="round"
+              aria-hidden="true"
+            />
+
+            {/* Tick marks */}
+            <g
+              stroke="var(--color-border-bright)"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <line x1="10" y1="115" x2="26" y2="115" />
+              <line x1="39.29" y1="44.29" x2="50.6" y2="55.6" />
+              <line x1="110" y1="15" x2="110" y2="31" />
+              <line x1="180.71" y1="44.29" x2="169.4" y2="55.6" />
+              <line x1="194" y1="115" x2="210" y2="115" />
+            </g>
+
+            {/* Tick labels */}
+            <g
+              fill="var(--color-text-muted)"
+              fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
+              fontSize="8"
+              textAnchor="middle"
+              aria-hidden="true"
+            >
+              <text x="6" y="125">0</text>
+              <text x="32" y="34">1/4</text>
+              <text x="110" y="9">1/2</text>
+              <text x="188" y="34">3/4</text>
+              <text x="214" y="125">F</text>
+            </g>
+
+            {/* Needle — rotated around pivot (110, 115) */}
+            <g
+              transform={`rotate(${NEEDLE_DEG} 110 115)`}
+              filter="url(#fuelNeedleGlow)"
+              className="aw-fuel-needle"
+              style={{ transformOrigin: "110px 115px" }}
+              aria-hidden="true"
+            >
+              <polygon
+                points="110,40 106,113 114,113"
+                fill="var(--color-primary)"
+                stroke="var(--color-primary)"
+                strokeWidth="1"
+                strokeLinejoin="round"
+              />
+            </g>
+
+            {/* Pivot hub */}
+            <circle
+              cx="110"
+              cy="115"
+              r="6"
+              fill="var(--color-surface)"
+              stroke="var(--color-primary)"
+              strokeWidth="1.5"
+              aria-hidden="true"
+            />
+            <circle
+              cx="110"
+              cy="115"
+              r="2"
+              fill="var(--color-primary)"
+              aria-hidden="true"
+            />
+          </svg>
+
+          {/* Center readout (overlay on gauge hollow) */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-1 flex flex-col items-center gap-0.5">
+            <span className="font-mono text-[2rem] leading-none tabular-nums text-[var(--color-text)]">
+              {REQUIRED_L.toFixed(1)}
+              <span className="ml-0.5 text-base text-[var(--color-text-dim)]">L</span>
+            </span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-text-muted)] tabular-nums">
+              OF {TANK_CAPACITY_L} L · {FILL_PCT}%
             </span>
           </div>
         </div>
 
-        {/* Per-lap fuel-remaining strip */}
-        <div className="grid grid-cols-4 gap-1.5">
-          {LAP_PLAN.map((entry) => {
-            const heightPct = Math.max(8, (entry.remaining / REQUIRED_L) * 100);
-            const color = entry.reserve
-              ? "var(--color-warning)"
-              : "var(--color-primary)";
-            return (
-              <div
-                key={entry.lap}
-                className="flex flex-col items-center gap-1 rounded-md border border-[var(--color-border)] bg-[var(--color-surface-2)]/60 p-1.5"
-              >
-                <div
-                  className="relative h-12 w-full overflow-hidden rounded-sm bg-[var(--color-surface)]"
-                  aria-hidden="true"
-                >
-                  <div
-                    className="absolute inset-x-0 bottom-0 transition-all"
-                    style={{
-                      height: `${heightPct}%`,
-                      background: `linear-gradient(to top, ${color}, ${color}55)`,
-                      boxShadow: `0 0 8px ${color}40`,
-                    }}
-                  />
-                </div>
-                <div className="flex w-full items-center justify-between font-mono text-[9px] tabular-nums leading-none">
-                  <span className="text-[var(--color-text-muted)]">{entry.lap}</span>
-                  <span style={{ color }}>{entry.remaining.toFixed(1)}</span>
-                </div>
-              </div>
-            );
-          })}
+        {/* Session plan divider */}
+        <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.22em] text-[var(--color-text-muted)]">
+          <span className="h-px flex-1 bg-[var(--color-border)]" aria-hidden="true" />
+          <span>Session Plan · Misano</span>
+          <span className="h-px flex-1 bg-[var(--color-border)]" aria-hidden="true" />
         </div>
 
-        {/* Telemetry footer */}
-        <div className="mt-auto grid grid-cols-3 gap-2 border-t border-[var(--color-border)] pt-3">
-          <Stat
-            icon={<Clock className="size-3" aria-hidden="true" />}
-            label="DURATION"
-            value="22"
-            unit="min"
-          />
+        {/* Telemetry row */}
+        <div className="grid grid-cols-3 gap-2">
           <Stat
             icon={<Fuel className="size-3" aria-hidden="true" />}
             label="BURN"
             value="0.65"
             unit="L/min"
+          />
+          <Stat
+            icon={<Timer className="size-3" aria-hidden="true" />}
+            label="TIME"
+            value="22"
+            unit="min"
           />
           <Stat
             icon={<Weight className="size-3" aria-hidden="true" />}
@@ -131,6 +210,25 @@ export function FuelManagerCard() {
           />
         </div>
       </div>
+
+      <style>{`
+        @keyframes aw-fuel-needle-wobble {
+          0%   { transform: rotate(${NEEDLE_DEG - 1.5}deg); }
+          100% { transform: rotate(${NEEDLE_DEG + 1.5}deg); }
+        }
+        .aw-fuel-needle {
+          transform-box: fill-box;
+          transform-origin: 110px 115px;
+          animation: aw-fuel-needle-wobble 2.5s ease-in-out infinite alternate;
+        }
+        @keyframes aw-fuel-pulse {
+          0%, 100% { opacity: 1; }
+          50%      { opacity: 0.35; }
+        }
+        .aw-fuel-pulse {
+          animation: aw-fuel-pulse 1.8s ease-in-out infinite;
+        }
+      `}</style>
     </BentoCard>
   );
 }
@@ -147,8 +245,8 @@ function Stat({
   unit: string;
 }) {
   return (
-    <div className="flex flex-col gap-0.5">
-      <span className="flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-muted)]">
+    <div className="flex flex-col gap-0.5 rounded-md border border-[var(--color-border)] bg-[var(--color-surface-2)]/50 px-2 py-1.5">
+      <span className="flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
         <span className="text-[var(--color-primary)]">{icon}</span>
         {label}
       </span>
