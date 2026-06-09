@@ -26,3 +26,24 @@ Marketing + interactive-sandbox site for the Apex Wizard motorcycle suspension a
 - Deploy: `.github/workflows/deploy.yml` builds and publishes `out/` to GitHub Pages.
   Repo Pages source must be set to "GitHub Actions".
 - Static assets live in `public/assets/`; `public/CNAME` + `public/.nojekyll` ship the domain.
+
+## SEO & content architecture
+- **Structured data:** `lib/schema.ts` is the single source of truth for the entity graph
+  (Person = Adrian Dokoza, Organization, WebSite, SoftwareApplication) and JSON-LD builders
+  (`breadcrumbJsonLd`, `faqJsonLd`, `articleJsonLd`, `itemListJsonLd`). Emit with
+  `<JsonLd data={...} />`. The site graph is injected once in `app/layout.tsx`; `appJsonLd` on
+  the homepage. Use `<FaqSection>` (not raw `<Faq>`) so every FAQ also emits `FAQPage` schema.
+  Do NOT add `aggregateRating` without real, verifiable rating data.
+- **Per-page metadata:** every route exports `metadata` with `alternates.canonical` and pairs
+  "Apex Wizard" with a motorcycle/suspension modifier (entity disambiguation vs Oracle APEX etc.).
+- **Bike setup pages** (`/setup`, `/setup/[manufacturer]`, `/setup/[manufacturer]/[model]`):
+  data in `lib/bikes.ts`, **auto-generated** from the iOS OEM DB by `scripts/port-bikes.mjs`
+  (regenerate from `bikes_kotlin.txt`; edits to `lib/bikes.ts` are overwritten). Teaser model:
+  adjuster *capabilities* only — exact clicker limits stay in the app. Presentation helpers in
+  `lib/bike-display.ts`.
+- **Guides hub** (`/guides` + `/guides/<slug>`): registry in `lib/guides.ts`; articles reuse the
+  `components/content/*` framework and mirror `app/guides/setting-motorcycle-sag/page.tsx`.
+- **Sitemap** (`app/sitemap.ts`) auto-derives from `lib/bikes.ts` + `lib/guides.ts` + static routes —
+  new bikes/guides appear automatically. URLs carry trailing slashes to match canonicals.
+- **Deep links:** `public/.well-known/README.md` has ready-to-fill AASA + assetlinks templates
+  (blocked on Apple Team ID + Play signing fingerprint).

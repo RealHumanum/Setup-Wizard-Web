@@ -7,6 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { StickyDownloadBar } from "@/components/StickyDownloadBar";
+import { JsonLd } from "@/components/JsonLd";
+import { siteJsonLd } from "@/lib/schema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -71,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <JsonLd data={siteJsonLd} />
         <Starfield />
         <div
           className="aw-glow size-[500px] bg-[var(--color-primary)]"

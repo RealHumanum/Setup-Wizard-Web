@@ -12,10 +12,28 @@ export function Footer() {
 
         <nav className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm font-semibold text-[var(--color-text-dim)]">
           <Link
+            href="/setup"
+            className="transition-colors hover:text-[var(--color-primary)]"
+          >
+            Setups
+          </Link>
+          <Link
+            href="/guides"
+            className="transition-colors hover:text-[var(--color-primary)]"
+          >
+            Guides
+          </Link>
+          <Link
             href="/tuning-guide"
             className="transition-colors hover:text-[var(--color-primary)]"
           >
             Tuning Guide
+          </Link>
+          <Link
+            href="/about"
+            className="transition-colors hover:text-[var(--color-primary)]"
+          >
+            About
           </Link>
           <Link
             href="/terms"

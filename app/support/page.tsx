@@ -5,7 +5,7 @@ import { ContentLayout } from "@/components/content/ContentLayout";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import { Section } from "@/components/content/Section";
 import { Callout } from "@/components/content/Callout";
-import { Faq } from "@/components/content/Faq";
+import { FaqSection } from "@/components/content/FaqSection";
 import { ContentCta } from "@/components/content/ContentCta";
 import { Button } from "@/components/ui/button";
 import { CONTACT_EMAIL } from "@/lib/constants";
@@ -113,7 +113,7 @@ export default function SupportPage() {
           <p>
             Quick answers to the questions we hear most. If yours isn&rsquo;t here, just email us.
           </p>
-          <Faq items={FAQ} />
+          <FaqSection items={FAQ} />
         </Section>
 
         <Section id="bug" number="03" title="Reporting a bug">

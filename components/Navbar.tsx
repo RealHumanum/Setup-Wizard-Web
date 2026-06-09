@@ -51,6 +51,20 @@ export function Navbar() {
           </span>
           Apex<span className="text-[var(--color-primary)]"> Wizard</span>
         </Link>
+        <div className="hidden items-center gap-7 md:flex">
+          <Link
+            href="/setup"
+            className="text-sm font-semibold text-[var(--color-text-dim)] transition-colors hover:text-[var(--color-primary)]"
+          >
+            Setups
+          </Link>
+          <Link
+            href="/guides"
+            className="text-sm font-semibold text-[var(--color-text-dim)] transition-colors hover:text-[var(--color-primary)]"
+          >
+            Guides
+          </Link>
+        </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <a
             href={PATREON_URL}
