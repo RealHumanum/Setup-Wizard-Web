@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Heart } from "lucide-react";
 import { PATREON_URL } from "@/lib/constants";
 
@@ -6,7 +7,18 @@ export function Footer() {
   return (
     <footer className="relative z-10 mt-12 border-t border-[var(--color-border)] px-6 pb-28 pt-16 lg:pb-16">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 text-center">
-        <Link href="/" className="font-mono text-2xl font-extrabold tracking-tight">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2.5 font-mono text-2xl font-extrabold tracking-tight"
+        >
+          <Image
+            src="/assets/favicon.png"
+            alt="Apex Wizard app icon"
+            width={36}
+            height={36}
+            unoptimized
+            className="size-9 rounded-lg ring-1 ring-[var(--color-primary)]/30"
+          />
           Apex<span className="text-[var(--color-primary)]"> Wizard</span>
         </Link>
 

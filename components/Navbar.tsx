@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ADS_CONVERSION, APP_STORE_URL, PATREON_URL, PLAY_STORE_URL } from "@/lib/constants";
@@ -46,9 +47,15 @@ export function Navbar() {
           aria-label="Apex Wizard home"
           className="flex items-center gap-2 font-mono text-xl font-extrabold tracking-tight text-white drop-shadow-[0_0_10px_oklch(78%_0.2_152/0.5)] sm:text-2xl"
         >
-          <span className="relative inline-flex size-7 items-center justify-center rounded-md bg-[var(--color-primary)]/15 ring-1 ring-[var(--color-primary)]/40">
-            <span className="text-[0.95rem] font-black text-[var(--color-primary)]">A</span>
-          </span>
+          <Image
+            src="/assets/favicon.png"
+            alt="Apex Wizard app icon"
+            width={32}
+            height={32}
+            priority
+            unoptimized
+            className="size-8 rounded-lg ring-1 ring-[var(--color-primary)]/30"
+          />
           Apex<span className="text-[var(--color-primary)]"> Wizard</span>
         </Link>
         <div className="hidden items-center gap-7 md:flex">
