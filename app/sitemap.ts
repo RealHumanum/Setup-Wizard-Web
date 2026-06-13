@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry("/support", 0.4, "yearly"),
     entry("/privacy", 0.3, "yearly"),
     entry("/terms", 0.3, "yearly"),
+    entry("/delete-account", 0.3, "yearly"),
   ];
 
   const guidePages: Entry[] = GUIDES.map((g) =>

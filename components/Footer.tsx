@@ -65,6 +65,12 @@ export function Footer() {
           >
             Support
           </Link>
+          <Link
+            href="/delete-account"
+            className="transition-colors hover:text-[var(--color-primary)]"
+          >
+            Delete Account
+          </Link>
           <a
             href={PATREON_URL}
             target="_blank"
