@@ -11,7 +11,7 @@ export function TableOfContents({ items }: { items: TocItem[] }) {
   return (
     <>
       {/* Mobile / tablet: collapsible */}
-      <details className="mb-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 px-4 py-3 lg:hidden">
+      <details className="mb-8 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 lg:hidden">
         <summary className="cursor-pointer font-mono text-xs font-extrabold uppercase tracking-widest text-[var(--color-primary)]">
           On this page
         </summary>

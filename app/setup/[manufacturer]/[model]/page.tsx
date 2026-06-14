@@ -53,7 +53,7 @@ export async function generateMetadata({
       title: `${name} Suspension Setup`,
       description,
       url: path,
-      images: ["/assets/hero 2.png"],
+      images: ["/assets/og-image.jpg"],
     },
   };
 }
@@ -208,7 +208,7 @@ export default async function BikeSetupPage({
 
         {siblings.length > 0 && (
           <div className="mt-12">
-            <h2 className="font-mono text-lg font-extrabold text-[var(--color-text)]">
+            <h2 className="font-display text-lg font-extrabold tracking-tight text-[var(--color-text)]">
               More {bike.manufacturer} setups
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -216,14 +216,14 @@ export default async function BikeSetupPage({
                 <Link
                   key={s.modelSlug}
                   href={`/setup/${s.manufacturerSlug}/${s.modelSlug}`}
-                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/60 px-4 py-2 text-sm text-[var(--color-text-dim)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+                  className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm text-[var(--color-text-dim)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
                 >
                   {s.model}
                 </Link>
               ))}
               <Link
                 href={`/setup/${manufacturer}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border-bright)] px-4 py-2 text-sm font-semibold text-[var(--color-primary)]"
+                className="inline-flex items-center gap-1.5 rounded-md border border-[var(--color-border-bright)] px-4 py-2 text-sm font-semibold text-[var(--color-primary)]"
               >
                 All {bike.manufacturer} <ArrowRight className="size-3.5" />
               </Link>

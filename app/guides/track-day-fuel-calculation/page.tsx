@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: guide.title,
     description: guide.description,
     url: PATH,
-    images: ["/assets/hero 2.png"],
+    images: ["/assets/og-image.jpg"],
   },
 };
 

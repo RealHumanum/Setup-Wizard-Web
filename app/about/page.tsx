@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "The story and methodology behind Apex Wizard — an independent motorcycle suspension logbook and troubleshooter.",
     url: PATH,
-    images: ["/assets/hero 2.png"],
+    images: ["/assets/og-image.jpg"],
   },
 };
 

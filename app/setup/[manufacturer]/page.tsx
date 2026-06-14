@@ -37,7 +37,7 @@ export async function generateMetadata({
       title: `${mfg.name} Suspension Setups`,
       description,
       url: path,
-      images: ["/assets/hero 2.png"],
+      images: ["/assets/og-image.jpg"],
     },
   };
 }

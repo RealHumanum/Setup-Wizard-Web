@@ -20,10 +20,6 @@ export function PageHero({
 }) {
   return (
     <header className="relative px-6 pt-28 pb-10 sm:pt-32">
-      <div
-        className="aw-glow size-[500px] bg-[var(--color-primary)]"
-        style={{ top: "10%", right: "-150px", opacity: 0.1 }}
-      />
       <div className="relative mx-auto max-w-4xl">
         {breadcrumb && (
           <nav
@@ -49,8 +45,8 @@ export function PageHero({
         )}
 
         <Badge>{eyebrow}</Badge>
-        <h1 className="mt-4 font-mono text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-          {title} <span className="aw-gradient-text">{accent}</span>
+        <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          {title} <span className="text-[var(--color-primary)]">{accent}</span>
         </h1>
 
         {intro && (

@@ -91,7 +91,7 @@ export function PhoneMockup() {
             </div>
 
             {/* Tire Pressure */}
-            <div className="rounded-2xl border border-white/5 bg-[oklch(22%_0.025_250)] p-5">
+            <div className="rounded-2xl border border-white/5 bg-[oklch(22%_0.02_258)] p-5">
               <div className="mb-2 flex items-center justify-between">
                 <span className="text-[0.7rem] font-black tracking-[0.1em] text-[var(--color-text-dim)]">
                   TIRE PRESSURE (PSI)
@@ -119,7 +119,7 @@ export function PhoneMockup() {
             </div>
 
             {/* Quick Checks */}
-            <div className="rounded-2xl border border-white/5 bg-[oklch(22%_0.025_250)] p-5">
+            <div className="rounded-2xl border border-white/5 bg-[oklch(22%_0.02_258)] p-5">
               <div className="mb-2 flex items-center justify-between">
                 <span className="text-[0.7rem] font-black tracking-[0.1em] text-[var(--color-text-dim)]">
                   QUICK CHECKS
@@ -134,7 +134,7 @@ export function PhoneMockup() {
           </div>
 
           {/* Tab bar */}
-          <div className="relative mt-3 flex h-[70px] items-center justify-around border-t border-white/5 bg-[oklch(15%_0.02_250)]/95 pb-2 backdrop-blur">
+          <div className="relative mt-3 flex h-[70px] items-center justify-around border-t border-white/5 bg-[oklch(15%_0.02_258)]">
             {TABS.slice(0, 3).map((t) => (
               <TabIcon key={t.label} {...t} />
             ))}

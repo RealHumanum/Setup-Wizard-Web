@@ -28,7 +28,7 @@ export function HowItWorks() {
           title={
             <>
               Three Steps to{" "}
-              <span className="aw-gradient-text">Your Fastest Lap.</span>
+              <span className="text-[var(--color-primary)]">Your Fastest Lap.</span>
             </>
           }
         />
@@ -38,12 +38,12 @@ export function HowItWorks() {
 
           {STEPS.map((s, i) => (
             <Reveal key={s.n} delay={i * 0.1}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)]/70 p-8 backdrop-blur transition-all hover:-translate-y-1 hover:border-[var(--color-border-bright)]">
-                <div className="pointer-events-none absolute -top-12 -right-8 select-none font-mono text-[7rem] font-black leading-none text-[var(--color-primary)]/[0.04]">
+              <div className="group relative h-full overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-8 transition-all hover:-translate-y-1 hover:border-[var(--color-border-bright)]">
+                <div className="pointer-events-none absolute -top-12 -right-8 select-none font-mono text-[7rem] font-black leading-none text-[var(--color-primary)]/[0.05]">
                   {s.n}
                 </div>
                 <div className="relative">
-                  <span className="inline-flex size-12 items-center justify-center rounded-2xl border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 font-mono text-base font-extrabold text-[var(--color-primary)]">
+                  <span className="inline-flex size-12 items-center justify-center rounded-md border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 font-mono text-base font-extrabold text-[var(--color-primary)]">
                     {s.n}
                   </span>
                   <h3 className="mt-5 text-xl font-extrabold leading-tight">

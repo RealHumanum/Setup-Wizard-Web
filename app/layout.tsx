@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Archivo } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/Analytics";
-import { Starfield } from "@/components/Starfield";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ConsentBanner } from "@/components/ConsentBanner";
@@ -19,6 +18,15 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
+  display: "swap",
+});
+
+// Editorial display face for headlines (racing-grotesque). Mono is reserved for
+// telemetry/spec data only.
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  weight: ["600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -52,18 +60,18 @@ export const metadata: Metadata = {
       "The all-in-one motorcycle suspension logbook, setup troubleshooter and track day companion. 115+ bikes. 100% free.",
     url: SITE_URL,
     siteName: "Apex Wizard",
-    images: ["/assets/hero 2.png"],
+    images: ["/assets/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Apex Wizard — Pro Motorcycle Suspension Logbook",
     description: "Stop guessing in the pits. 115+ bikes, 7 smart modules, 100% free.",
-    images: ["/assets/hero 2.png"],
+    images: ["/assets/og-image.jpg"],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0d12",
+  themeColor: "#0f172a",
   colorScheme: "dark",
 };
 
@@ -71,14 +79,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable} ${archivo.variable}`}
+    >
       <body>
         <JsonLd data={siteJsonLd} />
-        <Starfield />
-        <div
-          className="aw-glow size-[500px] bg-[var(--color-primary)]"
-          style={{ top: "-150px", left: "-100px" }}
-        />
         <Navbar />
         <div className="relative z-10">{children}</div>
         <Footer />

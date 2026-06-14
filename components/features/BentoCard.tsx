@@ -15,11 +15,13 @@ export function BentoCard({
   return (
     <div
       className={
-        "aw-bento-card relative flex h-full min-h-[420px] flex-col gap-3 overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 " +
+        "aw-bento-card relative flex h-full min-h-[420px] flex-col gap-3 overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-6 " +
         className
       }
     >
-      <h3 className="text-xl font-extrabold leading-tight">{title}</h3>
+      <h3 className="font-display text-xl font-extrabold leading-tight tracking-tight">
+        {title}
+      </h3>
       {desc ? (
         <p className="text-sm leading-relaxed text-[var(--color-text-dim)]">
           {desc}

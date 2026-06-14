@@ -26,17 +26,16 @@ export function BeforeAfter() {
           tag="Why Apex Wizard?"
           title={
             <>
-              From Chaos to <span className="aw-gradient-text">Precision.</span>
+              From Chaos to <span className="text-[var(--color-primary)]">Precision.</span>
             </>
           }
         />
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Without — red glow */}
+          {/* Without */}
           <Reveal>
-            <div className="group relative h-full overflow-hidden rounded-3xl border border-[var(--color-danger)]/40 bg-[var(--color-surface)] p-8 shadow-[0_0_40px_-12px_var(--color-danger)] backdrop-blur transition-colors">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_60%_at_0%_0%,oklch(63%_0.22_25/0.08),transparent_60%)]" />
+            <div className="group relative h-full overflow-hidden rounded-lg border border-[var(--color-border)] border-l-2 border-l-[var(--color-danger)] bg-[var(--color-surface)] p-8 transition-colors">
               <div className="relative">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-danger)]/30 bg-[var(--color-danger)]/10 px-3 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[var(--color-danger)]">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-sm text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--color-danger)]">
                   <X className="size-3.5" /> Without Apex Wizard
                 </div>
                 <ul className="space-y-4">
@@ -54,12 +53,11 @@ export function BeforeAfter() {
             </div>
           </Reveal>
 
-          {/* With — green glow */}
+          {/* With */}
           <Reveal delay={0.1}>
-            <div className="group relative h-full overflow-hidden rounded-3xl border border-[var(--color-border-bright)] bg-[var(--color-surface)] p-8 shadow-[0_0_40px_-12px_var(--color-primary)] backdrop-blur transition-colors">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_60%_at_0%_0%,oklch(78%_0.2_152/0.08),transparent_60%)]" />
+            <div className="group relative h-full overflow-hidden rounded-lg border border-[var(--color-border)] border-l-2 border-l-[var(--color-primary)] bg-[var(--color-surface)] p-8 transition-colors">
               <div className="relative">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-3 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[var(--color-primary)]">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-sm text-xs font-extrabold uppercase tracking-[0.16em] text-[var(--color-primary)]">
                   <Check className="size-3.5" /> With Apex Wizard
                 </div>
                 <ul className="space-y-4">

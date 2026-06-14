@@ -35,7 +35,7 @@ export function StickyDownloadBar() {
   return (
     <div
       className={
-        "fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-border-bright)] bg-[var(--color-bg)]/95 px-4 py-3 backdrop-blur-lg transition-transform duration-300 lg:hidden " +
+        "fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-3 transition-transform duration-300 lg:hidden " +
         (visible ? "translate-y-0" : "translate-y-full")
       }
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
@@ -57,7 +57,7 @@ export function StickyDownloadBar() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={fireConversion}
-          className="flex min-h-11 items-center justify-center rounded-full bg-[var(--color-primary)] px-6 text-sm font-extrabold uppercase tracking-wider text-[var(--color-primary-foreground)] shadow-[0_0_24px_-6px_var(--color-primary)] transition-transform active:scale-95"
+          className="flex min-h-11 items-center justify-center rounded-md bg-[var(--color-primary)] px-7 text-sm font-bold uppercase tracking-wider text-[var(--color-primary-foreground)] transition-all hover:brightness-105 active:scale-[0.98]"
         >
           Get
         </a>

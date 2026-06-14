@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Practical, data-driven guides to motorcycle suspension tuning, tire wear, and track day setup.",
     url: PATH,
-    images: ["/assets/hero 2.png"],
+    images: ["/assets/og-image.jpg"],
   },
 };
 
@@ -53,12 +53,12 @@ export default function GuidesHubPage() {
         {/* Pillar */}
         <Link
           href="/tuning-guide"
-          className="group block overflow-hidden rounded-3xl border border-[var(--color-border-bright)] bg-[var(--color-surface)] p-8 shadow-[0_0_40px_-12px_var(--color-primary)] transition-colors hover:border-[var(--color-primary)] sm:p-10"
+          className="group block overflow-hidden rounded-lg border border-[var(--color-border)] border-t-2 border-t-[var(--color-primary)] bg-[var(--color-surface)] p-8 transition-colors hover:border-[var(--color-border-bright)] sm:p-10"
         >
           <div className="mb-3 font-mono text-[10px] font-extrabold uppercase tracking-[0.2em] text-[var(--color-primary)]">
             Start here · The pillar guide
           </div>
-          <h2 className="font-mono text-2xl font-extrabold leading-tight sm:text-3xl">
+          <h2 className="font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
             The Complete Motorcycle Suspension Tuning Guide
           </h2>
           <p className="mt-3 max-w-2xl text-[var(--color-text-dim)]">

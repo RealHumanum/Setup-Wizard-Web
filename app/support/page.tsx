@@ -68,7 +68,7 @@ export default function SupportPage() {
           </p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 p-5">
+            <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
               <Mail className="size-5 text-[var(--color-primary)]" />
               <p className="mt-3 font-mono text-xs uppercase tracking-widest text-[var(--color-text-muted)]">
                 Email
@@ -80,7 +80,7 @@ export default function SupportPage() {
                 {CONTACT_EMAIL}
               </a>
             </div>
-            <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 p-5">
+            <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
               <Clock className="size-5 text-[var(--color-primary)]" />
               <p className="mt-3 font-mono text-xs uppercase tracking-widest text-[var(--color-text-muted)]">
                 Response time
@@ -89,7 +89,7 @@ export default function SupportPage() {
                 Within ~24 hours
               </p>
             </div>
-            <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 p-5">
+            <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
               <LifeBuoy className="size-5 text-[var(--color-primary)]" />
               <p className="mt-3 font-mono text-xs uppercase tracking-widest text-[var(--color-text-muted)]">
                 Best for

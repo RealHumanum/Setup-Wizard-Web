@@ -10,26 +10,26 @@ const VARIANTS: Record<
   info: {
     icon: Info,
     color: "var(--color-primary)",
-    bg: "oklch(78% 0.2 152 / 0.06)",
-    border: "oklch(78% 0.2 152 / 0.35)",
+    bg: "oklch(73% 0.19 149 / 0.06)",
+    border: "oklch(73% 0.19 149 / 0.30)",
   },
   tip: {
     icon: Lightbulb,
     color: "var(--color-primary)",
-    bg: "oklch(78% 0.2 152 / 0.05)",
-    border: "oklch(78% 0.2 152 / 0.25)",
+    bg: "oklch(73% 0.19 149 / 0.05)",
+    border: "oklch(73% 0.19 149 / 0.22)",
   },
   warning: {
     icon: AlertTriangle,
     color: "var(--color-warning)",
-    bg: "oklch(72% 0.19 55 / 0.06)",
-    border: "oklch(72% 0.19 55 / 0.35)",
+    bg: "oklch(70% 0.19 48 / 0.07)",
+    border: "oklch(70% 0.19 48 / 0.32)",
   },
   danger: {
     icon: ShieldAlert,
     color: "var(--color-danger)",
-    bg: "oklch(63% 0.22 25 / 0.06)",
-    border: "oklch(63% 0.22 25 / 0.35)",
+    bg: "oklch(64% 0.22 27 / 0.07)",
+    border: "oklch(64% 0.22 27 / 0.32)",
   },
 };
 
@@ -46,14 +46,14 @@ export function Callout({
   const Icon = v.icon;
   return (
     <div
-      className="my-6 flex gap-4 rounded-2xl border p-5"
-      style={{ background: v.bg, borderColor: v.border }}
+      className="my-6 flex gap-4 rounded-lg border border-l-2 p-5"
+      style={{ background: v.bg, borderColor: v.border, borderLeftColor: v.color }}
     >
       <Icon className="mt-0.5 size-5 shrink-0" style={{ color: v.color }} />
       <div className="flex-1">
         {title && (
           <div
-            className="mb-1 font-mono text-xs font-extrabold uppercase tracking-widest"
+            className="mb-1 text-xs font-extrabold uppercase tracking-[0.16em]"
             style={{ color: v.color }}
           >
             {title}

@@ -95,7 +95,7 @@ function TroubleshooterCard() {
                   type="button"
                   onClick={() => { setPhase(p); setSymptomId(null); setDiagnosed(null); }}
                   className={
-                    "rounded-full border px-3.5 py-2 text-xs font-bold transition-colors min-h-[36px] " +
+                    "rounded-md border px-3.5 py-2 text-xs font-bold transition-colors min-h-[36px] " +
                     (isActive
                       ? "border-[var(--color-primary)] bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
                       : "border-[var(--color-border)] bg-[var(--color-surface-2)] text-[var(--color-text-dim)] hover:border-[var(--color-primary)]/40 hover:text-white")
@@ -121,7 +121,7 @@ function TroubleshooterCard() {
                   type="button"
                   onClick={() => { setSymptomId(s.id); setDiagnosed(null); }}
                   className={
-                    "rounded-xl border px-4 py-3 text-left text-sm transition-colors min-h-[48px] " +
+                    "rounded-md border px-4 py-3 text-left text-sm transition-colors min-h-[48px] " +
                     (isActive
                       ? "border-[var(--color-warning)] bg-[var(--color-warning)]/5 text-white"
                       : "border-[var(--color-border)] bg-[var(--color-surface-2)] text-[var(--color-text-dim)] hover:border-white/20 hover:text-white")
@@ -135,7 +135,7 @@ function TroubleshooterCard() {
         </div>
 
         <div className="mt-auto flex flex-col gap-2.5">
-          <div className="flex min-h-[110px] flex-col items-center justify-center rounded-2xl border border-white/8 bg-white/[0.03] p-3 text-center">
+          <div className="flex min-h-[110px] flex-col items-center justify-center rounded-md border border-white/8 bg-white/[0.03] p-3 text-center">
             {diagnosed && active ? (
               <div>
                 <span className="text-[0.65rem] font-extrabold uppercase tracking-widest text-[var(--color-primary)]">
@@ -160,7 +160,7 @@ function TroubleshooterCard() {
             type="button"
             disabled={!active}
             onClick={() => active && setDiagnosed(active.fix)}
-            className="flex min-h-[44px] w-full items-center justify-center rounded-xl bg-[var(--color-primary)] px-4 py-2.5 text-sm font-extrabold text-[var(--color-primary-foreground)] transition-opacity disabled:opacity-40"
+            className="flex min-h-[44px] w-full items-center justify-center rounded-md bg-[var(--color-primary)] px-4 py-2.5 text-sm font-bold uppercase tracking-wide text-[var(--color-primary-foreground)] transition-opacity disabled:opacity-40"
           >
             Diagnose Issue
           </button>
@@ -255,8 +255,10 @@ function ServiceHubCard() {
 
 function PerformanceAnalyticsCard() {
   return (
-    <div className="aw-bento-card relative flex h-full flex-col gap-3 overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-      <h3 className="text-xl font-extrabold leading-tight">Performance Analytics</h3>
+    <div className="aw-bento-card relative flex h-full flex-col gap-3 overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+      <h3 className="font-display text-xl font-extrabold leading-tight tracking-tight">
+        Performance Analytics
+      </h3>
       <p className="text-sm leading-relaxed text-[var(--color-text-dim)]">
         Compare setups and visualize ride feel — analyze agility, stability and chassis balance scores across your history.
       </p>
@@ -301,7 +303,7 @@ function ScoreRow({ label, value, color }: { label: string; value: number; color
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className={
             "h-full rounded-full " +
-            (color === "warning" ? "bg-[var(--color-warning)]" : "bg-[oklch(70%_0.18_250)]")
+            (color === "warning" ? "bg-[var(--color-warning)]" : "bg-[oklch(68%_0.10_250)]")
           }
         />
       </div>

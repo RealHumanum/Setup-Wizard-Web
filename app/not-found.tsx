@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main className="relative flex min-h-[70vh] flex-col items-center justify-center px-6 py-32 text-center">
-      <span className="font-mono text-7xl font-black tracking-tighter aw-gradient-text sm:text-9xl">
+      <span className="font-mono text-7xl font-black tracking-tighter text-[var(--color-primary)] sm:text-9xl">
         404
       </span>
       <p className="mt-4 font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-text-muted)]">

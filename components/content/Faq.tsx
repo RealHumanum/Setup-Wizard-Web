@@ -13,7 +13,7 @@ export function Faq({ items }: { items: FaqEntry[] }) {
       {items.map((item) => (
         <details
           key={item.q}
-          className="group/faq overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 transition-colors open:border-[var(--color-border-bright)]"
+          className="group/faq overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors open:border-[var(--color-border-bright)]"
         >
           <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-[var(--color-text)] [&::-webkit-details-marker]:hidden">
             <span>{item.q}</span>

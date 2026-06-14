@@ -1,34 +1,37 @@
 @import "tailwindcss";
 
 /*
-  Apex Wizard HMI theme — high-contrast carbon dark theme with fluorescent
-  telemetry green + safety orange accents, tuned for glanceability in sunlight.
-  All colors authored in OKLCh for consistent luminance across screens.
+  Apex Wizard — editorial racing theme.
+  Neutral slate base (matching the iOS/Android app: #0f172a / #1e293b) with the
+  app's own accent palette: green primary (#22c55e), orange complementary
+  (#f97316), red danger, authored in OKLCh. Display type for headlines, mono
+  reserved for telemetry / spec data only. No neon glow, no glassmorphism.
 */
 @theme {
-  --color-bg: oklch(12% 0.01 250);
-  --color-surface: oklch(18% 0.02 250);
-  --color-surface-2: oklch(22% 0.02 250);
-  --color-border: oklch(28% 0.02 250);
-  --color-border-bright: oklch(45% 0.08 152);
+  --color-bg: oklch(21% 0.04 262); /* slate-900 #0f172a (app background) */
+  --color-surface: oklch(27% 0.035 258); /* slate-800 #1e293b (app surface) */
+  --color-surface-2: oklch(36% 0.03 256); /* slate-700 */
+  --color-border: oklch(31% 0.03 257); /* hairline */
+  --color-border-bright: oklch(48% 0.035 256);
 
-  --color-primary: oklch(78% 0.2 152);
-  --color-primary-dim: oklch(78% 0.2 152 / 12%);
-  --color-primary-foreground: oklch(15% 0.02 152);
+  --color-primary: oklch(73% 0.19 149); /* app green #22c55e */
+  --color-primary-dim: oklch(73% 0.19 149 / 12%);
+  --color-primary-foreground: oklch(21% 0.04 262); /* dark slate text on green */
 
-  --color-warning: oklch(72% 0.19 55);
-  --color-warning-dim: oklch(72% 0.19 55 / 12%);
+  --color-warning: oklch(70% 0.19 48); /* app orange #f97316 — complementary accent */
+  --color-warning-dim: oklch(70% 0.19 48 / 12%);
 
-  --color-danger: oklch(63% 0.22 25);
+  --color-danger: oklch(64% 0.22 27); /* app red #ef4444 */
 
-  --color-text: oklch(98% 0 0);
-  --color-text-dim: oklch(72% 0.02 250);
-  --color-text-muted: oklch(50% 0.02 250);
+  --color-text: oklch(98% 0.004 256); /* near-white */
+  --color-text-dim: oklch(70% 0.03 256); /* slate-400 #94a3b8 */
+  --color-text-muted: oklch(56% 0.035 256); /* slate-500 */
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
 
-  --radius: 1rem;
+  --radius: 0.5rem;
 }
 
 * {
@@ -46,18 +49,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.005em;
-  background-image:
-    radial-gradient(
-      circle at 20% -10%,
-      oklch(78% 0.2 152 / 0.07),
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 110%,
-      oklch(72% 0.19 55 / 0.05),
-      transparent 50%
-    );
-  background-attachment: fixed;
+}
+
+/* Subtle film grain — replaces the old ambient radial glows. Sits behind all
+   content (content wrapper is z-10), adds tactile depth without "AI glow". */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Editorial headline defaults. Components that need monospaced telemetry opt in
+   explicitly with `font-mono`; everything else inherits the display face. */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 }
 
 ::selection {
@@ -65,43 +79,19 @@ body {
   color: var(--color-primary-foreground);
 }
 
-/* Ambient radial glow used behind hero / sections */
-.aw-glow {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(120px);
-  opacity: 0.18;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.aw-gradient-text {
-  background: linear-gradient(
-    90deg,
-    oklch(82% 0.2 152),
-    oklch(88% 0.18 175),
-    oklch(80% 0.16 200)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 /* ============================================================
-   Apex Wizard — Bento + Phone mockup scoped styles
-   Ported from legacy index.css (commit ac52b68) and translated
-   onto the OKLCh theme tokens. Anything that fits Tailwind lives
-   in the components; only stuff that doesn't go here.
+   Apex Wizard — Bento + phone mockup + telemetry scoped styles
+   (recolored from neon green onto the gold theme tokens)
    ============================================================ */
 
 /* iOS phone mockup */
 .aw-phone-case {
-  background: oklch(20% 0.025 250);
-  border: 12px solid oklch(28% 0.005 250);
+  background: oklch(20% 0.012 258);
+  border: 12px solid oklch(28% 0.006 258);
   border-radius: 50px;
   box-shadow:
     0 50px 100px rgba(0, 0, 0, 0.8),
-    inset 0 0 0 2px oklch(36% 0.005 250);
+    inset 0 0 0 2px oklch(36% 0.006 258);
 }
 .aw-phone-notch {
   position: absolute;
@@ -118,23 +108,22 @@ body {
 .aw-phone-active-setup {
   background: linear-gradient(
     135deg,
-    oklch(72% 0.18 152),
-    oklch(60% 0.18 152)
+    oklch(73% 0.19 149),
+    oklch(64% 0.17 150)
   );
-  box-shadow: 0 12px 24px oklch(72% 0.18 152 / 0.3);
+  box-shadow: 0 12px 24px oklch(73% 0.19 149 / 0.3);
 }
 .aw-phone-tab-fix {
   background: linear-gradient(
     135deg,
-    oklch(72% 0.19 55),
-    oklch(62% 0.2 45)
+    oklch(72% 0.17 55),
+    oklch(62% 0.18 45)
   );
-  box-shadow: 0 5px 20px oklch(72% 0.19 55 / 0.6);
-  border: 3px solid oklch(20% 0.025 250);
+  box-shadow: 0 5px 20px oklch(72% 0.17 55 / 0.6);
+  border: 3px solid oklch(20% 0.012 258);
 }
 
-/* Bento card hover gradient overlay (Tailwind-friendly base set
-   in component, this just adds the inner glow on hover) */
+/* Bento / feature card hover — restrained lift, gold inner accent, no neon */
 .aw-bento-card {
   transition:
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
@@ -143,37 +132,34 @@ body {
     background 0.3s;
 }
 .aw-bento-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   border-color: var(--color-border-bright);
-  background: linear-gradient(
-    135deg,
-    oklch(78% 0.2 152 / 0.05),
-    oklch(78% 0.2 152 / 0.02)
-  );
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    inset 0 0 20px oklch(78% 0.2 152 / 0.05);
+    0 24px 48px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 oklch(73% 0.19 149 / 0.06);
 }
 .aw-bento-card:hover .aw-bento-graphic {
-  transform: scale(1.08);
+  transform: scale(1.06);
   opacity: 1;
 }
 .aw-bento-graphic {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s;
   opacity: 0.92;
 }
 
-/* CSS tire pair */
+/* CSS tire pair — heat map (cool base → warm contact patch in gold) */
 .aw-tire {
   width: 70px;
   height: 180px;
   border-radius: 35px;
   background: linear-gradient(
     0deg,
-    oklch(22% 0.02 250) 0%,
-    oklch(22% 0.02 250) 40%,
-    oklch(72% 0.19 55 / 0.4) 70%,
-    oklch(78% 0.2 152 / 0.4) 100%
+    oklch(22% 0.02 258) 0%,
+    oklch(22% 0.02 258) 40%,
+    oklch(72% 0.17 55 / 0.4) 70%,
+    oklch(73% 0.19 149 / 0.45) 100%
   );
   border: 1px solid oklch(98% 0 0 / 0.1);
   position: relative;
@@ -182,10 +168,10 @@ body {
   width: 90px;
   background: linear-gradient(
     0deg,
-    oklch(22% 0.02 250) 0%,
-    oklch(22% 0.02 250) 30%,
+    oklch(22% 0.02 258) 0%,
+    oklch(22% 0.02 258) 30%,
     oklch(63% 0.22 25 / 0.4) 60%,
-    oklch(78% 0.2 152 / 0.4) 100%
+    oklch(73% 0.19 149 / 0.45) 100%
   );
 }
 .aw-tire-tread {
@@ -205,7 +191,7 @@ body {
 .aw-track-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 10px oklch(78% 0.2 152 / 0.25));
+  filter: drop-shadow(0 0 10px oklch(73% 0.19 149 / 0.25));
 }
 .aw-track-edge {
   fill: none;
@@ -221,14 +207,14 @@ body {
 }
 .aw-track-curbing {
   fill: none;
-  stroke: oklch(56% 0.02 250);
+  stroke: oklch(56% 0.02 258);
   stroke-width: 4;
   stroke-dasharray: 8 8;
   opacity: 0.35;
 }
 .aw-track-racing-base {
   fill: none;
-  stroke: oklch(78% 0.2 152 / 0.08);
+  stroke: oklch(73% 0.19 149 / 0.08);
   stroke-width: 2;
   stroke-linecap: round;
 }
@@ -239,7 +225,7 @@ body {
   stroke-linecap: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  filter: drop-shadow(0 0 12px oklch(78% 0.2 152));
+  filter: drop-shadow(0 0 12px oklch(73% 0.19 149));
   animation: aw-racing-trace 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 .aw-track-segment {
@@ -248,7 +234,9 @@ body {
   stroke-width: 4;
   stroke-linecap: round;
   opacity: 0.08;
-  transition: opacity 0.6s, filter 0.6s;
+  transition:
+    opacity 0.6s,
+    filter 0.6s;
 }
 .aw-track-segment.active {
   opacity: 1;
@@ -258,8 +246,8 @@ body {
   position: absolute;
   inset: -50% -50% -50% -50%;
   background-image:
-    linear-gradient(oklch(78% 0.2 152 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(78% 0.2 152 / 0.04) 1px, transparent 1px);
+    linear-gradient(oklch(73% 0.19 149 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(73% 0.19 149 / 0.04) 1px, transparent 1px);
   background-size: 50px 50px;
   transform: rotateX(60deg) translateY(-40px);
   z-index: 0;
@@ -289,7 +277,7 @@ body {
 /* Fuel drip */
 .aw-fuel-drip {
   fill: var(--color-primary);
-  filter: drop-shadow(0 0 5px oklch(78% 0.2 152 / 0.6));
+  filter: drop-shadow(0 0 5px oklch(73% 0.19 149 / 0.6));
   animation: aw-fuel-drip 2.4s infinite;
   transform-origin: center;
 }
@@ -316,7 +304,7 @@ body {
 .aw-radar-spinner {
   width: 36px;
   height: 36px;
-  border: 2px solid oklch(78% 0.2 152 / 0.12);
+  border: 2px solid oklch(73% 0.19 149 / 0.12);
   border-top: 2px solid var(--color-primary);
   border-radius: 50%;
   animation: aw-spin 1s linear infinite;
@@ -332,10 +320,19 @@ body {
   height: 4px;
   background: linear-gradient(
     90deg,
-    oklch(60% 0.18 250),
+    oklch(55% 0.04 250),
     var(--color-primary),
     var(--color-warning)
   );
   border-radius: 2px;
   position: relative;
+}
+
+/* Respect reduced-motion: still the looping telemetry decorations. */
+@media (prefers-reduced-motion: reduce) {
+  .aw-fuel-drip,
+  .aw-radar-spinner,
+  .aw-track-racing-trace {
+    animation: none;
+  }
 }

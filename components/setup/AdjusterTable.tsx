@@ -11,7 +11,7 @@ export function AdjusterColumn({
   rows: AdjusterRow[];
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 p-5">
+    <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
       <h3 className="mb-3 font-mono text-sm font-extrabold uppercase tracking-widest text-[var(--color-primary)]">
         {title}
       </h3>

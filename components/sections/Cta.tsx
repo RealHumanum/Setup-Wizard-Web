@@ -9,10 +9,25 @@ import { CONTACT_EMAIL, APP_STORE_URL, PLAY_STORE_URL } from "@/lib/constants";
 
 export function Cta() {
   return (
-    <section id="cta" className="relative overflow-hidden px-6 py-16">
+    <section id="cta" className="relative overflow-hidden px-6 py-24 sm:py-28">
+      {/* Full-bleed cinematic track band, heavily darkened for legibility. */}
+      <Image
+        src="/assets/cta-track.jpg"
+        alt=""
+        aria-hidden
+        fill
+        unoptimized
+        loading="lazy"
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover object-center opacity-30"
+      />
       <div
-        className="aw-glow size-[700px] bg-[var(--color-primary)]"
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)", opacity: 0.18 }}
+        aria-hidden
+        className="absolute inset-0 -z-0"
+        style={{
+          background:
+            "radial-gradient(90% 90% at 50% 50%, oklch(16% 0.04 262 / 0.55), var(--color-bg) 92%)",
+        }}
       />
 
       <div className="relative mx-auto max-w-3xl text-center">
@@ -20,7 +35,7 @@ export function Cta() {
           tag="Get Started"
           title={
             <>
-              Ready to Find Your <span className="aw-gradient-text">Apex?</span>
+              Ready to Find Your <span className="text-[var(--color-primary)]">Apex?</span>
             </>
           }
           sub="Join riders worldwide who are using Apex Wizard to dial in their suspension and dominate the track."
@@ -45,7 +60,7 @@ export function Cta() {
               rel="noopener noreferrer"
               className="group flex flex-col items-center"
             >
-              <div className="rounded-2xl border border-[var(--color-border)] bg-white p-2 transition-transform group-hover:scale-105">
+              <div className="rounded-md border border-[var(--color-border)] bg-white p-2 transition-transform group-hover:scale-105">
                 <Image
                   src="/assets/qr-ios.png"
                   alt="iOS App Store QR"
@@ -65,7 +80,7 @@ export function Cta() {
               rel="noopener noreferrer"
               className="group flex flex-col items-center"
             >
-              <div className="rounded-2xl border border-[var(--color-border)] bg-white p-2 transition-transform group-hover:scale-105">
+              <div className="rounded-md border border-[var(--color-border)] bg-white p-2 transition-transform group-hover:scale-105">
                 <Image
                   src="/assets/qr-android.png"
                   alt="Android QR"

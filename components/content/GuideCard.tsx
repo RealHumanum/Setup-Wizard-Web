@@ -8,12 +8,12 @@ export function GuideCard({ guide }: { guide: Guide }) {
   return (
     <Link
       href={guidePath(guide.slug)}
-      className="group flex h-full flex-col rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 p-6 transition-colors hover:border-[var(--color-border-bright)] hover:bg-[var(--color-surface)]"
+      className="group flex h-full flex-col rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-border-bright)]"
     >
       <div className="mb-3 flex items-center gap-2 font-mono text-[10px] font-extrabold uppercase tracking-[0.2em] text-[var(--color-primary)]">
         {guide.eyebrow}
       </div>
-      <h3 className="font-mono text-lg font-extrabold leading-snug text-[var(--color-text)]">
+      <h3 className="font-display text-lg font-extrabold leading-snug tracking-tight text-[var(--color-text)]">
         {guide.shortTitle}
       </h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-[var(--color-text-dim)]">

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description:
       "Suspension setup references for 190+ sportbikes — adjusters, baseline sag, and tuning, model by model.",
     url: PATH,
-    images: ["/assets/hero 2.png"],
+    images: ["/assets/og-image.jpg"],
   },
 };
 
@@ -66,7 +66,7 @@ export default function SetupIndexPage() {
             <Link
               key={m.slug}
               href={`/setup/${m.slug}`}
-              className="group flex items-center justify-between gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 px-5 py-5 transition-colors hover:border-[var(--color-border-bright)] hover:bg-[var(--color-surface)]"
+              className="group flex items-center justify-between gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 transition-colors hover:border-[var(--color-border-bright)]"
             >
               <div>
                 <div className="font-mono text-lg font-extrabold text-[var(--color-text)]">

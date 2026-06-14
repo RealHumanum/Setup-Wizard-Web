@@ -1,4 +1,4 @@
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
 
@@ -28,15 +28,14 @@ export function Testimonials() {
           tag="Riders Love It"
           title={
             <>
-              What Track Riders <span className="aw-gradient-text">Are Saying.</span>
+              What Track Riders <span className="text-[var(--color-primary)]">Are Saying.</span>
             </>
           }
         />
         <div className="grid gap-6 md:grid-cols-3">
           {REVIEWS.map((r, i) => (
             <Reveal key={r.name} delay={i * 0.08}>
-              <figure className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)]/70 p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-[var(--color-border-bright)]">
-                <Quote className="absolute -top-2 -right-2 size-20 text-[var(--color-primary)]/[0.04]" />
+              <figure className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-7 transition-all hover:-translate-y-1 hover:border-[var(--color-border-bright)]">
                 <div className="relative flex gap-0.5 text-[var(--color-warning)]">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} className="size-4 fill-current" />

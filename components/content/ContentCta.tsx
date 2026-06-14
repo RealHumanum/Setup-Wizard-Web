@@ -15,8 +15,8 @@ export function ContentCta({
   primaryLabel?: string;
 }) {
   return (
-    <div className="mt-16 overflow-hidden rounded-3xl border border-[var(--color-border-bright)] bg-[var(--color-surface)] p-8 text-center sm:p-12">
-      <h3 className="font-mono text-2xl font-extrabold leading-tight sm:text-3xl">
+    <div className="mt-16 overflow-hidden rounded-lg border border-[var(--color-border)] border-t-2 border-t-[var(--color-primary)] bg-[var(--color-surface)] p-8 text-center sm:p-12">
+      <h3 className="font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
         {title}
       </h3>
       <p className="mx-auto mt-3 max-w-xl text-[var(--color-text-dim)]">{desc}</p>

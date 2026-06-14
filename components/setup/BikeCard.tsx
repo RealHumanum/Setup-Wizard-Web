@@ -8,7 +8,7 @@ export function BikeCard({ bike }: { bike: Bike }) {
   return (
     <Link
       href={`/setup/${bike.manufacturerSlug}/${bike.modelSlug}`}
-      className="group flex items-center justify-between gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 px-5 py-4 transition-colors hover:border-[var(--color-border-bright)] hover:bg-[var(--color-surface)]"
+      className="group flex items-center justify-between gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4 transition-colors hover:border-[var(--color-border-bright)]"
     >
       <div className="min-w-0">
         <div className="truncate font-semibold text-[var(--color-text)]">

@@ -37,7 +37,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-all duration-300",
         scrolled
-          ? "border-b border-[var(--color-border)] bg-[var(--color-bg)]/85 backdrop-blur-xl"
+          ? "border-b border-[var(--color-border)] bg-[var(--color-bg)]"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -45,7 +45,7 @@ export function Navbar() {
         <Link
           href="/"
           aria-label="Apex Wizard home"
-          className="flex items-center gap-2 font-mono text-xl font-extrabold tracking-tight text-white drop-shadow-[0_0_10px_oklch(78%_0.2_152/0.5)] sm:text-2xl"
+          className="flex items-center gap-2.5 font-display text-xl font-extrabold tracking-tight text-[var(--color-text)] sm:text-[1.4rem]"
         >
           <Image
             src="/assets/favicon.png"
@@ -54,7 +54,7 @@ export function Navbar() {
             height={32}
             priority
             unoptimized
-            className="size-8 rounded-lg ring-1 ring-[var(--color-primary)]/30"
+            className="size-8 rounded-md ring-1 ring-[var(--color-border-bright)]"
           />
           Apex<span className="text-[var(--color-primary)]"> Wizard</span>
         </Link>
@@ -86,9 +86,9 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={fireConversion}
-            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-[var(--color-primary)] px-5 text-sm font-extrabold text-[var(--color-primary-foreground)] shadow-[0_0_24px_-8px_var(--color-primary)] transition-transform hover:scale-[1.03] active:scale-95"
+            className="inline-flex min-h-10 items-center gap-2 rounded-md bg-[var(--color-primary)] px-5 text-sm font-bold uppercase tracking-wide text-[var(--color-primary-foreground)] transition-all hover:brightness-105 active:scale-[0.98]"
           >
-            <Download className="size-4" /> Download Free
+            <Download className="size-4" /> Download
           </a>
         </div>
       </div>
