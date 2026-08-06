@@ -10,14 +10,23 @@ export default function manifest(): MetadataRoute.Manifest {
       "Professional motorcycle suspension logbook and setup troubleshooter for track and street riders.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0a0d12",
-    theme_color: "#0a0d12",
+    // Must match the `themeColor` in app/layout.tsx and --color-bg in
+    // globals.css (slate-900). A mismatch shows as a colour seam between the
+    // OS chrome and the page on install.
+    background_color: "#0f172a",
+    theme_color: "#0f172a",
     icons: [
       {
         src: "/assets/favicon.png",
-        sizes: "512x512",
+        sizes: "1024x1024",
         type: "image/png",
         purpose: "any",
+      },
+      {
+        src: "/assets/maskable-icon.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
       },
     ],
   };

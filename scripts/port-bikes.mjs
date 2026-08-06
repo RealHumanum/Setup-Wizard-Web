@@ -223,7 +223,11 @@ export function findBike(manufacturerSlug: string, modelSlug: string): Bike | un
 // Count of distinct, rider-facing adjusters a bike exposes (drives teaser copy).
 export function adjusterCount(b: Bike): number {
   return Object.values(b.adjusters).filter(Boolean).length;
-}`);
+}
+
+// Single source of truth for every rider-facing "N bikes" claim on the site and
+// in the JSON-LD. Never hardcode the number anywhere else — it drifts.
+export const BIKE_COUNT = BIKES.length;`);
 lines.push("");
 
 writeFileSync(OUT, lines.join("\n"));

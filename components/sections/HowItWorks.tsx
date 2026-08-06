@@ -1,11 +1,12 @@
 import { SectionHeader } from "@/components/SectionHeader";
 import { Reveal } from "@/components/Reveal";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 const STEPS = [
   {
     n: "01",
     title: "Add Your Bike",
-    desc: "Pick from 115+ factory sportbikes or build a custom profile. Define every adjustment range your suspension offers.",
+    desc: `Pick from ${BIKE_COUNT} factory sportbikes or build a custom profile. Define every adjustment range your suspension offers.`,
   },
   {
     n: "02",

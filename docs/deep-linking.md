@@ -12,33 +12,26 @@ GitHub Pages serves `.well-known/` fine. Note iOS wants the AASA served as
 
 ---
 
-## 1. iOS — `apple-app-site-association`  (no `.json` extension)
+## 1. iOS — `apple-app-site-association`  (no `.json` extension)  ✅ WRITTEN
 
-Needs your **Apple Team ID** (10 chars, Apple Developer → Membership) and the
-app's **bundle identifier**. App Store ID is `6759269080`; bundle is most likely
-`com.apexwizard.app` — confirm in Xcode / App Store Connect.
+**Done** — `apple-app-site-association` is in this folder, filled with the real
+values (found 2026-06-13 in the iOS Xcode project):
+- Apple Team ID: `SLM3HUQCXT` (`DEVELOPMENT_TEAM`)
+- Bundle id: `com.adriandokoza.IOS-nativ-Setup-Wizard` (NOT `com.apexwizard.app` —
+  that earlier guess was wrong). App Store ID `6759269080`.
+- The root `/` catch-all was intentionally dropped so marketing/legal/privacy
+  links don't bounce into the app; only `/setup/*`, `/guides/*`, `/tuning-guide`
+  deep-link. Widen later if you want whole-site claiming.
 
-```json
-{
-  "applinks": {
-    "details": [
-      {
-        "appIDs": ["TEAMID.com.apexwizard.app"],
-        "components": [
-          { "/": "/setup/*" },
-          { "/": "/guides/*" },
-          { "/": "/tuning-guide" },
-          { "/": "/" }
-        ]
-      }
-    ]
-  }
-}
-```
-
-Replace `TEAMID` (and the bundle id if different). Requires the Associated
-Domains capability (`applinks:apex-wizard.com`, `applinks:www.apex-wizard.com`)
-in the iOS app.
+**The file is inert until the iOS app is configured for Universal Links** (the
+app currently has neither). Remaining app-side work:
+- Add the **Associated Domains** capability + entitlement
+  `com.apple.developer.associated-domains` =
+  `["applinks:apex-wizard.com", "applinks:www.apex-wizard.com"]`
+  (and enable Associated Domains for the App ID in the Apple Developer portal).
+- Handle incoming universal-link URLs in `ApexWizardApp.onOpenURL` and route
+  `/setup/...`, `/guides/...`, `/tuning-guide` to the matching screens. Today
+  `onOpenURL` only imports `.apexsetup` files.
 
 ## 2. Android — `assetlinks.json`
 

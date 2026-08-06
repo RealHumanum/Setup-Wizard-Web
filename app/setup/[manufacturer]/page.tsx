@@ -8,7 +8,8 @@ import {
 import { PageHero } from "@/components/content/PageHero";
 import { BikeCard } from "@/components/setup/BikeCard";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
+import { pickTitle, clampDescription, BRAND_SUFFIX } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -27,9 +28,15 @@ export async function generateMetadata({
   const mfg = allManufacturers().find((m) => m.slug === manufacturer);
   if (!mfg) return {};
   const path = `/setup/${manufacturer}`;
-  const description = `Motorcycle suspension setup references for every ${mfg.name} sportbike in the Apex Wizard database — adjusters, baseline sag, and tuning, model by model.`;
+  const description = clampDescription(
+    `${mfg.count} ${mfg.name} suspension setups — which adjusters each model has, baseline sag targets and where to start. Free with Apex Wizard.`,
+  );
   return {
-    title: `${mfg.name} Suspension Setup Guides | Apex Wizard`,
+    title: pickTitle([
+      `${mfg.name} Suspension Setup Guides${BRAND_SUFFIX}`,
+      `${mfg.name} Suspension Setup Guides`,
+      `${mfg.name} Suspension Setups`,
+    ]),
     description,
     alternates: { canonical: path },
     openGraph: {
@@ -76,7 +83,12 @@ export default async function ManufacturerPage({
         ])}
       />
       <JsonLd
-        data={itemListJsonLd(
+        data={collectionPageJsonLd(
+          {
+            name: `${mfg.name} Suspension Setups`,
+            description: `Suspension setup references for ${mfg.count} ${mfg.name} models — adjusters, baseline sag and where to start.`,
+            path: `/setup/${manufacturer}`,
+          },
           bikes.map((b) => ({
             name: `${b.manufacturer} ${b.model}`,
             path: `/setup/${b.manufacturerSlug}/${b.modelSlug}`,

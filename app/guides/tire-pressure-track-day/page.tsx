@@ -10,15 +10,16 @@ import { FaqSection } from "@/components/content/FaqSection";
 import { ContentCta } from "@/components/content/ContentCta";
 import { GuideCard } from "@/components/content/GuideCard";
 import { JsonLd } from "@/components/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/schema";
+import { articleJsonLd, breadcrumbJsonLd, howToJsonLd } from "@/lib/schema";
 import { getGuide, guidePath, GUIDES } from "@/lib/guides";
+import { withBrand } from "@/lib/seo";
 
 const SLUG = "tire-pressure-track-day";
 const guide = getGuide(SLUG)!;
 const PATH = guidePath(SLUG);
 
 export const metadata: Metadata = {
-  title: `${guide.title} | Apex Wizard`,
+  title: withBrand(guide.title),
   description: guide.description,
   alternates: { canonical: PATH },
   openGraph: {
@@ -88,6 +89,36 @@ export default function Page() {
           datePublished: guide.datePublished,
           dateModified: guide.dateModified,
           section: guide.eyebrow,
+        })}
+      />
+      <JsonLd
+        data={howToJsonLd({
+          name: "How to set track day tire pressure",
+          description: guide.description,
+          path: PATH,
+          tools: ["Accurate pressure gauge"],
+          steps: [
+            {
+              name: "Know your hot target",
+              text: "Get the hot pressure target from the tire manufacturer's track recommendation for your exact compound, or from trusted track data for your tire and circuit. This is the pressure the tire is designed to grip at.",
+            },
+            {
+              name: "Set a sensible cold starting pressure",
+              text: "Use the tire maker's suggested cold figure as your first guess. For track tires and slicks this is usually lower than the road pressure printed near the swingarm.",
+            },
+            {
+              name: "Run a session, then measure hot immediately",
+              text: "Read the pressure in pit lane the moment you come in. Any delay lets the tire cool and corrupts the reading.",
+            },
+            {
+              name: "Adjust the cold setting to hit the hot target",
+              text: "If hot pressure came in above target, drop the cold setting; if it came in below, raise it. Re-run and re-measure until the hot pressure lands in the window. You chase the hot number by adjusting the cold one.",
+            },
+            {
+              name: "Use one gauge and log every run",
+              text: "Use the same gauge for cold and hot readings. A gauge reading 2 psi high poisons the whole method. Record cold setting, hot reading and conditions so guesswork becomes a trend you can rely on.",
+            },
+          ],
         })}
       />
 

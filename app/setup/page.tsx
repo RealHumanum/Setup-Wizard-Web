@@ -5,20 +5,22 @@ import { allManufacturers, BIKES } from "@/lib/bikes";
 import { PageHero } from "@/components/content/PageHero";
 import { ContentCta } from "@/components/content/ContentCta";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 const PATH = "/setup";
+const MFG_COUNT = allManufacturers().length;
+
+const SETUP_DESCRIPTION = `Suspension setup references for ${BIKE_COUNT} sportbikes across ${MFG_COUNT} manufacturers — which adjusters each bike has, baseline sag and where to start.`;
 
 export const metadata: Metadata = {
   title: "Motorcycle Suspension Setup Database | Apex Wizard",
-  description:
-    "Suspension setup references for 190+ sportbikes across 9 manufacturers — which adjusters each bike has, baseline sag, and how to tune it. Free with Apex Wizard.",
+  description: SETUP_DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {
     type: "website",
     title: "Motorcycle Suspension Setup Database",
-    description:
-      "Suspension setup references for 190+ sportbikes — adjusters, baseline sag, and tuning, model by model.",
+    description: SETUP_DESCRIPTION,
     url: PATH,
     images: ["/assets/og-image.jpg"],
   },
@@ -36,7 +38,12 @@ export default function SetupIndexPage() {
         ])}
       />
       <JsonLd
-        data={itemListJsonLd(
+        data={collectionPageJsonLd(
+          {
+            name: "Motorcycle Suspension Setup Database",
+            description: SETUP_DESCRIPTION,
+            path: PATH,
+          },
           manufacturers.map((m) => ({
             name: m.name,
             path: `/setup/${m.slug}`,

@@ -6,14 +6,16 @@ import { PageHero } from "@/components/content/PageHero";
 import { GuideCard } from "@/components/content/GuideCard";
 import { ContentCta } from "@/components/content/ContentCta";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbJsonLd, itemListJsonLd } from "@/lib/schema";
+import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/schema";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 const PATH = "/guides";
+const GUIDES_DESCRIPTION =
+  "Practical, data-driven guides to motorcycle suspension tuning, tire wear and track day setup — diagnose symptoms by corner phase and fix them.";
 
 export const metadata: Metadata = {
   title: "Motorcycle Suspension & Track Day Guides | Apex Wizard",
-  description:
-    "Practical, data-driven guides to motorcycle suspension tuning, tire wear, and track day setup — diagnose symptoms by corner phase and fix them with confidence.",
+  description: GUIDES_DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {
     type: "website",
@@ -35,10 +37,17 @@ export default function GuidesHubPage() {
         ])}
       />
       <JsonLd
-        data={itemListJsonLd([
-          { name: "Suspension Tuning Guide", path: "/tuning-guide" },
-          ...GUIDES.map((g) => ({ name: g.title, path: guidePath(g.slug) })),
-        ])}
+        data={collectionPageJsonLd(
+          {
+            name: "Motorcycle Suspension & Track Day Guides",
+            description: GUIDES_DESCRIPTION,
+            path: PATH,
+          },
+          [
+            { name: "Suspension Tuning Guide", path: "/tuning-guide" },
+            ...GUIDES.map((g) => ({ name: g.title, path: guidePath(g.slug) })),
+          ],
+        )}
       />
 
       <PageHero
@@ -80,7 +89,7 @@ export default function GuidesHubPage() {
       <div className="mx-auto max-w-5xl px-6 pb-24">
         <ContentCta
           title="Turn the theory into laps."
-          desc="Apex Wizard puts this whole workflow in your pocket — logbook, troubleshooter, and 190+ bike setups. Free on iOS and Android."
+          desc={`Apex Wizard puts this whole workflow in your pocket — logbook, troubleshooter, and ${BIKE_COUNT} bike setups. Free on iOS and Android.`}
         />
       </div>
     </main>

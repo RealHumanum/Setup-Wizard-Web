@@ -10,15 +10,16 @@ import { FaqSection } from "@/components/content/FaqSection";
 import { ContentCta } from "@/components/content/ContentCta";
 import { GuideCard } from "@/components/content/GuideCard";
 import { JsonLd } from "@/components/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/schema";
+import { articleJsonLd, breadcrumbJsonLd, howToJsonLd } from "@/lib/schema";
 import { getGuide, guidePath, GUIDES } from "@/lib/guides";
+import { withBrand } from "@/lib/seo";
 
 const SLUG = "track-day-fuel-calculation";
 const guide = getGuide(SLUG)!;
 const PATH = guidePath(SLUG);
 
 export const metadata: Metadata = {
-  title: `${guide.title} | Apex Wizard`,
+  title: withBrand(guide.title),
   description: guide.description,
   alternates: { canonical: PATH },
   openGraph: {
@@ -88,6 +89,39 @@ export default function Page() {
           datePublished: guide.datePublished,
           dateModified: guide.dateModified,
           section: guide.eyebrow,
+        })}
+      />
+      <JsonLd
+        data={howToJsonLd({
+          name: "How to calculate track day fuel load",
+          description: guide.description,
+          path: PATH,
+          steps: [
+            {
+              name: "Take your session duration",
+              text: "Use the scheduled session length in minutes — typically 20 minutes for a track day group.",
+            },
+            {
+              name: "Estimate your burn rate",
+              text: "A sportbike at track pace typically burns 0.5 to 1.0 litres per minute. Where you land depends on engine size, your pace and whether the circuit is a power track or a tight technical layout.",
+            },
+            {
+              name: "Choose a deliberate safety margin",
+              text: "Add a margin as an explicit input, typically 1–2 litres for a short session, rather than eyeballing a vague bit extra at the pump.",
+            },
+            {
+              name: "Calculate the volume",
+              text: "Litres = session duration in minutes × burn rate in litres per minute + safety margin in litres.",
+            },
+            {
+              name: "Convert to weight",
+              text: "Weight in kilograms = litres × 0.74, using a petrol density of about 0.74 kg per litre. This is the handling penalty you are accepting for the fuel you carry.",
+            },
+            {
+              name: "Log actual usage and refine",
+              text: "Record how much fuel each session actually consumed and adjust your burn rate figure. After a few sessions your number beats any generic estimate.",
+            },
+          ],
         })}
       />
 

@@ -9,6 +9,7 @@ import { FaqSection } from "@/components/content/FaqSection";
 import { ContentCta } from "@/components/content/ContentCta";
 import { Button } from "@/components/ui/button";
 import { CONTACT_EMAIL } from "@/lib/constants";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 export const metadata: Metadata = {
   title: "Rider Support | Apex Wizard",
@@ -26,7 +27,7 @@ const TOC = [
 const FAQ = [
   {
     q: "Can I add a custom motorcycle?",
-    a: "Yes. If your specific generation or model is missing from our 115+ factory list, select “Add Custom Bike” in the Garage. You can define exact suspension geometries, clickers, turns, and electronics capabilities manually.",
+    a: `Yes. If your specific generation or model is missing from our ${BIKE_COUNT}-bike factory list, select “Add Custom Bike” in the Garage. You can define exact suspension geometries, clickers, turns, and electronics capabilities manually.`,
   },
   {
     q: "Is my data backed up securely?",

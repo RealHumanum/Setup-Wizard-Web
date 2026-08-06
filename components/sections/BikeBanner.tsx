@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 const BRANDS = [
   "Yamaha",
@@ -20,8 +21,8 @@ export function BikeBanner() {
           <div className="relative grid overflow-hidden rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] md:grid-cols-[1.35fr_1fr]">
             <div className="order-2 p-10 sm:p-14 md:order-1">
               <h2 className="font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
-                <span className="text-[var(--color-primary)]">115+</span> Factory
-                Sportbikes
+                <span className="text-[var(--color-primary)]">{BIKE_COUNT}</span>{" "}
+                Factory Sportbikes
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--color-text-dim)] sm:text-lg">
                 From the 2003 Yamaha R6 to the 2025 Ducati Panigale V4 — two

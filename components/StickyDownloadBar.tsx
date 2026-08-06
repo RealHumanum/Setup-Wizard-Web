@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
 import { ADS_CONVERSION, APP_STORE_URL, PLAY_STORE_URL } from "@/lib/constants";
 
 function fireConversion() {
@@ -45,11 +44,6 @@ export function StickyDownloadBar() {
           <span className="text-sm font-extrabold leading-tight">Apex Wizard</span>
           <span className="flex items-center gap-1 text-[10px] font-semibold text-[var(--color-text-dim)]">
             Free to Download
-            <span className="flex gap-0.5 text-[var(--color-warning)]">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-2.5 fill-current" />
-              ))}
-            </span>
           </span>
         </div>
         <a

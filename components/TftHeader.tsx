@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { DownloadButtons } from "@/components/DownloadButtons";
 import { PhoneMockup } from "@/components/PhoneMockup";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 export function TftHeader() {
   return (
@@ -46,21 +46,9 @@ export function TftHeader() {
             <DownloadButtons />
           </div>
 
-          {/* Rating */}
-          <div className="mt-6 inline-flex items-center gap-2.5 border-l-2 border-[var(--color-primary)] pl-3">
-            <span className="flex gap-0.5 text-[var(--color-warning)]">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-3.5 fill-current" />
-              ))}
-            </span>
-            <span className="text-xs font-semibold text-[var(--color-text-dim)]">
-              5.0 on the App Store
-            </span>
-          </div>
-
           {/* Spec-strip stats */}
           <div className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-[var(--color-border)] pt-8">
-            <Stat value="115+" label="Bikes in Database" />
+            <Stat value={String(BIKE_COUNT)} label="Bikes in Database" />
             <Stat value="7" label="Smart Modules" />
             <Stat value="Free" label="To Download" />
           </div>

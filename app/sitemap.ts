@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { BIKES, allManufacturers } from "@/lib/bikes";
 import { GUIDES, guidePath } from "@/lib/guides";
+import { SETUP_CONTENT_UPDATED } from "@/lib/constants";
 
 const SITE_URL = "https://www.apex-wizard.com";
 
@@ -16,42 +17,56 @@ function url(path: string): string {
   return `${SITE_URL}/${path.replace(/^\/+|\/+$/g, "")}/`;
 }
 
+// Real last-modified dates, not build time.
+//
+// Stamping `new Date()` on every static entry told crawlers the whole site
+// changed on every deploy, which makes lastmod worthless as a signal — a
+// sitemap that cries wolf gets its dates ignored. These are the dates the pages
+// actually last changed; update an entry when you change that page.
+const STATIC_PAGES: [path: string, priority: number, freq: Freq, lastMod: string][] = [
+  ["/", 1, "weekly", SETUP_CONTENT_UPDATED],
+  ["/setup", 0.8, "weekly", SETUP_CONTENT_UPDATED],
+  ["/guides", 0.8, "weekly", SETUP_CONTENT_UPDATED],
+  ["/tuning-guide", 0.7, "monthly", "2026-05-30"],
+  ["/about", 0.5, "yearly", SETUP_CONTENT_UPDATED],
+  ["/support", 0.4, "yearly", SETUP_CONTENT_UPDATED],
+  ["/privacy", 0.3, "yearly", "2026-05-30"],
+  ["/terms", 0.3, "yearly", "2026-05-30"],
+  ["/delete-account", 0.3, "yearly", "2026-06-13"],
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const entry = (
     path: string,
     priority: number,
     changeFrequency: Freq,
-    lastModified: Date = now,
-  ): Entry => ({ url: url(path), lastModified, changeFrequency, priority });
+    lastModified: string,
+  ): Entry => ({
+    url: url(path),
+    lastModified: new Date(lastModified),
+    changeFrequency,
+    priority,
+  });
 
-  const staticPages: Entry[] = [
-    entry("/", 1, "weekly"),
-    entry("/setup", 0.8, "weekly"),
-    entry("/guides", 0.8, "weekly"),
-    entry("/tuning-guide", 0.7, "monthly"),
-    entry("/about", 0.5, "yearly"),
-    entry("/support", 0.4, "yearly"),
-    entry("/privacy", 0.3, "yearly"),
-    entry("/terms", 0.3, "yearly"),
-    entry("/delete-account", 0.3, "yearly"),
-  ];
+  const staticPages: Entry[] = STATIC_PAGES.map(([p, pr, f, lm]) =>
+    entry(p, pr, f, lm),
+  );
 
   const guidePages: Entry[] = GUIDES.map((g) =>
-    entry(
-      guidePath(g.slug),
-      0.7,
-      "monthly",
-      new Date(g.dateModified ?? g.datePublished),
-    ),
+    entry(guidePath(g.slug), 0.7, "monthly", g.dateModified ?? g.datePublished),
   );
 
   const manufacturerPages: Entry[] = allManufacturers().map((m) =>
-    entry(`/setup/${m.slug}`, 0.6, "monthly"),
+    entry(`/setup/${m.slug}`, 0.6, "monthly", SETUP_CONTENT_UPDATED),
   );
 
   const bikePages: Entry[] = BIKES.map((b) =>
-    entry(`/setup/${b.manufacturerSlug}/${b.modelSlug}`, 0.5, "monthly"),
+    entry(
+      `/setup/${b.manufacturerSlug}/${b.modelSlug}`,
+      0.5,
+      "monthly",
+      SETUP_CONTENT_UPDATED,
+    ),
   );
 
   return [...staticPages, ...guidePages, ...manufacturerPages, ...bikePages];

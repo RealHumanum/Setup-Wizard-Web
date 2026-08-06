@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["SLM3HUQCXT.com.adriandokoza.IOS-nativ-Setup-Wizard"],
+        "components": [
+          { "/": "/setup/*", "comment": "Bike setup pages" },
+          { "/": "/guides/*", "comment": "Guide articles" },
+          { "/": "/tuning-guide", "comment": "Tuning guide" }
+        ]
+      }
+    ]
+  }
+}

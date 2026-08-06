@@ -8,13 +8,14 @@ import { Callout } from "@/components/content/Callout";
 import { ContentCta } from "@/components/content/ContentCta";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd, SITE_URL } from "@/lib/schema";
+import { BIKE_COUNT, allManufacturers } from "@/lib/bikes";
 
 const PATH = "/about";
 
 export const metadata: Metadata = {
-  title: "About Apex Wizard & Adrian Dokoza | Apex Wizard",
+  title: "About Apex Wizard & Adrian Dokoza",
   description:
-    "Apex Wizard is an independent motorcycle suspension app built by Adrian Dokoza in Nussbaumen, Switzerland — a data-driven setup logbook and troubleshooter for track riders.",
+    "An independent motorcycle suspension app by Adrian Dokoza in Nussbaumen, Switzerland — a data-driven setup logbook and troubleshooter for track riders.",
   alternates: { canonical: PATH },
   openGraph: {
     type: "profile",
@@ -109,7 +110,8 @@ export default function AboutPage() {
             you a random number.
           </p>
           <Callout variant="info" title="Grounded in your bike, not a generic template">
-            The database covers 190+ models across nine manufacturers, each with
+            The database covers {BIKE_COUNT} models across{" "}
+            {allManufacturers().length} manufacturers, each with
             its real adjuster set and clicker range. The recommendations are only
             as good as that grounding &mdash; so the grounding is the part we
             obsess over.

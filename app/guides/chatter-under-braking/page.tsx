@@ -12,13 +12,14 @@ import { GuideCard } from "@/components/content/GuideCard";
 import { JsonLd } from "@/components/JsonLd";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/schema";
 import { getGuide, guidePath, GUIDES } from "@/lib/guides";
+import { withBrand } from "@/lib/seo";
 
 const SLUG = "chatter-under-braking";
 const guide = getGuide(SLUG)!;
 const PATH = guidePath(SLUG);
 
 export const metadata: Metadata = {
-  title: `${guide.title} | Apex Wizard`,
+  title: withBrand(guide.title),
   description: guide.description,
   alternates: { canonical: PATH },
   openGraph: {

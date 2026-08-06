@@ -1,6 +1,7 @@
 "use client";
 
 import { BentoCard } from "./BentoCard";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 type Bike = {
   year: string;
@@ -63,7 +64,7 @@ export function GarageCard() {
   return (
     <BentoCard
       title="Garage"
-      desc="Centralized multi-bike registry. Manage chassis geometry, component specs and OEM baselines for 115+ factory models."
+      desc={`Centralized multi-bike registry. Manage chassis geometry, component specs and OEM baselines for ${BIKE_COUNT} factory models.`}
     >
       <div className="mt-auto flex flex-1 flex-col gap-3 pt-4">
         <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">

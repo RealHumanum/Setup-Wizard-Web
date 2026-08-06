@@ -10,15 +10,16 @@ import { FaqSection } from "@/components/content/FaqSection";
 import { ContentCta } from "@/components/content/ContentCta";
 import { GuideCard } from "@/components/content/GuideCard";
 import { JsonLd } from "@/components/JsonLd";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/schema";
+import { articleJsonLd, breadcrumbJsonLd, howToJsonLd } from "@/lib/schema";
 import { getGuide, guidePath, GUIDES } from "@/lib/guides";
+import { withBrand } from "@/lib/seo";
 
 const SLUG = "setting-motorcycle-sag";
 const guide = getGuide(SLUG)!;
 const PATH = guidePath(SLUG);
 
 export const metadata: Metadata = {
-  title: `${guide.title} | Apex Wizard`,
+  title: withBrand(guide.title),
   description: guide.description,
   alternates: { canonical: PATH },
   openGraph: {
@@ -84,6 +85,49 @@ export default function Page() {
           datePublished: guide.datePublished,
           dateModified: guide.dateModified,
           section: guide.eyebrow,
+        })}
+      />
+      <JsonLd
+        data={howToJsonLd({
+          name: "How to set motorcycle sag",
+          description: guide.description,
+          path: PATH,
+          totalTime: "PT30M",
+          tools: ["Tape measure", "Zip-tie", "Paddock stand", "A helper"],
+          steps: [
+            {
+              name: "Measure the fully extended front",
+              text: "Put the bike on a paddock stand so the fork fully extends. Slide a zip-tie down the fork stanchion against the dust seal and measure from the seal to the zip-tie. This is your extended reference.",
+            },
+            {
+              name: "Measure front static sag",
+              text: "Drop the bike to the ground, settle the fork with a gentle push and release, and measure from the seal to the zip-tie again. Extended minus this figure is static sag.",
+            },
+            {
+              name: "Measure front rider sag",
+              text: "Sit on the bike in full gear with your feet on the pegs while a helper holds it upright and reads the measurement. Extended minus this figure is rider sag.",
+            },
+            {
+              name: "Repeat the three measurements at the rear",
+              text: "Pick two fixed points — the rear axle and a mark on the subframe directly above it — and measure between them fully extended, under bike weight and rider-loaded. The arithmetic is identical: extended minus loaded.",
+            },
+            {
+              name: "Break stiction before every reading",
+              text: "Suspension friction can hide 5–10 mm of travel. Before each measurement lift the end slightly and let it settle, or push down gently and release. Take every measurement the same way or the numbers will scatter.",
+            },
+            {
+              name: "Set the rear first",
+              text: "Adjust rear sag with the shock's preload collar or remote adjuster. Rear ride height has the bigger influence on overall geometry, so lock it in before setting the front against it. More preload raises the bike and reduces sag.",
+            },
+            {
+              name: "Set the front",
+              text: "Adjust front sag with the preload caps on top of the fork legs. Re-measure after each change and record the number of turns — preload is measured in turns or millimetres of thread, not clicks.",
+            },
+            {
+              name: "Stop if you run out of preload",
+              text: "If you reach the preload limit and still cannot hit target sag, the spring rate is wrong for your weight. Extra preload only pushes the spring into a harsher part of its range — fit the correct rate spring instead.",
+            },
+          ],
         })}
       />
 

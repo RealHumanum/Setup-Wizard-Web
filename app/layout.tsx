@@ -8,6 +8,7 @@ import { ConsentBanner } from "@/components/ConsentBanner";
 import { StickyDownloadBar } from "@/components/StickyDownloadBar";
 import { JsonLd } from "@/components/JsonLd";
 import { siteJsonLd } from "@/lib/schema";
+import { BIKE_COUNT } from "@/lib/bikes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,16 +57,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "Apex Wizard — Pro Motorcycle Suspension Logbook",
-    description:
-      "The all-in-one motorcycle suspension logbook, setup troubleshooter and track day companion. 115+ bikes. 100% free.",
+    description: `The all-in-one motorcycle suspension logbook, setup troubleshooter and track day companion. ${BIKE_COUNT} bikes. 100% free.`,
     url: SITE_URL,
     siteName: "Apex Wizard",
-    images: ["/assets/og-image.jpg"],
+    locale: "en_US",
+    images: [
+      {
+        url: "/assets/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Apex Wizard — motorcycle suspension setup logbook and troubleshooter",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Apex Wizard — Pro Motorcycle Suspension Logbook",
-    description: "Stop guessing in the pits. 115+ bikes, 7 smart modules, 100% free.",
+    description: `Stop guessing in the pits. ${BIKE_COUNT} bikes, 7 smart modules, 100% free.`,
     images: ["/assets/og-image.jpg"],
   },
 };
